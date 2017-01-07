@@ -1,0 +1,38 @@
+<%= form_for(@style, :html => {:multipart => true}) do |f| %>
+  <% if @style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@style.errors.count, "error") %> prohibited this style from being saved:</h2>
+
+      <ul>
+      <% @style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="content">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><%= image_tag(@style.image, alt:@style.image, class: "imagesStyle") if !@style.image.blank? %></div>
+      </div>
+    </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :init %><br>
+    <%= f.text_field :init %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status, value: 201 %>
+  </div>
+  <div class="field">
+    <%= f.label :use_counter %><br>
+    <%= f.number_field :use_counter %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

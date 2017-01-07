@@ -1,0 +1,348 @@
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-03 22:53:36 -0500
+
+PG::ConnectionBad (FATAL:  Peer authentication failed for user "matthew"
+):
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:655:in `initialize'
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:655:in `new'
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:655:in `connect'
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.4) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /home/huapu/.rbenv/versions/2.3.3/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /home/huapu/.rbenv/versions/2.3.3/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.4) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.4) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.4) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.4) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  rack (1.6.4) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.4) lib/rack/urlmap.rb:50:in `each'
+  rack (1.6.4) lib/rack/urlmap.rb:50:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/huapu/.rbenv/versions/2.3.3/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/huapu/.rbenv/versions/2.3.3/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/huapu/.rbenv/versions/2.3.3/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.0ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.5ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/huapu/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (42.2ms)
+  [1m[36m (80.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (265.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateQueueImages (20151110105542)
+  [1m[35m (263.2ms)[0m  CREATE TABLE `queue_images` (`id` int(11) auto_increment PRIMARY KEY, `client_id` int(11) NOT NULL, `content_image` varchar(255) NOT NULL, `style_image` varchar(255) NOT NULL, `init_str` varchar(255) DEFAULT '', `status` int(11) DEFAULT 0, `result` varchar(255) DEFAULT '', `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151110105542')
+  [1m[36m (37.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePimages (20151112191401)
+  [1m[35m (72.6ms)[0m  CREATE TABLE `pimages` (`id` int(11) auto_increment PRIMARY KEY, `queue_image_id` int(11), `iterate` int(11), `imageurl` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151112191401')
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddPtimeToQueueImages (20151112205233)
+  [1m[35m (182.2ms)[0m  ALTER TABLE `queue_images` ADD `ptime` time
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151112205233')
+  [1m[36m (39.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddStimeAndFtimeToQueueImages (20151113135441)
+  [1m[35m (208.4ms)[0m  ALTER TABLE `queue_images` ADD `stime` datetime
+  [1m[36m (174.6ms)[0m  [1mALTER TABLE `queue_images` ADD `ftime` datetime[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151113135441')[0m
+  [1m[35m (30.6ms)[0m  COMMIT
+Migrating to DeviseCreateClients (20151118143239)
+  [1m[36m (72.9ms)[0m  [1mCREATE TABLE `clients` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `name` varchar(255) NOT NULL, `avatar` varchar(255) NOT NULL, `lastprocess` datetime, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `confirmation_token` varchar(255), `confirmed_at` datetime, `confirmation_sent_at` datetime, `unconfirmed_email` varchar(255), `failed_attempts` int(11) DEFAULT 0 NOT NULL, `unlock_token` varchar(255), `locked_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (149.1ms)[0m  CREATE UNIQUE INDEX `index_clients_on_email`  ON `clients` (`email`) 
+  [1m[36m (165.6ms)[0m  [1mCREATE UNIQUE INDEX `index_clients_on_reset_password_token`  ON `clients` (`reset_password_token`) [0m
+  [1m[35m (157.4ms)[0m  CREATE UNIQUE INDEX `index_clients_on_confirmation_token`  ON `clients` (`confirmation_token`) 
+  [1m[36m (149.0ms)[0m  [1mCREATE UNIQUE INDEX `index_clients_on_unlock_token`  ON `clients` (`unlock_token`) [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151118143239')[0m
+  [1m[35m (40.8ms)[0m  COMMIT
+Migrating to CreateStyles (20151124111515)
+  [1m[36m (72.1ms)[0m  [1mCREATE TABLE `styles` (`id` int(11) auto_increment PRIMARY KEY, `image` varchar(255) NOT NULL, `init` varchar(255), `status` int(11) DEFAULT 0 NOT NULL, `use_counter` int(11) DEFAULT 0 NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151124111515')[0m
+  [1m[35m (29.6ms)[0m  COMMIT
+Migrating to CreateContents (20151124111837)
+  [1m[36m (89.7ms)[0m  [1mCREATE TABLE `contents` (`id` int(11) auto_increment PRIMARY KEY, `image` varchar(255) NOT NULL, `status` int(11) DEFAULT 0 NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151124111837')[0m
+  [1m[35m (31.6ms)[0m  COMMIT
+Migrating to NewQueueStructure (20151124112159)
+  [1m[36m (172.8ms)[0m  [1mALTER TABLE `queue_images` ADD `style_id` int(11) DEFAULT 0 NOT NULL[0m
+  [1m[35m (174.8ms)[0m  ALTER TABLE `queue_images` ADD `content_id` int(11) DEFAULT 0 NOT NULL
+  [1m[36m (215.9ms)[0m  [1mALTER TABLE `queue_images` ADD `end_status` int(11) DEFAULT 11 NOT NULL[0m
+  [1m[35mQueueImage Load (0.4ms)[0m  SELECT  `queue_images`.* FROM `queue_images`  ORDER BY `queue_images`.`id` ASC LIMIT 1000
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151124112159')
+  [1m[36m (43.2ms)[0m  [1mCOMMIT[0m
+Migrating to DeleteColFromQueueImages (20151124144219)
+  [1m[35m (192.5ms)[0m  ALTER TABLE `queue_images` DROP `style_image`
+  [1m[36m (175.1ms)[0m  [1mALTER TABLE `queue_images` DROP `content_image`[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151124144219')[0m
+  [1m[35m (39.2ms)[0m  COMMIT
+Migrating to AddRoleToClients (20151127111600)
+  [1m[36m (232.2ms)[0m  [1mALTER TABLE `clients` ADD `role_id` int(11) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151127111600')[0m
+  [1m[35m (30.2ms)[0m  COMMIT
+Migrating to CreateLikes (20151203163317)
+  [1m[36m (89.5ms)[0m  [1mCREATE TABLE `likes` (`id` int(11) auto_increment PRIMARY KEY, `client_id` int(11), `queue_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151203163317')[0m
+  [1m[35m (39.6ms)[0m  COMMIT
+Migrating to AddLikesToQueueImages (20151207202330)
+  [1m[36m (215.2ms)[0m  [1mALTER TABLE `queue_images` ADD `likes_count` int(11) DEFAULT 0[0m
+  [1m[35mQueueImage Load (0.5ms)[0m  SELECT  `queue_images`.* FROM `queue_images`  ORDER BY `queue_images`.`id` ASC LIMIT 1000
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151207202330')
+  [1m[36m (38.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddProgressToQueueImages (20151222172729)
+  [1m[35m (215.4ms)[0m  ALTER TABLE `queue_images` ADD `progress` float DEFAULT 0.0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151222172729')
+  [1m[36m (40.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.5ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'clients'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `clients`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'contents'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `contents`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'likes'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `likes`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'pimages'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `pimages`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'queue_images'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `queue_images`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'styles'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `styles`
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-03 23:40:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/about
+Completed 302 Found in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2017-01-03 23:40:40 -0500
+Processing by StaticPagesController#about as HTML
+  Rendered static_pages/about.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1199ms (Views: 1197.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/admin_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap-theme.self-797c795b8478a63ecf57ed925bbf6d452e951329623561a6042c306da1b713f8.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/custom.self-7739888de4ed18c74b39c67283c5b54a94a7e818a0836ece1052a8ed1a0b56e9.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/s1tyles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap.self-c68c406b70db1115478355392ee8e55e46903052ef2acc9b83a09aa57ea2c0d1.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/queue_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/lightbox.self-301f280a4cdf05015c8d8ad6dd2854194abff4aec6938cf2bef08b4da03f506b.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/application.self-2f20252e7ef052087af84e5e4bc6964b6aa627eb02ae2fecbe62d3aeefdbb614.css?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/lightbox.self-ffa51d041ff5a3827c9aadeb79b19efb48c1b6b7cc9cc1e70ca8d0d829231836.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/carousel.self-e47323f363ceb3dc0bdbce05e36e709ed428e339833a41140a85cb0af24b8127.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.self-969f3c5f48cdf1e439c7fa1154c13b948715f5c689f87837c0b64521d3b46ef6.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/admin_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/queue_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/s1tyles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:41 -0500
+
+
+Started GET "/assets/application.self-cdd579d95d7d2804194092c39d62540865067f3caf06cb2cfcd535d261852647.js?body=1" for 127.0.0.1 at 2017-01-03 23:40:42 -0500
+
+
+Started GET "/clients/sign_in" for 127.0.0.1 at 2017-01-03 23:40:44 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (97.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 193ms (Views: 167.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/clients/unlock/new" for 127.0.0.1 at 2017-01-03 23:40:58 -0500
+Processing by Devise::UnlocksController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/unlocks/new.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 89.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/clients/sign_up" for 127.0.0.1 at 2017-01-03 23:41:17 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 89.4ms | ActiveRecord: 0.0ms)
