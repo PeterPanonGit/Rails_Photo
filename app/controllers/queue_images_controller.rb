@@ -58,7 +58,7 @@ class QueueImagesController < ApplicationController
     respond_to do |format|
       if save_status
         start_workers()
-        format.html { redirect_to queue_images_path, notice: 'Изображения успешно добавлены в очередь обработки.' }
+        format.html { redirect_to queue_images_path, notice: 'Image successfully added to the queue for processing.' }
         format.json { render :show, status: :created, location: @queue_image }
       else
         format.html { render :new }
@@ -86,7 +86,7 @@ class QueueImagesController < ApplicationController
   def destroy
     @queue_image.update(status: STATUS_DELETED)
     respond_to do |format|
-      format.html { redirect_to queue_images_url, notice: 'Изображения удалены.' }
+      format.html { redirect_to queue_images_url, notice: 'Images removed.' }
       format.json { head :no_content }
     end
   end
@@ -94,7 +94,7 @@ class QueueImagesController < ApplicationController
   def visible
     @queue_image.update(status: STATUS_PROCESSED)
     respond_to do |format|
-      format.html { redirect_to queue_images_url, notice: 'Изображения открыты.' }
+      format.html { redirect_to queue_images_url, notice: 'Images become publicly visible.' }
       format.json { head :no_content }
     end
   end
@@ -102,7 +102,7 @@ class QueueImagesController < ApplicationController
   def hidden
     @queue_image.update(status: STATUS_HIDDEN)
     respond_to do |format|
-      format.html { redirect_to queue_images_url, notice: 'Изображения скрыты.' }
+      format.html { redirect_to queue_images_url, notice: 'The images are hidden.' }
       format.json { head :no_content }
     end
   end
@@ -172,18 +172,18 @@ class QueueImagesController < ApplicationController
     def valid_queue_image_params
       par = params[:queue_image][:content_image]
       if par.nil?
-        flash[:alert] = "Пожалуйста, добавьте изображение для обработки"
+        flash[:alert] = "Please add an image for rendering"
         return false
       end
       par = params[:queue_image][:view_style]
       if par.nil? || par == VIEW_STYLE_LOAD_FILE.to_s
         if params[:queue_image][:style_image].nil?
-          flash[:alert] = "Пожалуйста, добавьте изображение фильтра"
+          flash[:alert] = "Please choose add a style"
           return false
         end
       elsif par == VIEW_STYLE_FROM_LIST.to_s
         if params[:queue_image][:style_id].nil?
-          flash[:alert] = "Пожалуйста, выберите изображение фильтра"
+          flash[:alert] = "Please select a style from the Style Library"
           return false
         end
       end

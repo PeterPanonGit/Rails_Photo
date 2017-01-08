@@ -1,5 +1,5 @@
-<p>Здравствуйте <%= @email %>!</p>
+<p>Hi <%= @email %>!</p>
 
-<p>Вы можете подтвердить свой аккаунт электронной почты через ссылку ниже:</p>
+<p>You can confirm your email account using the link below:</p>
 
-<p><%= link_to 'Подтвердить мой аккаунт', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Verify My Account', confirmation_url(@resource, confirmation_token: @token) %></p>

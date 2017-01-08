@@ -1,36 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12">
-        <h3>Привет</h3>
-        <p>  На нашем <a href="http://ostagram.ru/lenta">портале</a> вы можете прикоснуться к искусству, не умея рисовать и даже ровно писать. Загрузив фотографию, которую хотите обработать, и фото,
-         стиль которого будет использоваться, вы можете получить совершенно неожиданный результат, который не мог присниться даже в детстве. </p>
-        <p>Для примера, берем фото вашей девушки (если конечно она у вас есть, привет Женек),</p>
-        <%=image_tag("/megan.jpg", class: "imagesStyle")%>
+    <div class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12">
+        <h3>About</h3>
+        <p>This <%= link_to "site", lenta_path %>, provide an artistic tool which can render a high resolution picture into an art work in seconds. </p>
+        <p>Different from websites like <a href="https://deepart.io">deepart.io</a>, which takes tens of minutes or even hours to render high resolution pictures, this site use fast neural style transfer technologies which renders high resolution pictures in seconds. </p>
+        <p>Different from the popular app <a href="http://prisma-ai.com/">prisma</a>, which also use the similar fast neural style transfer technology, we have developed an improved training method which can create a style model within an hour. That is why we allow users to submit their own styles pictures just like deepart.io, while we can render the pictures in similar amount of time like prisma. </p>
+        <p>We also allow users to create very high resolution rendered artistic images up to 2000px. Here we show a 1024px picture as an example</p>
+        <%=image_tag("/yellow_trees_house_water_1024.jpg", class: "imagesStyle")%>
         <p></p>
-        <p>и добавляем немного искусства, стоимостью около десяти миллионов мужских носков,</p>
+        <p>We render this picture with the following style image</p>
 
-        <%=image_tag("/starry_night.jpg", class: "imagesStyle")%>
+        <%=image_tag("/fall-1.jpg", class: "imagesStyle")%>
         <p></p>
-        <p>получаем шедевр, который можно повесить напротив плиты.</p>
-        <%=image_tag("/starry_megan.png", class: "imagesStyle")%>
+        <p>The rendered artistic image is also 1024px, like this</p>
+        <%=image_tag("/yellow_trees_house_water_1024_stylized.jpg", class: "imagesStyle")%>
         <p></p>
-        <p>  Процесс создания картины компьютером конечно не настолько трудоемок, как попытаться нарисовать ее самому, но занимает продолжительное время. Скажем так, обычному домашнему компьютеру требутся на это полтора-два часа.
-          Поэтому не стоит ждать результат мгновенно, а стоит полистать <a href="http://ostagram.ru/lenta">ленту</a> уже готовых работ компьютерного Ван Гога. <p>
+        <p>Because we use fast neural style transfer technology similar to <a href="https://github.com/jcjohnson/fast-neural-style">this</a>, rendering the artistic image is almost instant. This 1024px example took only about 10 seconds in total. The exact time can vary with the size of the picture, but the total amount of time should vary from a few seconds to a few tens of seconds <p>
 
-        <p>  А теперь заумный текст, который я сам не понимаю. Для создания картин используется сверточные нейронные сети и алгоритм художественно стиля by Leon A. Gatys, Alexander S. Ecker, and Matthias Bethge.
-          Более подробно с этим порталом можно познакомиться по ссылке на <a href="https://github.com/SergeyMorugin/ostagram">GitHub</a>.</p>
+        <p>However, we have improved the fast neural style transfer technology by reducing the model training time to about 1 hour. That's why we provide a large number of styles and we allow users to submit their own style photos. Although training a new style takes only about 1 hour, the administrators maintains the website only in their spare time and thus it can take a day for the administrator to upload the new style model to the website</p>
 
-        <p>  Для добавления фото необходимо зарегистрироваться. Процесс прост как пять копеек, а в подарок вы будете получать свои обработанные фото на почту, как только они «нарисуются».</p>
-        <p> Если есть вопросы и предложения пишите на почту:</p> <div class="textUserStyle-lg"><p>info@ostagram.ru</p></div>
-        <p> <a href="https://vk.com/ostagram_ru">Вконтакте</a></p>
-        <p> <a href="https://www.instagram.com/ostagram.ru/ ">Instagram</a></p>
+        <p>To render pictures to artistic images using existing styles, or create your own styles, you need to register. The register process is very simple and then you can render artistic images in seconds. If you submit new styles, you will be notified by email when the style is ready, which can take up to a day</p>
       <% if !client_signed_in? %>
         <div class="actions">
-          <%= link_to "Зарегистрироваться", new_client_registration_path , class: "btn btn-primary btn-large", style: "width: 100%" %>
+          <%= link_to "SignUp", new_client_registration_path , class: "btn btn-primary btn-large", style: "width: 100%" %>
         </div>
         <h3></h3>
         <div class="actions">
-          <%= link_to "Перейти к просмотру", lenta_path, class: "btn btn-primary", style: "width: 100%" %>
+          <%= link_to "Gallery", lenta_path, class: "btn btn-primary", style: "width: 100%" %>
         </div>
       <% end %>
     </div>

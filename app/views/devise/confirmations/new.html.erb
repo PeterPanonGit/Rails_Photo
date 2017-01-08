@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-offset-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
-    <h2>Повторная инструкция подтверждения</h2>
+    <h2>Repeated manual confirmation</h2>
 
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= devise_error_messages! %>
@@ -13,7 +13,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Повторная инструкция подтверждения", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Repeated manual confirmation", class: "btn btn-large btn-primary" %>
       </div>
     <% end %>
 
