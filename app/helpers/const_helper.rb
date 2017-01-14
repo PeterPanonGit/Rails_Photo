@@ -22,13 +22,13 @@ module ConstHelper
 
   def get_queue_item_status(item)
      case item.status
-       when STATUS_DELETED  then return "Удалено"
-       when STATUS_ERROR then return "Ошибка при обработке"
-       when STATUS_HIDDEN  then return "Скрыто"
-       when STATUS_NOT_PROCESSED  then return "Ожидает обработку"
-       when STATUS_IN_PROCESS  then return "Обрабатывается"
-       when STATUS_PROCESSED then return "Обработано за #{item.ptime.strftime("%H:%M:%S") if !item.ptime.nil?}"
-       when STATUS_PROCESSED_BY_BOT then return "Обработано ботом за #{item.ptime.strftime("%H:%M:%S") if !item.ptime.nil?}"
+       when STATUS_DELETED  then return "Deleted"
+       when STATUS_ERROR then return "Error rendering"
+       when STATUS_HIDDEN  then return "Hidden"
+       when STATUS_NOT_PROCESSED  then return "Pending"
+       when STATUS_IN_PROCESS  then return "Rendering"
+       when STATUS_PROCESSED then return "Rendered for #{item.ptime.strftime("%H:%M:%S") if !item.ptime.nil?}"
+       when STATUS_PROCESSED_BY_BOT then return "Rendered for bot #{item.ptime.strftime("%H:%M:%S") if !item.ptime.nil?}"
      end
   end
 

@@ -37,13 +37,13 @@
           <span class="textAboutStyle"><%= get_queue_item_status(item) %></span><br>
           <span class="textAboutStyle">
             <% if policy(item).destroy? %>
-              <%= link_to "УДАЛИТЬ", item, method: :delete, data: { confirm: "Вы точно хотите удалить?" } %>
+              <%= link_to "Remove", item, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
             <% end %><br>
             <% if policy(item).hidden? %>
-              <%= link_to "СКРЫТЬ", "/queue_images/#{item.id}/hidden", method: :put, data: { confirm: "Пожалуйста используйте это функцию в крайнем случае! Например если вы в розыске:) Делитесь свои хорошими и не очень результатами с миром. Вы все еще уверены что надо скрыть?" } %>
+              <%= link_to "Hide", "/queue_images/#{item.id}/hidden", method: :put, data: { confirm: "It is good to share with the world. Are you sure you want to hide?" } %>
             <% end %>
             <% if policy(item).visible? %>
-              <%= link_to "ПОКАЗАТЬ", "/queue_images/#{item.id}/visible", method: :put %>
+              <%= link_to "Show", "/queue_images/#{item.id}/visible", method: :put %>
             <% end %>
 
           </span>

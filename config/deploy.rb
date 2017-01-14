@@ -49,7 +49,7 @@ set :default_env, {rvm_bin_path: '~/.rvm/bin'}
 
 
 namespace :setup do
-  desc 'Загрузка конфигурационных файлов на удаленный сервер'
+  desc 'Loading configuration files to a remote server'
   task :upload_config do
     on roles :all do
       execute :mkdir, "-p #{shared_path}"
@@ -75,19 +75,19 @@ namespace :setup do
 end
 
 namespace :nginx do
-  desc 'Создание симлинка в /etc/nginx/conf.d на nginx.conf приложения'
+  desc 'Create a symbolic link to the application nginx.conf in /etc/nginx/conf.d'
   task :append_config do
     on roles :all do
       sudo :ln, "-fs #{shared_path}/config/unicorn.conf /etc/nginx/conf.d/#{fetch(:application)}.conf"
     end
   end
-  desc 'Релоад nginx'
+  desc 'reload nginx'
   task :reload do
     on roles :all do
       sudo :service, :nginx, :reload
     end
   end
-  desc 'Рестарт nginx'
+  desc 'Restart nginx'
   task :restart do
     on roles :all do
       sudo :service, :nginx, :restart
@@ -110,7 +110,7 @@ set :unicorn_config, "#{shared_path}/config/unicorn.rb"
 set :unicorn_pid, "#{shared_path}/run/unicorn.pid"
 
 namespace :application do
-  desc 'Запуск Unicorn'
+  desc 'Running Unicorn'
   task :start do
     on roles(:all) do
 
@@ -128,7 +128,7 @@ namespace :application do
       #execute bundl exec unicorn_rails -D"
     end
   end
-  desc 'Завершение Unicorn'
+  desc 'Stop Unicorn'
   task :stop do
     on roles(:app) do
       execute "if [ -f #{fetch(:unicorn_pid)} ] && [ -e /proc/$(cat #{fetch(:unicorn_pid)}) ]; then kill -9 `cat #{fetch(:unicorn_pid)}`; fi"
@@ -140,7 +140,7 @@ end
 
 
 namespace :deploy do
-  desc 'Подготовка deploy'
+  desc 'Prepare to deploy'
 
   task :migrate do
     on roles(:all) do
@@ -154,7 +154,7 @@ namespace :deploy do
 
 
   namespace :linking do
-    desc 'Создание симлинка на изображения'
+    desc 'Create a symbolic link to the image'
     task :uploads do
       on roles :all do
         sudo :ln, "-s /home/deploy/disk600/server/ostagram/public/uploads #{release_path}/public/uploads "

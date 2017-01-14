@@ -18,15 +18,15 @@
 
 
       <div class="field">
-        <%= f.label "Обрабатываемое изображение:" %><br>
+        <%= f.label "rendered image:" %><br>
         <%= f.file_field :content_image %>
       </div>
       <div class="field hidden">
-         <%= f.label "Загрузить из файла:" %><br>
+         <%= f.label "Upload a file:" %><br>
          <%= f.check_box :from_file, {checked: true} %>
       </div>
       <div class="field">
-        <%= f.label "Шаблон:"%><br>
+        <%= f.label "Library:"%><br>
         <%= f.file_field :style_image %>
       </div>
 

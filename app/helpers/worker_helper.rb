@@ -3,7 +3,7 @@ module WorkerHelper
   def start_workers
     worker_name = :server1
 
-    if true#debug
+    if true #debug
       if Resque.size(worker_name) == 0
         #ResqueJob.queue_class = worker_name
         Resque.enqueue(ResqueJob, worker_name)
@@ -23,7 +23,7 @@ module WorkerHelper
   def start_bot
     worker_name = :bot1
 
-    if true#debug
+    if true > 0 #debug
       if Resque.size(worker_name) == 0
         #ResqueJob.queue_class = worker_name
         Resque.enqueue(BotResqueJob, worker_name)

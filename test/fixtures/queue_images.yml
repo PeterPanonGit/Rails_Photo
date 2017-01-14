@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  content_image: MyString
-  style_image: MyString
+  client_id: 1
+  content_id: 1
+  style_id: 1
   init_str: MyString
   status: 1
-  result: MyString
+  end_status: 1
 
 two:
-  user_id: 1
-  content_image: MyString
-  style_image: MyString
+  client_id: 2
+  content_id: 2
+  style_id: 2
   init_str: MyString
   status: 1
-  result: MyString
+  end_status: 1

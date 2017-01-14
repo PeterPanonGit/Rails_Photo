@@ -1,8 +1,13 @@
 require 'test_helper'
+  include Devise::TestHelpers
 
 class QueueImagesControllerTest < ActionController::TestCase
   setup do
     @queue_image = queue_images(:one)
+    @client = clients(:one)
+    #@client.register!
+    sign_in @client
+    #get client_session_path
   end
 
   test "should get index" do
@@ -18,7 +23,7 @@ class QueueImagesControllerTest < ActionController::TestCase
 
   test "should create queue_image" do
     assert_difference('QueueImage.count') do
-      post :create, queue_image: { content_image: @queue_image.content_image, init_str: @queue_image.init_str, result: @queue_image.result, status: @queue_image.status, style_image: @queue_image.style_image, user_id: @queue_image.user_id }
+      post :create, queue_image: { content_id: @queue_image.content_id, init_str: @queue_image.init_str, end_status: @queue_image.end_status, status: @queue_image.status, style_id: @queue_image.style_id, client_id: @queue_image.client_id }
     end
 
     assert_redirected_to queue_image_path(assigns(:queue_image))
@@ -35,7 +40,7 @@ class QueueImagesControllerTest < ActionController::TestCase
   end
 
   test "should update queue_image" do
-    patch :update, id: @queue_image, queue_image: { content_image: @queue_image.content_image, init_str: @queue_image.init_str, result: @queue_image.result, status: @queue_image.status, style_image: @queue_image.style_image, user_id: @queue_image.user_id }
+    patch :update, id: @queue_image, queue_image: { content_id: @queue_image.content_id, init_str: @queue_image.init_str, end_status: @queue_image.end_status, status: @queue_image.status, style_id: @queue_image.style_id, client_id: @queue_image.client_id }
     assert_redirected_to queue_image_path(assigns(:queue_image))
   end
 

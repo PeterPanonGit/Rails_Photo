@@ -33,6 +33,8 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 gem 'mini_magick'
 
+gem 'factory_girl'
+
 #gem 'rmagick'
 
 #gem 'cloudinary'
@@ -85,8 +87,14 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'rack', '<2.0'
+  gem 'sinatra'
 end
 
 group :production do
   gem 'unicorn'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
 end
