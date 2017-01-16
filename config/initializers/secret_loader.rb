@@ -14,17 +14,17 @@ include YamlHelper
 
 
 def load_config
-  Ostagram::Application.config.secret_key_base = secure_token
+  PhotoPaint::Application.config.secret_key_base = secure_token
   #
   file = Rails.root.join('config/config.secret')
   #par = get_param_config(file, :server1, :password)
   #
-  #Ostagram::Application.config.action_mailer.delivery_method = :smtp
+  #PhotoPaint::Application.config.action_mailer.delivery_method = :smtp
   par = load_settings(file)
   par = par["smtp_settings"]
   params = {}
   par.each { |p,v| params[p.to_sym] = v.to_s}
-  Ostagram::Application.config.action_mailer.smtp_settings = params
+  PhotoPaint::Application.config.action_mailer.smtp_settings = params
 end
 
 def secure_token

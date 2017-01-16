@@ -1,5 +1,5 @@
 class ImageMailer < ApplicationMailer
-  default from:  "out@ostagram.ru"
+  default from:  "photopaint.us@gmail.com"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,7 +7,7 @@ class ImageMailer < ApplicationMailer
   #
   def send_image(user, iter, max_iter, file)
       attachments['out.png'] = file
-      mail(to: user.email, subject: "Ваше изображение обработано")
+      mail(to: user.email, subject: "Your image has been rendered")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -18,7 +18,7 @@ class ImageMailer < ApplicationMailer
   def send_error(email, message, queue,file)
     #@errors = message
     attachments['error.txt'] = file
-    mail(to: email, subject: 'Ostagram ERROR')
+    mail(to: email, subject: 'PhotoPaint ERROR')
   end
 
 

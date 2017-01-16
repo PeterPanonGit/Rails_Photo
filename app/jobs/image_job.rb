@@ -79,26 +79,26 @@ class ImageJob
     item.style.update(use_counter: item.style.use_counter+1)
     # Check connection to workserver
     #log "item.update: #{item.to_s}"
-    server_name = get_server_name
-    log "get_server_name returns: #{server_name}"
-    return "get_server_name: false" if server_name.nil?
+    #server_name = get_server_name
+    #log "get_server_name returns: #{server_name}"
+    #return "get_server_name: false" if server_name.nil?
     #Upload images to workserver
     @content_image_name = "content.#{item.content.image.to_s.split('.').last}"
-    @style_image_name = "style.#{item.style.image.to_s.split('.').last}"
+    @style_model_name = "#{item.style.init}"
     log "content_image_name: #{@content_image_name}"
-    log "style_image_name: #{@style_image_name}"
+    log "style_model_name: #{@style_model_name}"
     #log "4"
     return "upload_content_image: false" unless upload_image(item.content.image, "content/#{@content_image_name}")
-    return "upload_stule_image: false" unless upload_image(item.style.image, "style/#{@style_image_name}")
-    log "upload_content_style_image"
+    log "upload_content_image"
     #Run process
-    send_start_process_comm()
+    name = "output.jpg"
+    log "rendering on #{@user_host} with output: #{@remote_neural_path}/output/output.jpg"
+    `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && python evaluate.py --checkpoint=models/#{@style_model_name}/style_15 --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
     log "send_start_process_comm"
     #log "6"
     # Wait processed images
-    name = "output.jpg"
     loc =  "#{@local_tmp_path}/#{name}"
-    rem = "#{@user_host}:~/#{@remote_neural_path}/output/#{name}"
+    rem = "#{@user_host}:~/#{@remote_neural_path}/#{name}"
     log "download_image: from #{rem} to #{loc}"
     `scp #{@login_cmd} #{rem} #{loc}`
     errors = save_image(0,item,loc)
@@ -148,17 +148,6 @@ class ImageJob
       log "uploading #{loc} to #{rem}"
       return false if !File.exist?(loc)
       `scp #{@login_cmd} #{loc} #{@user_host}:~/#{rem}`
-      return true
-    rescue
-
-    end
-    false
-  end
-
-  def send_start_process_comm
-    log "rendering on #{@user_host} with output: #{@remote_neural_path}/output/output.jpg"
-    begin
-      `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && python evaluate.py --checkpoint=models/Van_Gogh_market/style_15 --in-path=content/content.jpg --out-path=output/output.jpg > out.log"`
       return true
     rescue
 

@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Ostagram
+module PhotoPaint
   class Application < Rails::Application
     #config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
