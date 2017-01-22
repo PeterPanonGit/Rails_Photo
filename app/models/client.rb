@@ -24,18 +24,30 @@ class Client < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     @client = where(provider: auth.provider, uid: auth.uid).first
-    unless @client
-      @client = Client.new
-      @client.provider = auth.provider
-      @client.uid = auth.uid
-      @client.email = auth.info.email || ""
-      @client.encrypted_password = Devise.friendly_token[0,20]
+    if @client
       @client.name = auth.info.name
+      @client.remote_avatar = get_avatar auth.info.image
       @client.save(validate: false)
-      #updating avatar manualy because or CarrierWave will make it nil
-      @client.update_attribute :avatar, auth.info.image || AvatarUploader.default_url
+    else
+      @client = Client.new(
+          provider: auth.provider,
+          uid: auth.uid,
+          email: auth.info.email || "",
+          encrypted_password: Devise.friendly_token[0,20],
+          name: auth.info.name,
+          remote_avatar: get_avatar(auth.info.image),
+        )
+      @client.save(validate: false)
     end
     @client
+  end
+
+  def self.get_avatar url
+    if !url || url.include?("default_profile") || url.include?("/AAAAAAAAAAA/4252rscbv5M/photo.jpg") || url.include?("/v2.6/1630162470620075/picture")
+      nil
+    else
+      url
+    end
   end
 
   private

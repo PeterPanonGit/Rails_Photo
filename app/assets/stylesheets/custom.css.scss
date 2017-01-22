@@ -693,6 +693,10 @@ aside {
   position: fixed;
   background-color: #f1a165;
   display: block
+}
 
-
+.nav-pills li > img {
+  max-width: 30px;
+  max-height: 30px;
+  margin: 6px 0 0 16px;
 }

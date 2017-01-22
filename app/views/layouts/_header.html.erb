@@ -19,6 +19,9 @@
         <li><%= link_to "About",    about_path %></li>
         <% if client_signed_in? %>
           <li><%= link_to "Log Out",  destroy_client_session_path, :method => :delete %></li>
+          <li>
+              <%= image_tag current_client.remote_avatar || current_client.avatar %>
+          </li>
         <% else %>
           <li><%= link_to 'Sign In', new_client_session_path %></li>
         <% end %>
