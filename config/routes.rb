@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   match '/admin_pages/update_content_status', to: 'admin_pages#update_content_status', via: 'put'
   match '/admin_pages/delete_queue', to: 'admin_pages#delete_queue', via: 'put'
 
-  devise_for :clients
+  devise_for :clients, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :queue_images
   match '/queue_images/:id/visible', to: 'queue_images#visible', via: 'put'
   match '/queue_images/:id/hidden', to: 'queue_images#hidden', via: 'put'

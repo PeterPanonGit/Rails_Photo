@@ -1,5 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+require "omniauth-google-oauth2"
+
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -260,4 +262,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.omniauth :facebook, '1915055685392069', '1bcd2847f0333179a2bb11ea91713a51'
+  config.omniauth :google_oauth2, '694957009183-dbtsth839mpvokopkf173u75r9n81c5s.apps.googleusercontent.com', 'zuYO7gA5zjtd8Bl7w2LTH9Yd', prompt: "consent"
+  config.omniauth :twitter, 'ZV6Vy2Pc1DA8vHSeyckqmMXjW', 'q3aiCahTy7v439zzttc8yAhxNGplO5IoEb7zjAnGo1U2V5hyxb'
 end

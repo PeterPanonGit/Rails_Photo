@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222172729) do
+ActiveRecord::Schema.define(version: 20170122174241) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "name",                   limit: 255,              null: false
-    t.string   "avatar",                 limit: 255,              null: false
+    t.string   "avatar",                 limit: 255
     t.datetime "lastprocess"
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20151222172729) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.integer  "role_id",                limit: 4,   default: 0
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "clients", ["confirmation_token"], name: "index_clients_on_confirmation_token", unique: true, using: :btree
