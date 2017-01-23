@@ -1,32 +1,6 @@
 
 <div id="view_style">
-  <p>Choose from the Style Library or create a new style by uploading an image from a style image file. Rendering a new image using Style Library takes only a few seconds to a few tens of seconds. Creating a new style can take up to a day and you will be notified by email when the style is ready.</p>
-  <% if view_style == ConstHelper::VIEW_STYLE_LOAD_FILE %>
-    <%= link_to "from Style Library", url_for(controller: 'queue_images', action: 'new', view_style: ConstHelper::VIEW_STYLE_FROM_LIST), remote: true, class: "btn btn-large btn-default" %>
-    <%= link_to "Add a new style", url_for(controller: 'queue_images', action: 'new', view_style: ConstHelper::VIEW_STYLE_LOAD_FILE), remote: true, class: "btn btn-large btn-success"  %>
-
-    <div class="field">
-      <br>
-      <%= label_tag "Load style image file:"%><br>
-      <%= file_field_tag 'queue_image[style_image]'%>
-    </div>
-    <% if policy(queue_image).process_params?%>
-      <div class="field">
-        <%= label_tag "initialization Parameters:"%><br>
-        <%= text_field_tag 'queue_image[init]', "-gpu 0 -backend cudnn -image_size 700 -style_scale 1 -num_iterations 1000" %>
-      </div>
-      <div class="field">
-        <%= label_tag "Status after treatment:"%><br>
-        <%= number_field_tag 'queue_image[end_status]', 101 %>
-      </div>
-    <% end %>
-  <% end %>
-
-
-  <% if view_style == ConstHelper::VIEW_STYLE_FROM_LIST%>
-      <%= link_to "from Style Library", url_for(controller: 'queue_images', action: 'new', view_style: ConstHelper::VIEW_STYLE_FROM_LIST), remote: true, class: "btn btn-large btn-success" %>
-      <%= link_to "Add a new style", url_for(controller: 'queue_images', action: 'new', view_style: ConstHelper::VIEW_STYLE_LOAD_FILE), remote: true, class: "btn btn-large btn-default"  %>
-      <br><br>
+  <p><b>Choose style from below</b></p>
       <div class="row">
         <% Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc').each do |si| %>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 clearLRpadding" style="position	: relative;">
@@ -37,7 +11,6 @@
             </div>
         <% end %>
       </div>
-  <% end %>
 
   <%= hidden_field_tag 'queue_image[view_style]', view_style%>
 
