@@ -153,6 +153,7 @@ class QueueImagesController < ApplicationController
         save_status = ci.save
         if queue_params[:view_style].blank? || queue_params[:view_style] == VIEW_STYLE_LOAD_FILE.to_s
           si = Style.new(image: queue_params[:style_image], init: queue_params[:init])
+          si.tag_list = params[:tags].join(", ")
           save_status &= si.save
         elsif queue_params[:view_style] == VIEW_STYLE_FROM_LIST.to_s
           si = Style.find(queue_params[:style_id])

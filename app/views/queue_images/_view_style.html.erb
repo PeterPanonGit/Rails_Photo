@@ -13,6 +13,16 @@
       <%= label_tag "Load style image file:"%><br>
       <%= file_field_tag 'queue_image[style_image]'%>
     </div>
+    <% if @tags %>
+      <div class="field">
+        <div class="wrapper-tags">
+            <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+              <%= label_tag "tags_#{tag.name}", tag.name, :class => css_class %>
+              <%= check_box_tag 'tags[]', tag.name, nil, { multiple: true, id: "tags_#{tag.name}", class: "checkbox_tag" }  %>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
     <% if policy(queue_image).process_params?%>
       <div class="field">
         <%= label_tag "initialization Parameters:"%><br>

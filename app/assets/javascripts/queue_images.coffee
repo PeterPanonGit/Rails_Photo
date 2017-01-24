@@ -2,11 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+@bindTagsFunctionality = ->
   $('[class^=\'tag\'').click ->
     $(this).toggleClass 'active'
     return
-
   $('#tags_form input').change ->
-  	$('#tags_form').submit()
+    $('#tags_form').submit()
+    return
+  return
+
+$(document).ready ->
+  bindTagsFunctionality()
   return
