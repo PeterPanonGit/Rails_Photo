@@ -42,6 +42,7 @@
               <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
                 <%= label_tag tag.name, nil, :class => css_class %>
               <% end %>
+              <div id="unselect-all">Unselect all</div>
           </div>
         </div>
       <% end %>

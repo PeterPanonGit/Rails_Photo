@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.btn {
+	margin-bottom: 10px;
+}
+
 #tags_form, .checkbox_tag {
 	display: none;
 }
@@ -10,12 +14,11 @@
 	border-radius: 3px;
 	border: 1px solid #337ab7;
 	display: inline-block;
-	margin-left: 0 5px;
 	vertical-align: middle;
 	color: #337ab7;
 	cursor: pointer;
 	padding: 4px 5px;
-	margin-top: 10px;
+	margin: 5px 5px 5px 0;
 
 	&:hover{
 		color: #337ab7;
@@ -24,6 +27,17 @@
 	&.active {
 		color: white;
 		background: #337ab7;
+	}
+}
+
+#unselect-all {
+	display: inline-block;
+	vertical-align: middle;
+	color: red;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
