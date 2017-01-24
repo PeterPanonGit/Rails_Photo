@@ -28771,3 +28771,723 @@ Completed 200 OK in 349ms (Views: 347.8ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/assets/custom.self-5fbc4a76713715892de81e9f58bd07a5532f32477a6fbfd298b180153f3c65af.css?body=1" for 127.0.0.1 at 2017-01-24 13:01:25 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-24 13:13:37 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/about
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2017-01-24 13:13:37 +0200
+Processing by StaticPagesController#about as HTML
+  Rendered static_pages/about.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1369ms (Views: 1367.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/clients/sign_in" for 127.0.0.1 at 2017-01-24 13:13:41 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (36.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 151ms (Views: 132.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/clients/auth/facebook" for 127.0.0.1 at 2017-01-24 13:13:43 +0200
+
+
+Started GET "/clients/auth/facebook" for 127.0.0.1 at 2017-01-24 13:13:43 +0200
+
+
+Started GET "/clients/auth/facebook/callback?code=AQDYpZOIVuU783-5XhJFljKlNRYiiDEMwqipnxEOS4Uz_1AUeOqkACKB3AXDOu70_CSKr9evCrcVZfgptyxmWE2l_J_VrsdVSfc46rBH_4wf9b2tcksqi37c_K1tFsA3VXCi8DL1xTfEIwdbExOOrvVKTnFZnOl3dGDGh_kXeutVu1mQg_OwtDGk70Gi27Ksdcx2LOgXOKFex1SzhsqiMJY5KlJbW74vms1X0efUUBnciIzwdQ531Ako0KjR2V5z3WICGbB9009Cv6tAIE4A83FoxiiK_BDXLgfht0zneBBvFUcH-SjzIdreZw7zPapQaQC8myYYRbTH9-k5So62n8rpWf0nQ7iKUZKxHLm0H5gD0A&state=a64c2e0b6d48216374a0e004f54bbacebb7a1c898e801fc3" for 127.0.0.1 at 2017-01-24 13:13:43 +0200
+Processing by CallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDYpZOIVuU783-5XhJFljKlNRYiiDEMwqipnxEOS4Uz_1AUeOqkACKB3AXDOu70_CSKr9evCrcVZfgptyxmWE2l_J_VrsdVSfc46rBH_4wf9b2tcksqi37c_K1tFsA3VXCi8DL1xTfEIwdbExOOrvVKTnFZnOl3dGDGh_kXeutVu1mQg_OwtDGk70Gi27Ksdcx2LOgXOKFex1SzhsqiMJY5KlJbW74vms1X0efUUBnciIzwdQ531Ako0KjR2V5z3WICGbB9009Cv6tAIE4A83FoxiiK_BDXLgfht0zneBBvFUcH-SjzIdreZw7zPapQaQC8myYYRbTH9-k5So62n8rpWf0nQ7iKUZKxHLm0H5gD0A", "state"=>"a64c2e0b6d48216374a0e004f54bbacebb7a1c898e801fc3"}
+  [1m[35mClient Load (0.3ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`provider` = 'facebook' AND `clients`.`uid` = '1630162470620075'  ORDER BY `clients`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `clients` SET `current_sign_in_at` = '2017-01-24 11:13:44', `sign_in_count` = 2, `updated_at` = '2017-01-24 11:13:44' WHERE `clients`.`id` = 28
+  [1m[36m (41.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lenta
+Completed 302 Found in 56ms (ActiveRecord: 42.2ms)
+
+
+Started GET "/lenta" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+Processing by StaticPagesController#lenta as HTML
+  [1m[35mQueueImage Load (0.2ms)[0m  SELECT  `queue_images`.* FROM `queue_images` WHERE (status = 11)  ORDER BY ftime DESC LIMIT 6 OFFSET 0
+  Rendered queue_images/_item_view_1.html.erb (0.0ms)
+  Rendered static_pages/lenta.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mClient Load (0.2ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 125ms (Views: 110.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/bootstrap-theme.self-797c795b8478a63ecf57ed925bbf6d452e951329623561a6042c306da1b713f8.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/lightbox.self-1932ea496b0d03262436db1ed606fafeca9ca09caada607c1c89bcb8160beaaa.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap.self-c68c406b70db1115478355392ee8e55e46903052ef2acc9b83a09aa57ea2c0d1.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/admin_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/custom.self-5fbc4a76713715892de81e9f58bd07a5532f32477a6fbfd298b180153f3c65af.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/queue_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/s1tyles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/application.self-2f20252e7ef052087af84e5e4bc6964b6aa627eb02ae2fecbe62d3aeefdbb614.css?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/lightbox.self-ffa51d041ff5a3827c9aadeb79b19efb48c1b6b7cc9cc1e70ca8d0d829231836.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/carousel.self-e47323f363ceb3dc0bdbce05e36e709ed428e339833a41140a85cb0af24b8127.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.self-969f3c5f48cdf1e439c7fa1154c13b948715f5c689f87837c0b64521d3b46ef6.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/admin_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/queue_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/s1tyles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/assets/application.self-cdd579d95d7d2804194092c39d62540865067f3caf06cb2cfcd535d261852647.js?body=1" for 127.0.0.1 at 2017-01-24 13:13:44 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-24 13:15:45 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[35mClient Load (0.1ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/lenta
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/lenta" for 127.0.0.1 at 2017-01-24 13:15:45 +0200
+Processing by StaticPagesController#lenta as HTML
+  [1m[36mQueueImage Load (0.1ms)[0m  [1mSELECT  `queue_images`.* FROM `queue_images` WHERE (status = 11)  ORDER BY ftime DESC LIMIT 6 OFFSET 0[0m
+  Rendered queue_images/_item_view_1.html.erb (0.0ms)
+  Rendered static_pages/lenta.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mClient Load (0.1ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 98ms (Views: 96.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-24 13:18:41 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/lenta
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/lenta" for 127.0.0.1 at 2017-01-24 13:18:41 +0200
+Processing by StaticPagesController#lenta as HTML
+  [1m[35mQueueImage Load (0.1ms)[0m  SELECT  `queue_images`.* FROM `queue_images` WHERE (status = 11)  ORDER BY ftime DESC LIMIT 6 OFFSET 0
+  Rendered queue_images/_item_view_1.html.erb (0.0ms)
+  Rendered static_pages/lenta.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 108ms (Views: 106.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-24 13:18:53 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[35mClient Load (0.1ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/lenta
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/lenta" for 127.0.0.1 at 2017-01-24 13:18:53 +0200
+Processing by StaticPagesController#lenta as HTML
+  [1m[36mQueueImage Load (0.2ms)[0m  [1mSELECT  `queue_images`.* FROM `queue_images` WHERE (status = 11)  ORDER BY ftime DESC LIMIT 6 OFFSET 0[0m
+  Rendered queue_images/_item_view_1.html.erb (0.0ms)
+  Rendered static_pages/lenta.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[35mClient Load (0.2ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 118ms (Views: 116.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:18:56 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (17.5ms)
+  Rendered queue_images/new.html.erb within layouts/application (23.3ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 127ms (Views: 113.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/queue_images/new?view_style=0" for 127.0.0.1 at 2017-01-24 13:18:58 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"0"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  Rendered queue_images/_view_style.html.erb (2.3ms)
+  Rendered queue_images/new.js.erb (7.6ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/queue_images/new?view_style=0" for 127.0.0.1 at 2017-01-24 13:19:20 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"0"}
+  [1m[35mClient Load (0.1ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+  Rendered queue_images/_view_style.html.erb (0.7ms)
+  Rendered queue_images/new.js.erb (3.7ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/bootstrap-theme.css.map" for 127.0.0.1 at 2017-01-24 13:19:50 +0200
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap-theme.css.map"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  rack (1.6.5) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `each'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.8ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.0ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (36.3ms)
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2017-01-24 13:19:50 +0200
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.css.map"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  rack (1.6.5) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `each'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.1ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.9ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.7ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (49.5ms)
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:20:06 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (1.1ms)
+  Rendered queue_images/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 115ms (Views: 112.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/queue_images/new?view_style=0" for 127.0.0.1 at 2017-01-24 13:20:11 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"0"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  Rendered queue_images/_view_style.html.erb (0.7ms)
+  Rendered queue_images/new.js.erb (3.7ms)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/queue_images" for 127.0.0.1 at 2017-01-24 13:20:39 +0200
+Processing by QueueImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"smGx1jiDNnnieQ6nNHazHnu68HUXNxT2Fw5LECUbTWnQ3BnrS/AvNVfX/9Dqg2kF4HRWe27D4X/NrqLSSEczOw==", "commit"=>"Render an image", "queue_image"=>{"init"=>"-gpu 0 -backend cudnn -image_size 700 -style_scale 1 -num_iterations 1000", "end_status"=>"101", "view_style"=>"0"}}
+  [1m[35mClient Load (0.1ms)[0m  SELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/queue_images/new
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:20:39 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (1.2ms)
+  Rendered queue_images/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 100ms (Views: 97.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:21:17 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (1.5ms)
+  Rendered queue_images/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 117ms (Views: 114.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/queue_images/new?view_style=1" for 127.0.0.1 at 2017-01-24 13:21:18 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"1"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (2.0ms)
+  Rendered queue_images/new.js.erb (9.0ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+  [1m[36mQueueImage Load (0.4ms)[0m  [1mSELECT `queue_images`.* FROM `queue_images`[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `queue_images`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `queue_images` (`client_id`, `created_at`, `updated_at`) VALUES (27, '2017-01-24 11:31:23', '2017-01-24 11:31:23')
+  [1m[36m (33.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `queue_images`
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:31:30 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (1.1ms)
+  Rendered queue_images/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 105ms (Views: 102.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/queue_images/new?view_style=1" for 127.0.0.1 at 2017-01-24 13:31:34 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"1"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.2ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (1.8ms)
+  Rendered queue_images/new.js.erb (6.9ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 13:33:01 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.1ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (2.1ms)
+  Rendered queue_images/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 124ms (Views: 121.9ms | ActiveRecord: 0.3ms)
+  [1m[36mSQL (24.1ms)[0m  [1mDELETE FROM `queue_images`[0m
+  [1m[35mStyle Load (0.4ms)[0m  SELECT `styles`.* FROM `styles`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `styles`[0m
+
+
+Started GET "/queue_images/new" for 127.0.0.1 at 2017-01-24 14:00:51 +0200
+Processing by QueueImagesController#new as HTML
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  [1m[35mStyle Load (0.2ms)[0m  SELECT `styles`.* FROM `styles` WHERE `styles`.`status` = 201  ORDER BY use_counter desc
+  Rendered queue_images/_view_style.html.erb (21.2ms)
+  Rendered queue_images/new.html.erb within layouts/application (25.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 160ms (Views: 124.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/queue_images/new?view_style=0" for 127.0.0.1 at 2017-01-24 14:02:02 +0200
+Processing by QueueImagesController#new as JS
+  Parameters: {"view_style"=>"0"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT  `clients`.* FROM `clients` WHERE `clients`.`id` = 28  ORDER BY `clients`.`id` ASC LIMIT 1[0m
+  Rendered queue_images/_view_style.html.erb (2.1ms)
+  Rendered queue_images/new.js.erb (7.5ms)
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:10:55', '2017-01-24 12:10:55')[0m
+Mysql2::Error: Field 'image' doesn't have a default value: INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:10:55', '2017-01-24 12:10:55')
+  [1m[35m (0.2ms)[0m  ROLLBACK
+
+
+Started GET "/assets/bootstrap-theme.css.map" for 127.0.0.1 at 2017-01-24 14:11:44 +0200
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap-theme.css.map"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  rack (1.6.5) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `each'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.8ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.9ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.1ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (28.6ms)
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2017-01-24 14:11:44 +0200
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.css.map"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `public_send'
+  railties (4.2.4) lib/rails/railtie.rb:194:in `method_missing'
+  rack (1.6.5) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `each'
+  rack (1.6.5) lib/rack/urlmap.rb:50:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/share/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.3ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (39.9ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.8ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/cat/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.8ms)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:11:48', '2017-01-24 12:11:48')
+Mysql2::Error: Field 'image' doesn't have a default value: INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:11:48', '2017-01-24 12:11:48')
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `styles` (`image`, `created_at`, `updated_at`) VALUES (NULL, '2017-01-24 12:12:12', '2017-01-24 12:12:12')[0m
+Mysql2::Error: Column 'image' cannot be null: INSERT INTO `styles` (`image`, `created_at`, `updated_at`) VALUES (NULL, '2017-01-24 12:12:12', '2017-01-24 12:12:12')
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `styles` (`image`, `created_at`, `updated_at`) VALUES (NULL, '2017-01-24 12:12:47', '2017-01-24 12:12:47')
+Mysql2::Error: Column 'image' cannot be null: INSERT INTO `styles` (`image`, `created_at`, `updated_at`) VALUES (NULL, '2017-01-24 12:12:47', '2017-01-24 12:12:47')
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:14:47', '2017-01-24 12:14:47')[0m
+Mysql2::Error: Field 'image' doesn't have a default value: INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:14:47', '2017-01-24 12:14:47')
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:16:38', '2017-01-24 12:16:38')
+Mysql2::Error: Field 'image' doesn't have a default value: INSERT INTO `styles` (`created_at`, `updated_at`) VALUES ('2017-01-24 12:16:38', '2017-01-24 12:16:38')
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to ActsAsTaggableOnMigration (20170124121905)
+  [1m[35m (72.9ms)[0m  CREATE TABLE `tags` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (57.9ms)[0m  [1mCREATE TABLE `taggings` (`id` int(11) auto_increment PRIMARY KEY, `tag_id` int(11), `taggable_id` int(11), `taggable_type` varchar(255), `tagger_id` int(11), `tagger_type` varchar(255), `context` varchar(128), `created_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (107.7ms)[0m  CREATE  INDEX `index_taggings_on_tag_id`  ON `taggings` (`tag_id`) 
+  [1m[36m (116.6ms)[0m  [1mCREATE  INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context`  ON `taggings` (`taggable_id`, `taggable_type`, `context`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20170124121905')[0m
+  [1m[35m (20.3ms)[0m  COMMIT
+Migrating to AddMissingUniqueIndices (20170124121906)
+  [1m[36m (108.2ms)[0m  [1mCREATE UNIQUE INDEX `index_tags_on_name`  ON `tags` (`name`) [0m
+  [1m[35m (82.6ms)[0m  DROP INDEX `index_taggings_on_tag_id` ON `taggings`
+  [1m[36m (74.8ms)[0m  [1mDROP INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context` ON `taggings`[0m
+  [1m[35m (108.6ms)[0m  CREATE UNIQUE INDEX `taggings_idx`  ON `taggings` (`tag_id`, `taggable_id`, `taggable_type`, `context`, `tagger_id`, `tagger_type`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20170124121906')
+  [1m[36m (24.1ms)[0m  [1mCOMMIT[0m
+Migrating to AddTaggingsCounterCacheToTags (20170124121907)
+  [1m[35m (141.7ms)[0m  ALTER TABLE `tags` ADD `taggings_count` int(11) DEFAULT 0
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  `tags`.* FROM `tags`  ORDER BY `tags`.`id` ASC LIMIT 1000[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20170124121907')[0m
+  [1m[35m (33.9ms)[0m  COMMIT
+Migrating to AddMissingTaggableIndex (20170124121908)
+  [1m[36m (116.2ms)[0m  [1mCREATE  INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context`  ON `taggings` (`taggable_id`, `taggable_type`, `context`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20170124121908')[0m
+  [1m[35m (31.3ms)[0m  COMMIT
+Migrating to ChangeCollationForTagNames (20170124121909)
+  [1m[36m (165.2ms)[0m  [1mALTER TABLE tags MODIFY name varchar(255) CHARACTER SET utf8 COLLATE utf8_bin;[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20170124121909')[0m
+  [1m[35m (22.9ms)[0m  COMMIT
+Migrating to AddMissingIndexes (20170124121910)
+  [1m[36m (115.8ms)[0m  [1mCREATE  INDEX `index_taggings_on_tag_id`  ON `taggings` (`tag_id`) [0m
+  [1m[35m (142.4ms)[0m  CREATE  INDEX `index_taggings_on_taggable_id`  ON `taggings` (`taggable_id`) 
+  [1m[36m (99.3ms)[0m  [1mCREATE  INDEX `index_taggings_on_taggable_type`  ON `taggings` (`taggable_type`) [0m
+  [1m[35m (125.0ms)[0m  CREATE  INDEX `index_taggings_on_tagger_id`  ON `taggings` (`tagger_id`) 
+  [1m[36m (133.1ms)[0m  [1mCREATE  INDEX `index_taggings_on_context`  ON `taggings` (`context`) [0m
+  [1m[35m (107.8ms)[0m  CREATE  INDEX `index_taggings_on_tagger_id_and_tagger_type`  ON `taggings` (`tagger_id`, `tagger_type`) 
+  [1m[36m (116.3ms)[0m  [1mCREATE  INDEX `taggings_idy`  ON `taggings` (`taggable_id`, `taggable_type`, `tagger_id`, `context`) [0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20170124121910')[0m
+  [1m[35m (23.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'clients'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `clients`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'contents'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `contents`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'likes'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `likes`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'pimages'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `pimages`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'queue_images'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `queue_images`[0m
+  [1m[35m (0.1ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'styles'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `styles`[0m
+  [1m[35m (0.1ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'taggings'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `taggings`[0m
+  [1m[35m (0.1ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'photopaint_dev'
+  AND fk.table_name = 'tags'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `tags`[0m

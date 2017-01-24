@@ -8,7 +8,7 @@ class QueueImage < ActiveRecord::Base
   #mount_uploader :style_image, AvatarUploader
   scope :last_n_days, lambda {|d|  where('ftime > ?' , Time.now - d.days)}
 
-
+  # I believe you can replace the whole method by distance_of_time_in_words
   def time_ago
     return '' if updated_at.nil?
     t_ago = (Time.now - updated_at)/60
