@@ -11,6 +11,4 @@
     return
   return
 
-$(document).ready ->
-  bindTagsFunctionality()
-  return
+$(document).on 'turbolinks:load', bindTagsFunctionality
