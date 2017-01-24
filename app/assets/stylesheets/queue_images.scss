@@ -1,3 +1,33 @@
 // Place all the styles related to the QueueImages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tags_form {
+	display: none;
+}
+
+[class^="tag"] {
+	border-radius: 3px;
+	border: 1px solid #337ab7;
+	display: inline-block;
+	margin-left: 0 5px;
+	vertical-align: middle;
+	color: #337ab7;
+	cursor: pointer;
+	padding: 4px 5px;
+	margin-top: 10px;
+
+	&:hover{
+		color: #337ab7;
+	}
+
+	&.active {
+		color: white;
+		background: #337ab7;
+	}
+}
+
+.tag4 { padding: 10px; }
+.tag3 { padding: 8px; }
+.tag2 { padding: 6px; }
+.tag1 { padding: 4px; }

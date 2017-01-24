@@ -14,10 +14,14 @@
 
           <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
 
-
-
+      <% end %>
+      <% if @tags %>
+        <%= form_tag tagged_styles_path, method: :post, remote: true, id: "tags_form" do %>
+          <% @tags.each do |tag| %>
+            <%= check_box_tag tag.name %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-

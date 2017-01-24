@@ -2,7 +2,7 @@ class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
   before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image]
-  after_action :verify_authorized
+  after_action :verify_authorized, except: [:tag]
 
   def pundit_user
     current_client
@@ -28,6 +28,8 @@ class QueueImagesController < ApplicationController
   # GET /queue_images/new
   def new
     @queue_image = QueueImage.new
+    @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
+    @tags = @styles.tag_counts_on(:tags)
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
       when '1' then @view_style = VIEW_STYLE_FROM_LIST
@@ -125,6 +127,18 @@ class QueueImagesController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to queue_images_url}
+      format.js
+    end
+  end
+
+  def tag
+    tags = params.map{ |key,value| value == '1' ? key : nil }.compact
+    @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
+    if tags.count != 0
+      @styles = @styles.tagged_with tags, any: true
+    end
+
+    respond_to do |format|
       format.js
     end
   end
