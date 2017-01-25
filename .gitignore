@@ -1,2 +1,4 @@
 config/config.secret
-tmp/cache/assets/sprockets/
+public/uploads/*
+log/*
+tmp/*

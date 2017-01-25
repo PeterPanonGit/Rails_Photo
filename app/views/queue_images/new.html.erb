@@ -3,16 +3,26 @@
     <div class="col-lg-offset-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
       <%= form_for(@queue_image) do |f| %>
-          <div class="actions">
+        <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
-          </div>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label "image to be rendered:" %><br>
+          <%= f.file_field :content_image %>
+          <b>Mixing level:</b><br>
+    	    higher mixing level leads to stronger stylization effect<br>
+    	    High<%= f.radio_button :mixing_level, 'high', :checked => true, style: "width: 10%"%>
+    	    Medium<%= f.radio_button :mixing_level, 'medium', style: "width: 10%"%>
+    	    Low<%= f.radio_button :mixing_level, 'low', style: "width: 10%"%>
           <br>
-          <div class="field">
-            <%= f.label "Rendered image:" %><br>
-            <%= f.file_field :content_image %>
-          </div>
+          <b>Use Premium Service?</b><br>
+    	    Non-premium service is free, but rendered image will be resized such that the longer side will be no more than 768px; Premium service requires purchased credit, and the rendered image will be resized such that longer size will be no more than 2500px<br>
+    	    No<%= f.radio_button :is_premium, false, :checked => true, style: "width: 10%"%>
+    	    Yes<%= f.radio_button :is_premium, true, style: "width: 10%"%>
+        </div>
 
-          <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
+        <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
 
       <% end %>
       <% if @tags %>

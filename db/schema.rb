@@ -70,20 +70,22 @@ ActiveRecord::Schema.define(version: 20170124121910) do
   end
 
   create_table "queue_images", force: :cascade do |t|
-    t.integer  "client_id",   limit: 4,                 null: false
-    t.string   "init_str",    limit: 255, default: ""
-    t.integer  "status",      limit: 4,   default: 0
-    t.string   "result",      limit: 255, default: ""
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "client_id",    limit: 4,                   null: false
+    t.string   "init_str",     limit: 255, default: ""
+    t.integer  "status",       limit: 4,   default: 0
+    t.string   "result",       limit: 255, default: ""
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.time     "ptime"
     t.datetime "stime"
     t.datetime "ftime"
-    t.integer  "style_id",    limit: 4,   default: 0,   null: false
-    t.integer  "content_id",  limit: 4,   default: 0,   null: false
-    t.integer  "end_status",  limit: 4,   default: 11,  null: false
-    t.integer  "likes_count", limit: 4,   default: 0
-    t.float    "progress",    limit: 24,  default: 0.0
+    t.integer  "style_id",     limit: 4,   default: 0,     null: false
+    t.integer  "content_id",   limit: 4,   default: 0,     null: false
+    t.integer  "end_status",   limit: 4,   default: 11,    null: false
+    t.integer  "likes_count",  limit: 4,   default: 0
+    t.float    "progress",     limit: 24,  default: 0.0
+    t.string   "mixing_level", limit: 255
+    t.boolean  "is_premium",               default: false
   end
 
   create_table "styles", force: :cascade do |t|

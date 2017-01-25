@@ -163,6 +163,8 @@ class QueueImagesController < ApplicationController
         @queue_image.style_id = si.id
         @queue_image.status = STATUS_NOT_PROCESSED
         @queue_image.end_status = STATUS_PROCESSED
+	@queue_image.mixing_level = queue_params[:mixing_level]
+	@queue_image.is_premium = queue_params[:is_premium]
         if queue_params[:end_status].nil?
           @queue_image.end_status = STATUS_PROCESSED
         else
@@ -181,7 +183,7 @@ class QueueImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def queue_image_params
-      params.require(:queue_image).permit(:content_image, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
+      params.require(:queue_image).permit(:content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
     end
 
     def valid_queue_image_params
