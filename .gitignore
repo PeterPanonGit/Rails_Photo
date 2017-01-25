@@ -1,1 +1,4 @@
 config/config.secret
+public/uploads/*
+log/*
+tmp/*
