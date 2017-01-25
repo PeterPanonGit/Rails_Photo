@@ -4,7 +4,6 @@
 <%res_img = item.result_image %>
 
 <div class="row styleRow2-lg">
-
         <div class="visible-lg  col-lg-2 col-lg-offset-2 userAvatarStyle-lg" >
           <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
         </div>
@@ -33,6 +32,8 @@
         </div>
 
         <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
+  	  <span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
+	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>
           <span class="textAboutStyle"><%= (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
           <span class="textAboutStyle"><%= get_queue_item_status(item) %></span><br>
           <span class="textAboutStyle">
