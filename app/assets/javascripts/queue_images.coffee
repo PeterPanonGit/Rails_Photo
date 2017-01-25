@@ -12,8 +12,11 @@
   $('#unselect-all').click ->
     if $('#tags_form input:checked').length > 0
       $('[class^=\'tag\'').removeClass('active')
-      $('#tags_form input').prop('checked', false)
-      $('#tags_form').submit()
+      if $('#tags_form input:checked').length < $('#tags_form input').length - 1
+        $('#tags_form input').prop('checked', false)
+        $('#tags_form').submit()
+      else
+        $('#tags_form input').prop('checked', false)
     return
   return
 
