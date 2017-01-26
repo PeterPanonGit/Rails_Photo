@@ -21,9 +21,9 @@
     	    No<%= f.radio_button :is_premium, false, :checked => true, style: "width: 10%"%>
     	    Yes<%= f.radio_button :is_premium, true, style: "width: 10%"%>
         </div>
-
-        <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
-
+        <div class="overflow-y-scroll">
+          <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
+        </div>
       <% end %>
       <% if @tags %>
         <%= form_tag tagged_styles_path, method: :post, remote: true, id: "tags_form" do %>

@@ -117,6 +117,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  overflow: hidden;
 }
 
 footer a {
@@ -751,4 +752,8 @@ aside {
 
 .twitter-login:hover {
   background: #63adeb;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
