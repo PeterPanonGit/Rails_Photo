@@ -93,6 +93,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:image, :init, :status, :use_counter)
+      params.require(:style).permit(:image, :init, :status, :use_counter, :tag_list)
     end
 end

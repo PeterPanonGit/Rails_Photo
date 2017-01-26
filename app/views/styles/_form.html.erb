@@ -32,6 +32,10 @@
     <%= f.label :use_counter %><br>
     <%= f.number_field :use_counter %>
   </div>
+  <div class="field">
+    <%= f.label :tag_list %><br>
+    <%= f.text_field :tag_list, placeholder: "tag1, tag2, etc", value: @style.tag_list.join(', ') %>
+  </div>
   <div class="actions">
     <%= f.submit class: "btn btn-large btn-primary" %>
   </div>

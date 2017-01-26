@@ -693,6 +693,62 @@ aside {
   position: fixed;
   background-color: #f1a165;
   display: block
+}
 
+.nav-pills li > img {
+  max-width: 30px;
+  max-height: 30px;
+  margin: 6px 0 0 16px;
+}
 
+.soc-login {
+  text-align: justify;
+  margin-top: 12px;
+}
+
+.soc-login:after {
+  display: inline-block;
+  width: 100%;
+  content: "";
+}
+
+.google_oauth2-login, .facebook-login, .twitter-login {
+  display: inline-block;
+  width: 32%;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 6px;
+  text-align: center;
+}
+
+.google_oauth2-login {
+  color: #cf5c45;
+  border: 1px solid #cf5c45;
+}
+
+.facebook-login {
+  color: #3c5d95;
+  border: 1px solid #3c5d95;
+}
+
+.twitter-login {
+  color: #63adeb;
+  border: 1px solid #63adeb;
+}
+
+.google_oauth2-login:hover, .facebook-login:hover, .twitter-login:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.google_oauth2-login:hover {
+  background: #cf5c45;
+}
+
+.facebook-login:hover {
+  background: #3c5d95;
+}
+
+.twitter-login:hover {
+  background: #63adeb;
 }
