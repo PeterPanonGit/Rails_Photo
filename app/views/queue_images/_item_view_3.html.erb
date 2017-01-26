@@ -5,17 +5,17 @@
 
 <div class="row styleRow2-lg">
         <div class="visible-lg  col-lg-2 col-lg-offset-2 userAvatarStyle-lg" >
-          <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
+          <%# image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
         </div>
         <div class="visible-lg  col-lg-2 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), item.style.image.url, class: "imagesStyle", data:{ lightbox: "content"}) %>
+          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id), class: "imagesStyle", data:{ lightbox: "content"}) %>
         </div>
 
         <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 col-md-offset-2 userAvatarStyle-lg" >
-          <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle")%>
+          <%# image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle")%>
         </div>
         <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), item.style.image.url, class: "imagesStyle") %>
+          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id), class: "imagesStyle") %>
         </div>
 
         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
@@ -34,7 +34,7 @@
         <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
   	  <span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
 	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>
-          <span class="textAboutStyle"><%= (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
+          <span class="textAboutStyle"><%# (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
           <span class="textAboutStyle"><%= get_queue_item_status(item) %></span><br>
           <span class="textAboutStyle">
             <% if policy(item).destroy? %>
