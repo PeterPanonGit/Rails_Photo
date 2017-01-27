@@ -2,7 +2,7 @@
 lock "3.7.1"
 
 set :application, "rails_photo"
-set :repo_url, "git@github.com:OneOfCats/Rails_Photo.git"
+set :repo_url, "https://github.com/OneOfCats/Rails_Photo.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

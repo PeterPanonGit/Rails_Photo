@@ -95,6 +95,7 @@ end
 group :development do
   gem 'capistrano'
   gem 'capistrano-rvm'
+  gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'rack', '<2.0'
