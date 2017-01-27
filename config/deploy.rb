@@ -2,12 +2,12 @@
 
 lock '3.4.0'
 # Эти параметры необходимо поменять
-set :application, 'ostagram'
-set :username, 'deploy'
+set :application, 'Rails_Photo'
+set :user, 'deploy'
 
 
 
-set :repo_url, 'git@github.com:SergeyMorugin/ostagram.git'
+set :repo_url, 'git@github.com:OneOfCats/Rails_Photo.git'
 set :reils_env, 'production'
 set :branch, 'develop'
 #set :shared_path, ''
@@ -16,10 +16,11 @@ set :branch, 'develop'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
-set :deploy_to, "/home/#{fetch(:username)}/server/#{fetch(:application)}"
+set :deploy_to, "/home/deploy/rails/rails_photo"
 
 # Default value for :scm is :git
-# set :scm, :git
+set :scm, :git
+set :branch, "master"
 
 # Default value for :format is :pretty
 # set :format, :pretty
@@ -33,11 +34,11 @@ set :log_level, :info
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :linked_files, %w{config/secrets.yml config/database.yml config/config.secret}
+# # set :linked_files, %w{config/secrets.yml config/database.yml config/config.secret}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, %w{bundle}
+# # set :linked_dirs, %w{bundle}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -47,6 +48,15 @@ set :linked_dirs, %w{bundle}
 
 set :default_env, {rvm_bin_path: '~/.rvm/bin'}
 
+set :use_sudo, false
+
+set :deploy_via, :copy
+
+default_run_options[:pty] = true
+
+server "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com", :app, :web, :db, :primary => true
+
+=begin
 
 namespace :setup do
   desc 'Loading configuration files to a remote server'
@@ -191,3 +201,5 @@ namespace :deploy do
   #end
   #end
 end
+
+=end
