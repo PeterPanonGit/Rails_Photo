@@ -65,3 +65,7 @@ set :ssh_options, {
   forward_agent: false,
   auth_methods: ["publickey"]
 }
+
+set :rails_env, :production
+
+set :conditionally_migrate, true
