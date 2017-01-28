@@ -1,38 +1,39 @@
-root = "/home/ubuntu/apps/rails_photo/current"
-working_directory root
+deploy_to  = '/home/ubuntu/apps/rails_photo'
+rails_root = "#{deploy_to}/current"
+pid_file   = "#{deploy_to}/shared/unicorn.pid"
+socket_file= "#{deploy_to}/shared/unicorn.sock"
+log_file   = "#{rails_root}/log/unicorn.log"
+err_log    = "#{rails_root}/log/unicorn_error.log"
+old_pid    = pid_file + '.oldbin'
 
-pid "#{root}/tmp/pids/unicorn.pid"
-
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
-
-worker_processes Integer(ENV['WEB_CONCURRENCY'])
 timeout 30
+worker_processes 2
+listen socket_file, :backlog => 1024
+pid pid_file
+stderr_path err_log
+stdout_path log_file
+
 preload_app true
 
-listen '/tmp/unicorn.spui.sock', backlog: 64
+GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
+
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "#{rails_root}/Gemfile"
+end
 
 before_fork do |server, worker|
-  Signal.trap 'TERM' do
-    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
-    Process.kill 'QUIT', Process.pid
-  end
-
   defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.connection.disconnect!
+      ActiveRecord::Base.connection.disconnect!
+
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+    end
+  end
 end
 
 after_fork do |server, worker|
-  Signal.trap 'TERM' do
-    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
-  end
-
   defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.establish_connection
-end
-
-# Force the bundler gemfile environment variable to
-# reference the capistrano "current" symlink
-before_exec do |_|
-  ENV['BUNDLE_GEMFILE'] = File.join(root, 'Gemfile')
+      ActiveRecord::Base.establish_connection
 end

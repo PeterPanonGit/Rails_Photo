@@ -59,6 +59,7 @@ server "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com", user: "ubuntu", r
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+set :deploy_to, "/home/ubuntu/apps/rails_photo"
 
 set :ssh_options, {
   keys: ["#{Dir.home}/Downloads/EU_Frankfurt_test.pem"],
