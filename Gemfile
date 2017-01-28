@@ -98,6 +98,7 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
   gem 'rack', '<2.0'
   gem 'sinatra'
 end
