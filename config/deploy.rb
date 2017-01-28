@@ -1,43 +1,42 @@
 # config valid only for current version of Capistrano
+lock "3.7.2"
 
-lock '3.4.0'
-# Эти параметры необходимо поменять
-set :application, 'ostagram'
-set :username, 'deploy'
+set :application, "rails_photo"
+set :repo_url, "https://github.com/OneOfCats/Rails_Photo.git"
 
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.3.3'
 
+# in case you want to set ruby version from the file:
+# set :rbenv_ruby, File.read('.ruby-version').strip
 
-set :repo_url, 'git@github.com:SergeyMorugin/ostagram.git'
-set :reils_env, 'production'
-set :branch, 'develop'
-#set :shared_path, ''
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
-set :deploy_to, "/home/#{fetch(:username)}/server/#{fetch(:application)}"
+set :deploy_to, "/home/ubuntu/apps/rails_photo"
 
-# Default value for :scm is :git
-# set :scm, :git
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
 
-# Default value for :format is :pretty
-# set :format, :pretty
-
-# Default value for :log_level is :debug
-# set :log_level, :debug
-set :log_level, :info
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :linked_files, %w{config/secrets.yml config/database.yml config/config.secret}
+# append :linked_files, "config/database.yml", "config/secrets.yml"
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_dirs, %w{bundle}
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -45,149 +44,10 @@ set :linked_dirs, %w{bundle}
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :default_env, {rvm_bin_path: '~/.rvm/bin'}
-
-
-namespace :setup do
-  desc 'Loading configuration files to a remote server'
-  task :upload_config do
-    on roles :all do
-      execute :mkdir, "-p #{shared_path}"
-      ['shared/config', 'shared/run', 'shared/log', 'shared/db'].each do |f|
-        upload!(f, shared_path, recursive: true)
-      end
-    end
-  end
-
-  task :setup do
-    on roles(:all) do
-      # Upload config files
-      execute :mkdir, "-p #{shared_path}"
-      ['shared/config', 'shared/run', 'shared/log', 'shared/db'].each do |f|
-        upload!(f, shared_path, recursive: true)
-      end
-      #before "deploy:migrate", :create_db
-      # Make simlink to nginx config
-      sudo :ln, "-fs #{shared_path}/config/unicorn.conf /etc/nginx/conf.d/#{fetch(:application)}.conf"
-      invoke :deploy
-    end
-  end
-end
-
-namespace :nginx do
-  desc 'Create a symbolic link to the application nginx.conf in /etc/nginx/conf.d'
-  task :append_config do
-    on roles :all do
-      sudo :ln, "-fs #{shared_path}/config/unicorn.conf /etc/nginx/conf.d/#{fetch(:application)}.conf"
-    end
-  end
-  desc 'reload nginx'
-  task :reload do
-    on roles :all do
-      sudo :service, :nginx, :reload
-    end
-  end
-  desc 'Restart nginx'
-  task :restart do
-    on roles :all do
-      sudo :service, :nginx, :restart
-    end
-  end
-  task :create_db do
-    on roles(:all) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, "db:create"
-        end
-      end
-    end
-  end
-
-  after :append_config, :restart
-end
-
-set :unicorn_config, "#{shared_path}/config/unicorn.rb"
-set :unicorn_pid, "#{shared_path}/run/unicorn.pid"
-
-namespace :application do
-  desc 'Running Unicorn'
-  task :start do
-    on roles(:all) do
-
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute "cd #{release_path} && (RAILS_ENV=#{fetch(:stage)}  ~/.rvm/bin/rvm default do bundle exec unicorn -c #{fetch(:unicorn_config)} -D)"
-          #execute :bundle, "exec unicorn -c #{fetch(:unicorn_config)}"
-        end
-      end
-      #execute "cd #{fetch(:deploy_to)}/current"
-      #{fetch(:deploy_to)}/current
-      #execute "~/.rvm/bin/rvm default"
-      #:bundle, :exec,
-      #run "#{fetch(:deploy_to)}/current/bundle exec unicorn_rails -c #{fetch(:unicorn_config)} -E production -D"
-      #execute bundl exec unicorn_rails -D"
-    end
-  end
-  desc 'Stop Unicorn'
-  task :stop do
-    on roles(:app) do
-      execute "if [ -f #{fetch(:unicorn_pid)} ] && [ -e /proc/$(cat #{fetch(:unicorn_pid)}) ]; then kill -9 `cat #{fetch(:unicorn_pid)}`; fi"
-    end
-  end
-end
-
-
-
+after 'deploy:publishing', 'deploy:restart'
 
 namespace :deploy do
-  desc 'Prepare to deploy'
-
-  task :migrate do
-    on roles(:all) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute "cd #{release_path} && (RAILS_ENV=#{fetch(:stage)}  ~/.rvm/bin/rvm default do rake db:migrate)"
-        end
-      end
-    end
+  task :restart do
+    invoke 'unicorn:restart'
   end
-
-
-  namespace :linking do
-    desc 'Create a symbolic link to the image'
-    task :uploads do
-      on roles :all do
-        sudo :ln, "-s /home/deploy/disk600/server/ostagram/public/uploads #{release_path}/public/uploads "
-      end
-    end
-  end
-
-  task :precompile do
-    on roles(:all) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute "cd #{release_path} && (RAILS_ENV=#{fetch(:stage)}  ~/.rvm/bin/rvm default do rake assets:precompile)"
-        end
-      end
-    end
-  end
-
-
-  #before 'deploy:setup', 'git:push'
-  after :finishing, 'deploy:migrate'
-  after :finishing, 'linking:uploads'
-  after :finishing, 'deploy:precompile'
- # after :finishing, 'application:stop'
-  #after :finishing, 'application:stop'
-  #after :finishing, 'application:start'
-  #after :finishing, 'nginx:reload'
-  after :finishing, :cleanup
-  #after :restart, :clear_cache do
-  # on roles(:web), in: :groups, limit: 3, wait: 10 do
-  # Here we can do anything such as:
-  # within release_path do
-  #   execute :rake, 'cache:clear'
-  # end
-  #end
-  #end
 end

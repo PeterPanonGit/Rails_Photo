@@ -43,7 +43,7 @@
           <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
         </div>
         <div class="imageBlock200-lg col-lg-12">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), item.style.image.url, class: "imagesStyle", data:{ lightbox: "content"}) %>
+          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id), class: "imagesStyle", data:{ lightbox: "content"}) %>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
          <%= image_tag(item.content.image.thumb200.url, class: "contentImageStyle-xs roundImageStyle")%>
        </div>
        <div class="col-md-6 col-sm-6 col-xs-6  imageBlock200-xs">
-         <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "contentImageStyle-xs roundImageStyle"), item.style.image.url, class: "contentImageStyle-xs") %>
+         <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "contentImageStyle-xs roundImageStyle"), new_queue_image_path(style: item.style.id), class: "contentImageStyle-xs") %>
        </div>
   </div>
 
