@@ -61,7 +61,7 @@ server "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com", user: "ubuntu", r
 #   }
 
 set :ssh_options, {
-  keys: ["#{Dir.home}/.ssh/EU_Frankfurt_test.pem"],
+  keys: ["#{Dir.home}/Downloads/EU_Frankfurt_test.pem"],
   forward_agent: false,
   auth_methods: ["publickey"]
 }
@@ -69,3 +69,4 @@ set :ssh_options, {
 set :rails_env, :production
 
 set :conditionally_migrate, true
+set :unicorn_pid, "#{deploy_to}/shared/unicorn.pid"

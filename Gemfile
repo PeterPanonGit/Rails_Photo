@@ -101,9 +101,7 @@ group :development do
   gem 'sinatra'
 end
 
-group :production do
-  gem 'unicorn'
-end
+gem 'unicorn'
 
 group :development, :test do
   gem 'factory_girl_rails'
