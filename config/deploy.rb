@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/OneOfCats/Rails_Photo.git"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/rails_photo"
+set :deploy_to, "/home/ubuntu/apps/rails_photo"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
