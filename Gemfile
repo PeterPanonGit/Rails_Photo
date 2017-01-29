@@ -97,6 +97,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-resque', '~> 0.2.2', require: false
   gem 'rack', '<2.0'
   gem 'sinatra'
 end
