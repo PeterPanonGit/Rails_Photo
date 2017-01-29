@@ -9,6 +9,12 @@
 server "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com", user: "ubuntu", roles: %w{web app db}, :primary => true
 
 
+
+role :resque_worker, "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com"
+role :resque_scheduler, "ec2-35-157-66-165.eu-central-1.compute.amazonaws.com"
+set :workers, { "queue_name" => 2 }
+set :resque_environment_task, true
+
 # role-based syntax
 # ==================
 
