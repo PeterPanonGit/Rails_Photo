@@ -13,6 +13,11 @@ pid pid_file
 stderr_path err_log
 stdout_path log_file
 
+role :resque_worker, "app_domain"
+role :resque_scheduler, "app_domain"
+set :workers, { "queue_name" => 2 }
+set :resque_environment_task, true
+
 preload_app true
 
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
