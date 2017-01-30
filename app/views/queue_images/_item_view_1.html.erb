@@ -9,7 +9,7 @@
     <div class="row styleHeadRow-lg">
 
       <div class="col-lg-1 clearLRpadding">
-        <%= image_tag(item.client.avatar.avatar100.url, class: "userAvatarImage-lg") if !item.client.nil? %>
+        <%= image_tag(current_client.remote_avatar || current_client.avatar, class: "userAvatarImage-lg") if !item.client.nil? %>
       </div>
 
       <div class="col-lg-7 styleHeadCol2-lg">
