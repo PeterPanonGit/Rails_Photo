@@ -45,7 +45,7 @@ gem 'net-scp'
 
 #gem 'sidekiq'
 
-gem 'resque'
+gem 'resque', :require => "resque/server"
 
 gem 'lightbox2-rails'
 

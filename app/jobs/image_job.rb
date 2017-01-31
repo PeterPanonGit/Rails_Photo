@@ -90,8 +90,16 @@ class ImageJob
     #Run process
     name = "output.jpg"
     log "rendering on #{@login_cmd}, #{@user_host} with output: #{@remote_neural_path}/output/output.jpg, using #{@style_model_name}"
-    content_image_path = "#{item.content.image}".split('/').slice(3,7).join("/")
-    log "copying content cmd: aws s3 cp s3://images-sophon/#{content_image_path} content/#{@content_image_name}"
+    cp_cmd = ""
+    content_image_path = ""
+    if Rails.env.production?
+      content_image_path = "#{item.content.image}".split('/').slice(3,7).join("/")
+      cp_cmd = "aws s3 cp s3://images-sophon/#{content_image_path} content/#{@content_image_name}"
+    else
+      content_image_path = Rails.root.join("public#{item.content.image}")
+      cp_cmd = "scp #{@login_cmd} #{content_image_path} #{@user_host}:~/#{@remote_neural_path}/content/#{@content_image_name}"
+    end
+    log "copying content cmd: #{cp_cmd}"
     style_level = "style_15"
     mixing_level = "#{item.mixing_level}"
     if mixing_level == "medium"
@@ -105,8 +113,13 @@ class ImageJob
 	size_limit = 2500
     end
     log "mixing_level: #{mixing_level}, style_level: #{style_level}; is_premium: #{item.is_premium}, size_limit: #{size_limit}"
-    msg = `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && aws s3 cp s3://images-sophon/#{content_image_path} content/#{@content_image_name} && convert content/#{@content_image_name} -resize '#{size_limit}x#{size_limit}>' content/#{@content_image_name} && python evaluate.py --checkpoint=models/#{@style_model_name}/#{style_level}/fns.ckpt --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
-    log "send_start_process_comm: #{msg}"
+    if Rails.env.production?
+      `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && #{cp_cmd} && convert content/#{@content_image_name} -resize '#{size_limit}x#{size_limit}>' content/#{@content_image_name} && python evaluate.py --checkpoint=models/#{@style_model_name}/#{style_level}/fns.ckpt --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
+    else
+      `#{cp_cmd}`
+      `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && convert content/#{@content_image_name} -resize '#{size_limit}x#{size_limit}>' content/#{@content_image_name} && python evaluate.py --checkpoint=models/#{@style_model_name}/#{style_level}/fns.ckpt --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
+    end
+    log "send_start_process_comm:"
     #log "6"
     # Wait processed images
     loc =  "#{@local_tmp_path}/#{name}"

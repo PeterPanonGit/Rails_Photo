@@ -32,6 +32,9 @@ Rails.application.routes.draw do
 
 
   root "static_pages#home"
+  authenticate :admin do
+    mount Resque::Server, :at => "/resque"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
