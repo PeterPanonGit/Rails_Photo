@@ -50,6 +50,17 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def reached_maximum?
+    QueueImage.maximum_per_client <= queue_images.where(is_premium: false).count
+  end
+
+  def delete_older_image
+    qi = queue_images.where(is_premium: false).order(created_at: :desc).last
+    content = qi.content
+    content.remove_image!
+    content.destroy if content.save
+  end
+
   private
 
 end

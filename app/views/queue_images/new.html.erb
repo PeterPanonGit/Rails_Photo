@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-offset-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-
+      <% if @maximum %>
+        <div class="alert alert-danger">
+          You have a maximum number of non-premium images, the older image will be deleted if you won't use premium
+        </div>
+      <% end %>
       <%= form_for(@queue_image) do |f| %>
         <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>

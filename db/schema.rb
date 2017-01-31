@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124121910) do
+ActiveRecord::Schema.define(version: 20170130201557) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170124121910) do
   add_index "clients", ["unlock_token"], name: "index_clients_on_unlock_token", unique: true, using: :btree
 
   create_table "contents", force: :cascade do |t|
-    t.string   "image",      limit: 255,             null: false
+    t.string   "image",      limit: 255
     t.integer  "status",     limit: 4,   default: 0, null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false

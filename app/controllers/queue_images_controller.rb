@@ -27,6 +27,7 @@ class QueueImagesController < ApplicationController
 
   # GET /queue_images/new
   def new
+    @maximum = current_client.reached_maximum?
     @queue_image = QueueImage.new
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)
@@ -58,6 +59,11 @@ class QueueImagesController < ApplicationController
       return
     end
     save_status = create_queue
+
+    if save_status && params[:queue_image][:is_premium] == "false" && current_client.reached_maximum?
+      puts current_client.delete_older_image
+    end
+
     respond_to do |format|
       if save_status
         start_workers()
