@@ -17,13 +17,16 @@
           <%= f.file_field :content_image %>
           <b>Mixing level(what's this?)</b><br>
     	    higher mixing level leads to stronger stylization effect<br>
-    	    High<%= f.radio_button :mixing_level, 'high', :checked => true, style: "width: 10%"%>
-    	    Medium<%= f.radio_button :mixing_level, 'medium', style: "width: 10%"%>
-    	    Low<%= f.radio_button :mixing_level, 'low', style: "width: 10%"%>
+
+    	    High<%= f.radio_button :mixing_level, 'high', checked: (@mixing_level == nil || @mixing_level == 'high') ? true : false, style: "width: 10%"%>
+
+    	    Medium<%= f.radio_button :mixing_level, 'medium', checked: @mixing_level == 'medium' ? true : false, style: "width: 10%"%>
+
+    	    Low<%= f.radio_button :mixing_level, 'low', checked: @mixing_level == 'low' ? true : false,style: "width: 10%"%>
           <br>
-          <b>Use Premium Service(what's this?)</b><br>
-    	    No<%= f.radio_button :is_premium, false, :checked => true, style: "width: 10%"%>
-    	    Yes<%= f.radio_button :is_premium, true, style: "width: 10%"%>
+          <b>Use Premium Service?</b>(what's this?)<br>
+    	    No<%= f.radio_button :is_premium, false, checked: (@is_premium == 'false' || @is_premium == nil) ? true : false, style: "width: 10%"%>
+    	    Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
         </div>
           <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
         </div>

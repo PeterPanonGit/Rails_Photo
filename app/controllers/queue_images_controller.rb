@@ -32,6 +32,8 @@ class QueueImagesController < ApplicationController
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)
     @active = Style.find(params[:style]) if params[:style]
+    @mixing_level = params[:mixing_level]
+    @is_premium = params[:is_premium]
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
       when '1' then @view_style = VIEW_STYLE_FROM_LIST
@@ -58,9 +60,11 @@ class QueueImagesController < ApplicationController
       redirect_to new_queue_image_path
       return
     end
+
+    max_reached = params[:queue_image][:is_premium] == "false" && current_client.reached_maximum?
     save_status = create_queue
 
-    if save_status && params[:queue_image][:is_premium] == "false" && current_client.reached_maximum?
+    if save_status && max_reached
       puts current_client.delete_older_image
     end
 
