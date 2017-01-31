@@ -58,9 +58,11 @@ class QueueImagesController < ApplicationController
       redirect_to new_queue_image_path
       return
     end
+
+    max_reached = params[:queue_image][:is_premium] == "false" && current_client.reached_maximum?
     save_status = create_queue
 
-    if save_status && params[:queue_image][:is_premium] == "false" && current_client.reached_maximum?
+    if save_status && max_reached
       puts current_client.delete_older_image
     end
 
