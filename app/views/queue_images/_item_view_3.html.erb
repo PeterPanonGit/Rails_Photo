@@ -8,14 +8,14 @@
           <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
         </div>
         <div class="visible-lg  col-lg-2 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id), class: "imagesStyle", data:{ lightbox: "content"}) %>
+          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle", data:{ lightbox: "content"}) %>
         </div>
 
         <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 col-md-offset-2 userAvatarStyle-lg" >
           <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle")%>
         </div>
         <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id), class: "imagesStyle") %>
+          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle") %>
         </div>
 
         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">

@@ -32,6 +32,8 @@ class QueueImagesController < ApplicationController
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)
     @active = Style.find(params[:style]) if params[:style]
+    @mixing_level = params[:mixing_level]
+    @is_premium = params[:is_premium]
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
       when '1' then @view_style = VIEW_STYLE_FROM_LIST
