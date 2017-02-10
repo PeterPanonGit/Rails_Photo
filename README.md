@@ -48,3 +48,8 @@ make install
 bundle install
 rake db:migrate
 rails s
+
+# deploy
+in config/deploy.rb, change repo_url to the correct repo
+in config/deploy.rb, in set :default_env, setup s3 credentials
+in config/deploy/production.rb, change the server name to the correct one
