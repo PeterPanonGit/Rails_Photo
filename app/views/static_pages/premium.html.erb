@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12">
+        <p>Non-premium rendered images will be resized such that the largest size will have no more than 768 pixels. Premium rendered images extend the limit to the largest size to 2500 pixel. This is a huge difference in resolution and you will notice it most clearly when rendering images with people. See the example below.</p>
+        <h3>Non-premium (low resolution, 768 pixels in largest size):</h3>
+        <%=image_tag("/low-res.jpeg", class: "imagesStyle")%>
+        <h3>Premium: (high resolution, 2500 pixels in largest size):</h3>
+        <%=image_tag("/high-res.jpeg", class: "imagesStyle")%>
+
+    </div>
+
+  </div>
+
+
+
+ </div>

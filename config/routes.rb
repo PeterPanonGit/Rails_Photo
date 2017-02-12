@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   match '/home', to: 'static_pages#home', via: 'get'
   match '/error', to: 'static_pages#error', via: 'get'
   match '/lenta', to: 'static_pages#lenta', via: 'get'
+  match '/mixing_level', to: 'static_pages#mixing_level', via: 'get'
+  match '/premium', to: 'static_pages#premium', via: 'get'
   #match '/admin', to: 'admin_pages#error', via: 'get'
 
 
