@@ -27,7 +27,8 @@ class QueueImagesController < ApplicationController
 
   # GET /queue_images/new
   def new
-    @maximum = current_client.reached_maximum?
+    @non_premium_image_count = current_client.non_premium_image_count
+    @maximum_reached = current_client.reached_maximum?
     @queue_image = QueueImage.new
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)

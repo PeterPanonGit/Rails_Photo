@@ -7,7 +7,7 @@ class QueueImage < ActiveRecord::Base
   #mount_uploader :content_image, AvatarUploader
   #mount_uploader :style_image, AvatarUploader
   scope :last_n_days, lambda {|d|  where('ftime > ?' , Time.now - d.days)}
-  @@maximum_per_client = 100
+  @@maximum_per_client = 25
 
   # I believe you can replace the whole method by distance_of_time_in_words
   def time_ago

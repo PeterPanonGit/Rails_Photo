@@ -51,7 +51,11 @@ class Client < ActiveRecord::Base
   end
 
   def reached_maximum?
-    QueueImage.maximum_per_client <= queue_images.where(is_premium: false).count
+    QueueImage.maximum_per_client <= non_premium_image_count
+  end
+
+  def non_premium_image_count
+    return queue_images.where('is_premium = ? AND status = ?', false, 11).count
   end
 
   def delete_older_image
