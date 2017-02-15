@@ -7,11 +7,9 @@
     <div class="col-lg-6 col-lg-offset-3 ">
 
     <div class="row styleHeadRow-lg">
-      <% if !current_client.nil? %>
       <div class="col-lg-1 clearLRpadding">
-        <%= image_tag(current_client.remote_avatar || current_client.avatar, class: "userAvatarImage-lg") if !item.client.nil? %>
+        <%= image_tag(item.client.remote_avatar || item.client.avatar, class: "userAvatarImage-lg") if !item.client.nil? %>
       </div>
-      <% end %>
 
       <div class="col-lg-7 styleHeadCol2-lg">
         <span class="textUserStyle-lg">
