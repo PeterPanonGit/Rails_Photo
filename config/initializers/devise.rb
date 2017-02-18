@@ -267,5 +267,5 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
   # https://console.developers.google.com
   config.omniauth :google_oauth2, ENV['GOOG_CLIENT_ID'], ENV['GOOG_CLIENT_SECRET'], prompt: "consent"
-  config.omniauth :twitter, 'ZV6Vy2Pc1DA8vHSeyckqmMXjW', 'q3aiCahTy7v439zzttc8yAhxNGplO5IoEb7zjAnGo1U2V5hyxb'
+  config.omniauth :twitter, ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET']
 end
