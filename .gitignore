@@ -4,3 +4,6 @@ log/*
 tmp/*
 old_cap/*
 styles.csv
+
+# Ignore application configuration
+/config/application.yml
