@@ -2,7 +2,7 @@
 lock "3.7.2"
 
 set :application, "rails_photo"
-set :repo_url, "https://github.com/OneOfCats/Rails_Photo.git"
+set :repo_url, "https://github.com/PeterPanOnGit/Rails_Photo.git"
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.3.3'
@@ -33,13 +33,15 @@ set :deploy_to, "/home/ubuntu/apps/rails_photo"
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_files, fetch(:linked_files, []).push('config/application.yml')
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+#set :default_env, {
+#}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
