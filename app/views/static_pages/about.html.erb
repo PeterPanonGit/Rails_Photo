@@ -4,24 +4,20 @@
         <h3>About</h3>
         <p>This <%= link_to "site", lenta_path %>, provide an artistic tool which can render a high resolution picture into an art work in seconds. </p>
         <p>Different from websites like <a href="https://deepart.io">deepart.io</a>, which takes tens of minutes or even hours to render high resolution pictures, this site use fast neural style transfer technologies which renders high resolution pictures in seconds. </p>
-        <p>Different from the popular app <a href="http://prisma-ai.com/">prisma</a>, which also use the similar fast neural style transfer technology, we have developed an improved training method which can create a style model within an hour. That is why we allow users to submit their own styles pictures just like deepart.io, while we can render the pictures in similar amount of time like prisma. </p>
-        <p>We also allow users to create very high resolution rendered artistic images up to 2000px. Here we show a 1024px picture as an example</p>
-        <%=image_tag("/yellow_trees_house_water_1024.jpg", class: "imagesStyle")%>
+        <p>Different from the popular app <a href="http://prisma-ai.com/">prisma</a>, which also use the similar fast neural style transfer technology, we have developed an improved training method which can create a style model within an hour. This allows us to quickly produce a large number of different styles like deepart.io, while we can render the pictures in similar amount of time like prisma. </p>
+        <p>We also allow users to create very high resolution rendered artistic images up to 2500px. Here is an example.</p>
+        <%=image_tag("/colin-maynard-190292.jpg", class: "imagesStyle")%>
         <p></p>
-        <p>We render this picture with the following style image</p>
-
-        <%=image_tag("/fall-1.jpg", class: "imagesStyle")%>
+        <p>We render this picture with the style image in the upper left corner with 2500px high resolution, we get the following image:</p>
+        <%=image_tag("/colin-maynard-stylized.jpg", class: "imagesStyle")%>
         <p></p>
-        <p>The rendered artistic image is also 1024px, like this</p>
-        <%=image_tag("/yellow_trees_house_water_1024_stylized.jpg", class: "imagesStyle")%>
-        <p></p>
-        <p>Because we use fast neural style transfer technology similar to <a href="https://github.com/jcjohnson/fast-neural-style">this</a>, rendering the artistic image is almost instant. This 1024px example took only about 10 seconds in total. The exact time can vary with the size of the picture, but the total amount of time should vary from a few seconds to a few tens of seconds <p>
+        <p>Because we use fast neural style transfer technology similar to <a href="https://github.com/jcjohnson/fast-neural-style">this</a>, rendering the artistic image is almost instant. The default low resolution setting which is 768px takes only about 10 seconds in total. The exact time can vary with the size of the picture, but the total amount of time should vary from a few seconds to a few tens of seconds <p>
 
-        <p>However, we have improved the fast neural style transfer technology by reducing the model training time to about 1 hour. That's why we provide a large number of styles and we allow users to submit their own style photos. Although training a new style takes only about 1 hour, the administrators maintains the website only in their spare time and thus it can take a day for the administrator to upload the new style model to the website</p>
+        <p>However, we have improved the fast neural style transfer technology by reducing the model training time to about 1 hour. That's why we provide a large number of styles and we allow users to submit their own style photos. If you want to create a new style, please email your style image to: <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a>. Although training a new style takes only about 1 hour, the administrators maintains the website only in their spare time and thus it can take a day for the administrator to upload the new style model to the website</p>
 
-        <p>To render pictures to artistic images using existing styles, or create your own styles, you need to register. The register process is very simple and then you can render artistic images in seconds. If you submit new styles, you will be notified by email when the style is ready, which can take up to a day</p>
+        <p>To render pictures to artistic images using existing styles, or create your own styles, you need to register. The register process is very simple and you can use your existing social network accounts including Google, Facebook and Twitter to check in. If you submit new styles, you will be notified by email when the style is ready, which can take up to a day</p>
 
-        <p>If you have any question, please contact us at photopaint.us@gmail.com</p>
+        <p>If you have any question, please contact us at <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
       <% if !client_signed_in? %>
         <div class="actions">
           <%= link_to "SignUp", new_client_registration_path , class: "btn btn-primary btn-large", style: "width: 100%" %>

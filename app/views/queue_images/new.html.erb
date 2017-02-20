@@ -26,6 +26,7 @@
           <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
         </div>
       <% end %>
+      <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
       <% if @tags %>
         <%= form_tag tagged_styles_path, method: :post, remote: true, id: "tags_form" do %>
           <% @tags.each do |tag| %>
