@@ -108,6 +108,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.38.0)
@@ -430,6 +432,7 @@ DEPENDENCIES
   devise (~> 3.5)
   factory_girl
   factory_girl_rails
+  figaro
   fog
   google-analytics-rails
   jbuilder (~> 2.0)
