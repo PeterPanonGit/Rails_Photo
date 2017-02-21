@@ -6,12 +6,11 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "ec2-35-160-75-156.us-west-2.compute.amazonaws.com", user: "ubuntu", roles: %w{web app db}, :primary => true
+server ENV['SERVER_URL'], user: "ubuntu", roles: %w{web app db}, :primary => true
 
+role :resque_worker, ENV['SERVER_URL']
+role :resque_scheduler, ENV['SERVER_URL']
 
-
-role :resque_worker, "ec2-35-160-75-156.us-west-2.compute.amazonaws.com"
-role :resque_scheduler, "ec2-35-160-75-156.us-west-2.compute.amazonaws.com"
 set :workers, { "*" => 2 }
 set :resque_environment_task, true
 
@@ -68,7 +67,7 @@ set :resque_environment_task, true
 set :deploy_to, "/home/ubuntu/apps/rails_photo"
 
 set :ssh_options, {
-  keys: ["#{Dir.home}/Downloads/EU_Frankfurt_test.pem"],
+  keys: ["#{Dir.home}/AWS/photo_paint.pem"],
   forward_agent: false,
   auth_methods: ["publickey"]
 }

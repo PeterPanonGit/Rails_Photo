@@ -1,8 +1,10 @@
 <div class="content"><div class="row">
   <br>
   <div class = "col-lg-offset-3 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+    <%= link_to "High resolution (Premium) images", url_for(controller: 'static_pages', action: 'lenta', last_days: -1) %> |
     <%= link_to "Pick of the Week", url_for(controller: 'static_pages', action: 'lenta', last_days: 7) %> |
-    <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30) %>
+    <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30) %> |
+    <%= link_to "All", url_for(controller: 'static_pages', action: 'lenta') %>
   </div>
 </div></div>
 
