@@ -7,9 +7,6 @@
         </div>
       <% end %>
       <%= form_for(@queue_image) do |f| %>
-        <div class="actions">
-          <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
-        </div>
         <div class="overflow-y-scroll">
         <div class="field">
           <%= f.label "image to be rendered:" %>
@@ -24,6 +21,9 @@
     	    Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
         </div>
           <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
         </div>
       <% end %>
       <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
