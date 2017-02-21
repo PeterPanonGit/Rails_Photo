@@ -5,7 +5,6 @@
 @bindTagsFunctionality = ->
   $('[class^=\'tag\'').click (e) ->
     e.preventDefault()
-    $("#styles").children().hide()
     $(this).toggleClass 'active'
     applyTags()
   $('#unselect-all').click ->
@@ -15,6 +14,7 @@
   return
 
 @applyTags = ->
+  $("#styles").children().hide()
   tags = new Array()
   $('.wrapper-tags a.active').each (i) ->
     tags.push $(@).data('tag').split(' ').join('-')
