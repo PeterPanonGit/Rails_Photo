@@ -22,11 +22,16 @@
 
 	&:hover{
 		color: #337ab7;
+		text-decoration: none;
 	}
 
 	&.active {
 		color: white;
 		background: #337ab7;
+	}
+
+	&:active, &:focus {
+		text-decoration: none;
 	}
 }
 
@@ -41,7 +46,7 @@
 	}
 }
 
-.tag4 { padding: 10px; }
-.tag3 { padding: 8px; }
-.tag2 { padding: 6px; }
-.tag1 { padding: 4px; }
+.tag-size-4 { padding: 10px; }
+.tag-size-3 { padding: 8px; }
+.tag-size-2 { padding: 6px; }
+.tag-size-1 { padding: 4px; }

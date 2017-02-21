@@ -3,21 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @bindTagsFunctionality = ->
-  $('[class^=\'tag\'').click ->
+  $('[class^=\'tag\'').click (e) ->
+    e.preventDefault()
+    $("#styles").children().hide()
     $(this).toggleClass 'active'
-    return
-  $('#tags_form input').change ->
-    $('#tags_form').submit()
+    tags = new Array()
+    $('.wrapper-tags a.active').each (i) ->
+      tags.push $(@).data('tag').split(' ').join('-')
+      return
+    tags = tags.join(".")
+    if tags.length > 0
+      $("#styles").find("." + tags).show()
+    else
+      $("#styles").children().show()
     return
   $('#unselect-all').click ->
-    if $('#tags_form input:checked').length > 0
-      $('[class^=\'tag\'').removeClass('active')
-      if $('#tags_form input:checked').length < $('#tags_form input').length - 1
-        $('#tags_form input').prop('checked', false)
-        $('#tags_form').submit()
-      else
-        $('#tags_form input').prop('checked', false)
-    return
+    $('.wrapper-tags a.active').toggleClass('active')
+    $("#styles").children().show()
   return
 
 $(document).on 'turbolinks:load', bindTagsFunctionality

@@ -143,18 +143,6 @@ class QueueImagesController < ApplicationController
     end
   end
 
-  def tag
-    tags = params.map{ |key,value| value == '1' ? key : nil }.compact
-    @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
-    if tags.count != 0
-      @styles = @styles.tagged_with tags, any: true
-    end
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
 
     def create_queue
