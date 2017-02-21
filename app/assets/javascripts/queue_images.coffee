@@ -7,18 +7,22 @@
     e.preventDefault()
     $("#styles").children().hide()
     $(this).toggleClass 'active'
-    tags = new Array()
-    $('.wrapper-tags a.active').each (i) ->
-      tags.push $(@).data('tag').split(' ').join('-')
-      return
-    tags = tags.join(".")
-    if tags.length > 0
-      $("#styles").find("." + tags).show()
-    else
-      $("#styles").children().show()
-    return
+    applyTags()
   $('#unselect-all').click ->
     $('.wrapper-tags a.active').toggleClass('active')
+    $("#styles").children().show()
+  applyTags()
+  return
+
+@applyTags = ->
+  tags = new Array()
+  $('.wrapper-tags a.active').each (i) ->
+    tags.push $(@).data('tag').split(' ').join('-')
+    return
+  tags = tags.join(".")
+  if tags.length > 0
+    $("#styles").find("." + tags).show()
+  else
     $("#styles").children().show()
   return
 
