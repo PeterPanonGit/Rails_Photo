@@ -15,7 +15,7 @@
           </div>
         </div>
       <% end %>
-      <div class="" id="styles">
+      <div class="overflow-y-scroll" id="styles">
         <%= render partial: "show_styles", locals: {styles: @styles} %>
       </div>
   <%= hidden_field_tag 'queue_image[view_style]', view_style %>

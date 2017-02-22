@@ -6,6 +6,10 @@
 	margin-bottom: 10px;
 }
 
+.navbar .btn {
+	margin-bottom: 0;
+}
+
 #tags_form, .checkbox_tag {
 	display: none;
 }
@@ -50,3 +54,7 @@
 .tag-size-3 { padding: 8px; }
 .tag-size-2 { padding: 6px; }
 .tag-size-1 { padding: 4px; }
+
+#styles{
+	height: 361px;
+}

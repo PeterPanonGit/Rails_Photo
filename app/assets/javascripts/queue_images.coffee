@@ -27,6 +27,7 @@
   return
 
 $(document).on 'turbolinks:load', bindTagsFunctionality
+###
 $(document).on 'turbolinks:load', ->
   screen = $(window).height()
   header = $(".navbar").outerHeight(true)
@@ -35,3 +36,4 @@ $(document).on 'turbolinks:load', ->
   pics = $(".overflow-y-scroll").outerHeight(true)
   $(".overflow-y-scroll").css("max-height", screen - header - footer - (form - pics) + "px")
   return
+###
