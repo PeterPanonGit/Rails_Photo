@@ -26,7 +26,30 @@
     $("#styles").children().show()
   return
 
+@loadProcessedImage = ->
+  loadingElements = $(".queue-image-item[data-loading]")
+  if loadingElements.length > 0
+    intervals = new Array()
+    loadingElements.each (i) ->
+      elem = @
+      interval = setInterval((->
+        $.get('/queue_images/' + $(elem).data('item-id') + '/loaded').success((data) ->
+          clearInterval interval
+          return
+        )
+        return
+      ), 3000)
+      intervals.push(interval)
+      return
+    $(document).on 'turbolinks:click', ->
+      intervals.forEach (elem) ->
+        clearInterval elem
+        return
+      return
+  return
+
 $(document).on 'turbolinks:load', bindTagsFunctionality
+$(document).on 'turbolinks:load', loadProcessedImage
 ###
 $(document).on 'turbolinks:load', ->
   screen = $(window).height()

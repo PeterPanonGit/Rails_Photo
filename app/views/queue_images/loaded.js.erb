@@ -1,0 +1,3 @@
+<% if @queue_image.result_image %>
+  $(".queue-image-item[data-item-id='<%= @queue_image.id %>']").replaceWith("<%= escape_javascript(render partial: 'item_view_3', collection: [@queue_image] ) %>");
+<% end %>

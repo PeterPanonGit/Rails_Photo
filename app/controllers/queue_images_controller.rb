@@ -2,7 +2,7 @@ class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
   before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image]
-  after_action :verify_authorized, except: [:tag]
+  after_action :verify_authorized, except: [:tag, :loaded]
 
   def pundit_user
     current_client
@@ -140,6 +140,17 @@ class QueueImagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to queue_images_url}
       format.js
+    end
+  end
+
+  def loaded
+    @queue_image = QueueImage.find(params[:id])
+    respond_to do |format|
+      if @queue_image.result_image
+        format.js
+      else
+        format.js { render 'loaded', status: 501 }
+      end
     end
   end
 

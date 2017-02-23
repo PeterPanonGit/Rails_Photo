@@ -3,58 +3,56 @@
 <%item = item_view_3 %>
 <%res_img = item.result_image %>
 
-<div class="row styleRow2-lg">
-        <div class="visible-lg  col-lg-2 col-lg-offset-2 userAvatarStyle-lg" >
-          <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
-        </div>
-        <div class="visible-lg  col-lg-2 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle", data:{ lightbox: "content"}) %>
-        </div>
+<div class="row styleRow2-lg queue-image-item" data-item-id="<%= item.id %>" <%= 'data-loading' unless item.result_image %>>
+  <div class="visible-lg  col-lg-2 col-lg-offset-2 userAvatarStyle-lg" >
+    <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
+  </div>
+  <div class="visible-lg  col-lg-2 userAvatarStyle-lg">
+    <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle", data:{ lightbox: "content"}) %>
+  </div>
 
-        <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 col-md-offset-2 userAvatarStyle-lg" >
-          <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle")%>
-        </div>
-        <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
-          <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle") %>
-        </div>
+  <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 col-md-offset-2 userAvatarStyle-lg" >
+    <%= image_tag(item.content.image.thumb200.url, class: "imagesStyle roundImageStyle")%>
+  </div>
+  <div class="hidden-lg col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
+    <%= link_to(image_tag(item.style.image.thumb200.url, alt:item.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: item.style.id, is_premium: item.is_premium, mixing_level: item.mixing_level), class: "imagesStyle") %>
+  </div>
 
-        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
-          <% if !res_img.nil? %>
-              <div class="visible-lg" >
-                <%= link_to(image_tag(res_img.imageurl.thumb400.url, alt:res_img.imageurl, class: "imagesStyle roundImageStyle"), res_img.imageurl.url, class: "imagesStyle", data:{ lightbox: "content"})  if res_img %>
-              </div>
-              <div class="hidden-lg" >
-                <%= link_to(image_tag(res_img.imageurl.thumb400.url, alt:res_img.imageurl, class: "imagesStyle roundImageStyle"), res_img.imageurl.url, class: "imagesStyle")  if res_img %>
-              </div>
-          <% else %>
-            <%= image_tag("/loading_2.png", class: "imagesStyle") %>
-          <% end %>
+  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 userAvatarStyle-lg">
+    <% if !res_img.nil? %>
+        <div class="visible-lg" >
+          <%= link_to(image_tag(res_img.imageurl.thumb400.url, alt:res_img.imageurl, class: "imagesStyle roundImageStyle"), res_img.imageurl.url, class: "imagesStyle", data:{ lightbox: "content"})  if res_img %>
         </div>
+        <div class="hidden-lg" >
+          <%= link_to(image_tag(res_img.imageurl.thumb400.url, alt:res_img.imageurl, class: "imagesStyle roundImageStyle"), res_img.imageurl.url, class: "imagesStyle")  if res_img %>
+        </div>
+    <% else %>
+      <%= image_tag("/loading_2.png", class: "imagesStyle") %>
+    <% end %>
+  </div>
 
-        <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
-  	  <span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
+  <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
+  	<span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
 	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>
-          <span class="textAboutStyle"><%# (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
-          <span class="textAboutStyle"><%= get_queue_item_status(item) %></span><br>
-          <span class="textAboutStyle">
-            <% if policy(item).destroy? %>
-              <%= link_to "Remove", item, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
-            <% end %><br>
-            <% if policy(item).hidden? %>
-              <%= link_to "Hide", "/queue_images/#{item.id}/hidden", method: :put, data: { confirm: "It is good to share with the world. Are you sure you want to hide?" } %>
-            <% end %>
-            <% if policy(item).visible? %>
-              <%= link_to "Show", "/queue_images/#{item.id}/visible", method: :put %>
-            <% end %>
-
-          </span>
-          <% if item.status == ConstHelper::STATUS_IN_PROCESS %>
-            <div class="progressBar">
-              <span style="width: <%= item.progress.to_i%>%"></span>
-            </div>
-          <% end %>
-        </div>
-
+    <span class="textAboutStyle"><%# (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
+    <span class="textAboutStyle"><%= get_queue_item_status(item) %></span><br>
+    <span class="textAboutStyle">
+      <% if policy(item).destroy? %>
+        <%= link_to "Remove", item, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+      <% end %><br>
+      <% if policy(item).hidden? %>
+        <%= link_to "Hide", "/queue_images/#{item.id}/hidden", method: :put, data: { confirm: "It is good to share with the world. Are you sure you want to hide?" } %>
+      <% end %>
+      <% if policy(item).visible? %>
+        <%= link_to "Show", "/queue_images/#{item.id}/visible", method: :put %>
+      <% end %>
+    </span>
+    <% if item.status == ConstHelper::STATUS_IN_PROCESS %>
+      <div class="progressBar">
+        <span style="width: <%= item.progress.to_i%>%"></span>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
