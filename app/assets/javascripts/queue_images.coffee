@@ -38,7 +38,7 @@
           return
         )
         return
-      ), 3000)
+      ), 15000)
       intervals.push(interval)
       return
     $(document).on 'turbolinks:click', ->
