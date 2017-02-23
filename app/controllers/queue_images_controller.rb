@@ -72,7 +72,7 @@ class QueueImagesController < ApplicationController
     respond_to do |format|
       if save_status
         start_workers()
-        format.html { redirect_to queue_images_path, notice: 'Image successfully added to the queue for processing.' }
+        format.html { redirect_to queue_images_path, notice: 'Image successfully added to the queue for processing. None-premium images takes about 10 seconds to process, and premium images takes 20 seconds to 4 minutes depending on the image size. If you do not see results within that amount of time please be sure to REFRESH the page' }
         format.json { render :show, status: :created, location: @queue_image }
       else
         format.html { render :new }
