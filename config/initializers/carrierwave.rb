@@ -1,7 +1,6 @@
 # config/initializers/carrierwave.rb
 CarrierWave.configure do |config|
-  #if Rails.env.production?
-  if false
+  if Rails.env.production?
     config.fog_credentials = {
      # Configuration for Amazon S3
       :provider              => 'AWS',
