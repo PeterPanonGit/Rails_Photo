@@ -7,18 +7,18 @@
         </div>
       <% end %>
       <%= form_for(@queue_image) do |f| %>
-        <div class="field">
-          <div class="field-line">
+        <div>
+          <div>
             <%= f.label "Your image:" %>
             <%= f.file_field :content_image %>
           </div>
-          <div class="field-line">
+          <div>
             <b>Mixing level</b> <%= link_to "(what's this?)", mixing_level_path %><br>
             High<%= f.radio_button :mixing_level, 'high', checked: (@mixing_level == nil || @mixing_level == 'high') ? true : false, style: "width: 10%"%>
             Medium<%= f.radio_button :mixing_level, 'medium', checked: @mixing_level == 'medium' ? true : false, style: "width: 10%"%>
             Low<%= f.radio_button :mixing_level, 'low', checked: @mixing_level == 'low' ? true : false,style: "width: 10%"%>
           </div>
-          <div class="field-line">
+          <div>
             <b>Use Premium Service?</b> <%= link_to "(what's this?)", premium_path %><br>
             No<%= f.radio_button :is_premium, false, checked: (@is_premium == 'false' || @is_premium == nil) ? true : false, style: "width: 10%"%>
             Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
