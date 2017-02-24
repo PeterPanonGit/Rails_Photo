@@ -24,6 +24,21 @@
             Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
           </div>
         </div>
+	  <b>Choose style from below</b>
+	      <% if @tags %>
+		<div>
+		  <div class="wrapper-tags">
+		      <% tag_cloud(@tags, %w(tag-size-1 tag-size-2 tag-size-3 tag-size-4)) do |tag, css_class| %>
+			<% if @active && @active.tag_list.include?(tag.name) %>
+			  <%= link_to tag.name, "#", class: [css_class, 'active'], data: { tag: tag.name } %>
+			<% else %>
+			<%= link_to tag.name, "#", class: css_class, data: { tag: tag.name } %>
+			<% end %>
+		      <% end %>
+		      <div id="unselect-all">Unselect all</div>
+		  </div>
+		</div>
+	      <% end %>
         <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
         </div>

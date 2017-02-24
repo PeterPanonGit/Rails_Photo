@@ -1,21 +1,6 @@
 
 <div id="view_style">
-  <b>Choose style from below</b>
       <div class="overflow-y-scroll" id="styles">
-      <% if @tags %>
-        <div>
-          <div class="wrapper-tags">
-              <% tag_cloud(@tags, %w(tag-size-1 tag-size-2 tag-size-3 tag-size-4)) do |tag, css_class| %>
-                <% if @active && @active.tag_list.include?(tag.name) %>
-                  <%= link_to tag.name, "#", class: [css_class, 'active'], data: { tag: tag.name } %>
-                <% else %>
-                <%= link_to tag.name, "#", class: css_class, data: { tag: tag.name } %>
-                <% end %>
-              <% end %>
-              <div id="unselect-all">Unselect all</div>
-          </div>
-        </div>
-      <% end %>
         <%= render partial: "show_styles", locals: {styles: @styles} %>
       </div>
   <%= hidden_field_tag 'queue_image[view_style]', view_style %>
