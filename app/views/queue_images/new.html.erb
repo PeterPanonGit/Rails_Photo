@@ -24,10 +24,10 @@
             Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
           </div>
         </div>
-        <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
         <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
         </div>
+        <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
       <% end %>
       <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
     </div>

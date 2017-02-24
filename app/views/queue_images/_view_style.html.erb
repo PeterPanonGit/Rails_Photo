@@ -1,6 +1,7 @@
 
 <div id="view_style">
   <b>Choose style from below</b>
+      <div class="overflow-y-scroll" id="styles">
       <% if @tags %>
         <div>
           <div class="wrapper-tags">
@@ -15,7 +16,6 @@
           </div>
         </div>
       <% end %>
-      <div class="overflow-y-scroll" id="styles">
         <%= render partial: "show_styles", locals: {styles: @styles} %>
       </div>
   <%= hidden_field_tag 'queue_image[view_style]', view_style %>
