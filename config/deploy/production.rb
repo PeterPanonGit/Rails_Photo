@@ -11,7 +11,7 @@ server ENV['SERVER_URL'], user: "ubuntu", roles: %w{web app db}, :primary => tru
 role :resque_worker, ENV['SERVER_URL']
 role :resque_scheduler, ENV['SERVER_URL']
 
-set :workers, { "*" => 2 }
+set :workers, { "*" => 1 }
 set :resque_environment_task, true
 
 # role-based syntax

@@ -83,12 +83,12 @@ class ImageJob
     #log "get_server_name returns: #{server_name}"
     #return "get_server_name: false" if server_name.nil?
     #Upload images to workserver
-    @content_image_name = "content.#{item.content.image.to_s.split('.').last}"
+    @content_image_name = "content#{item.id}.#{item.content.image.to_s.split('.').last}"
     @style_model_name = "#{item.style.init}"
     log "content_image_name: #{@content_image_name}"
     log "style_model_name: #{@style_model_name}"
     #Run process
-    name = "output.jpg"
+    name = "output#{item.id}.jpg"
     log "rendering on #{@login_cmd}, #{@user_host} with output: #{@remote_neural_path}/output/output.jpg, using #{@style_model_name}"
     cp_cmd = ""
     content_image_path = ""
@@ -142,6 +142,7 @@ class ImageJob
       log "execute_image: #{errors}"
     end
     item.client.update({:lastprocess => Time.now})
+    `ssh #{@login_cmd} #{@user_host} "cd ~/#{@remote_neural_path} && rm #{name} && rm content/#{@content_image_name}"`
     #Change status to PROCESSED
     #item.status = @STATUS_PROCESSED
     #item.save
