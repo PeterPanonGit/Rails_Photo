@@ -7,14 +7,13 @@
     <div class="col-lg-6 col-lg-offset-3 ">
 
     <div class="row styleHeadRow-lg">
-      <div class="col-lg-1 clearLRpadding">
-        <%= image_tag(item.client.remote_avatar || item.client.avatar, class: "userAvatarImage-lg") if !item.client.nil? %>
-      </div>
-
-      <div class="col-lg-7 styleHeadCol2-lg">
-        <span class="textUserStyle-lg">
+      <div class="col-lg-8">
+        <div class="user-info">
+          <%= image_tag(item.client.remote_avatar || item.client.avatar, class: "userAvatarImage-lg") if !item.client.nil? %>
+          <span class="textUserStyle-lg">
             <%= truncate(item.client.name, :length => 25)  if !item.client.nil? %>
-         </span>
+          </span>
+        </div>
       </div>
 
       <div class="col-lg-3 styleHeadCol2-lg">
@@ -31,7 +30,11 @@
     </div>
 
     <div class="row">
-        mixing_level: <%= item.mixing_level %>, is_premium: <%= item.is_premium%>
+      <div class="col-xs-12">
+        <div class="image-info">
+          Mixing level: <%= item.mixing_level %>, Premium: <%= item.is_premium ? 'Yes' : 'No' %>
+        </div>
+      </div>
     </div>
 
     <div class="row">

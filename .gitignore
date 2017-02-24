@@ -4,6 +4,7 @@ log/*
 tmp/*
 old_cap/*
 styles.csv
+resque.pid
 
 # Ignore application configuration
 /config/application.yml

@@ -320,7 +320,7 @@ aside {
 
 ///////////////////////////////////////////////////////////////
 .headerStyle-lg{
-  margin-top: 5px;
+  margin-top: 9px;
 }
 
 
@@ -371,7 +371,6 @@ aside {
 
 
 .styleRow-lg {
-  width: 100%;
   //height: 400px;
   min-width: 400px;
   //margin: 0 auto;
@@ -383,11 +382,11 @@ aside {
 .styleHeadRow-lg{
   margin-top: 20px;
   padding-top: 0 px;
-  height: 48px;
+  height: 54px;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   //border-bottom: 1px solid lightgray;
-
+  padding: 4px 0;
 }
 
 .styleHeadCol2-lg{
@@ -404,15 +403,30 @@ aside {
 
 .userAvatarImage-lg{
   //height: 100%;
-  width: 97%;
+  width: 40px;
 }
 
 .textUserStyle-lg{
-  color: darkblue;
+  color: #337ab7;
   font-weight: bold;
 }
 
+*[class^="userAvatarImage"]{
+  border-radius: 60%;
+  margin-right: 12px;
+  display: inline-block;
+}
 
+.user-info{
+  margin-top: 3px;
+}
+
+.image-info{
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin: 4px 0;
+}
 
 
 ///////////////////////////////////////////////////////////////
@@ -517,6 +531,8 @@ aside {
   position: absolute;
   top: 0%;
   left: 0%;
+  padding-top: 8%;
+  text-align: center;
 }
 
 .likeTextStyle{
@@ -525,7 +541,17 @@ aside {
   margin-left: 0;
   text-align: center;
   width: 100%;
+}
 
+.liked .likeTextStyle{
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.likeStyle img{
+  width: 80%;
+  height: 80%;
 }
 
 @media (max-width: 1199px) {
@@ -756,4 +782,31 @@ aside {
 
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.avatar img{
+  border-radius: 60%;
+}
+
+.feed-buttons{
+  text-align: center;
+}
+
+.feed-buttons a{
+  display: inline-block;
+  padding: 0 5px 0 9px;
+  border-left: 1px solid #999;
+}
+
+.feed-buttons a:first-child{
+  border-left: 0;
+  padding-left: 0;
+}
+
+.field{
+  margin-top: 22px;
+}
+
+.field-line{
+  margin-bottom: 22px;
 }

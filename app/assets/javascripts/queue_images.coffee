@@ -3,24 +3,54 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @bindTagsFunctionality = ->
-  $('[class^=\'tag\'').click ->
+  $('[class^=\'tag\'').click (e) ->
+    e.preventDefault()
     $(this).toggleClass 'active'
-    return
-  $('#tags_form input').change ->
-    $('#tags_form').submit()
-    return
+    applyTags()
   $('#unselect-all').click ->
-    if $('#tags_form input:checked').length > 0
-      $('[class^=\'tag\'').removeClass('active')
-      if $('#tags_form input:checked').length < $('#tags_form input').length - 1
-        $('#tags_form input').prop('checked', false)
-        $('#tags_form').submit()
-      else
-        $('#tags_form input').prop('checked', false)
+    $('.wrapper-tags a.active').toggleClass('active')
+    $("#styles").children().show()
+  applyTags()
+  return
+
+@applyTags = ->
+  $("#styles").children().hide()
+  tags = new Array()
+  $('.wrapper-tags a.active').each (i) ->
+    tags.push $(@).data('tag').split(' ').join('-')
     return
+  tags = tags.join(".")
+  if tags.length > 0
+    $("#styles").find("." + tags).show()
+  else
+    $("#styles").children().show()
+  return
+
+@loadProcessedImage = ->
+  loadingElements = $(".queue-image-item[data-loading]")
+  if loadingElements.length > 0
+    intervals = new Array()
+    loadingElements.each (i) ->
+      elem = @
+      interval = setInterval((->
+        $.get('/queue_images/' + $(elem).data('item-id') + '/loaded').success((data) ->
+          clearInterval interval
+          return
+        )
+        return
+      ), 15000)
+      intervals.push(interval)
+      return
+    $(document).on 'turbolinks:click', ->
+      intervals.forEach (elem) ->
+        clearInterval elem
+        return
+      return
   return
 
 $(document).on 'turbolinks:load', bindTagsFunctionality
+$(document).on 'turbolinks:load', loadProcessedImage
+###
 $(document).on 'turbolinks:load', ->
   screen = $(window).height()
   header = $(".navbar").outerHeight(true)
@@ -29,3 +59,4 @@ $(document).on 'turbolinks:load', ->
   pics = $(".overflow-y-scroll").outerHeight(true)
   $(".overflow-y-scroll").css("max-height", screen - header - footer - (form - pics) + "px")
   return
+###

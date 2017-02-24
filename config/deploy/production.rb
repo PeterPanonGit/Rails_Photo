@@ -8,10 +8,9 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server ENV['SERVER_URL'], user: "ubuntu", roles: %w{web app db}, :primary => true
 
-
-
 role :resque_worker, ENV['SERVER_URL']
 role :resque_scheduler, ENV['SERVER_URL']
+
 set :workers, { "*" => 2 }
 set :resque_environment_task, true
 
