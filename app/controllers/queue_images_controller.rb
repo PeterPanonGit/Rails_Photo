@@ -29,15 +29,15 @@ class QueueImagesController < ApplicationController
   def new
     @non_premium_image_count = current_client.non_premium_image_count
     @maximum_reached = current_client.reached_maximum?
-    @queue_images = current_client.queue_images
+    @my_queue_images = current_client.queue_images
     @queue_image = QueueImage.new
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)
     @active = Style.find(params[:style]) if params[:style]
     @mixing_level = params[:mixing_level]
     @is_premium = params[:is_premium]
-    if @queue_images
-      @my_styles = @queue_images.map { |qi| qi.style }
+    if @my_queue_images
+      @my_styles = @my_queue_images.map { |qi| qi.style }
       @my_styles.uniq!
     end
     case params[:view_style]
@@ -165,8 +165,13 @@ class QueueImagesController < ApplicationController
     queue_params = queue_image_params
     save_status = false
     QueueImage.transaction do
-      ci = Content.new(image: queue_params[:content_image])
-      save_status = ci.save
+      if queue_params[:id]
+        ci = QueueImage.find(queue_params[:id]).content
+        save_status = true if ci
+      else
+        ci = Content.new(image: queue_params[:content_image])
+        save_status = ci.save
+      end
       if queue_params[:view_style].blank? || queue_params[:view_style] == VIEW_STYLE_LOAD_FILE.to_s
         si = Style.new(image: queue_params[:style_image], init: queue_params[:init])
         si.tag_list = params[:tags].join(", ")
@@ -200,7 +205,7 @@ class QueueImagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def queue_image_params
-    params.require(:queue_image).permit(:content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
+    params.require(:queue_image).permit(:id, :content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
   end
 
   def valid_queue_image_params

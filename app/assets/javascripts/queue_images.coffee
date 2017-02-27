@@ -55,9 +55,17 @@
   $('input[name="queue_image[style_id]"').val id
   return
 
+@markQueueImage = (e) ->
+  id = $(@).data 'my-image-id'
+  $('.my-image-block').removeClass 'active'
+  $(@).addClass 'active'
+  $('input[name="queue_image[id]"').val id
+  return
+
 $(document).on 'turbolinks:load', bindTagsFunctionality
 $(document).on 'turbolinks:load', loadProcessedImage
 $(document).on 'click', '.style-block', markStyle
+$(document).on 'click', '.my-image-block', markQueueImage
 ###
 $(document).on 'turbolinks:load', ->
   screen = $(window).height()

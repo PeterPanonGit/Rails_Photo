@@ -8,7 +8,7 @@
       <% end %>
       <%= form_for(@queue_image) do |f| %>
         <div class="field">
-          <% if @queue_images %>
+          <% if @my_queue_images %>
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#upload-image">Upload image</a></li>
               <li><a data-toggle="tab" href="#my-images">My images</a></li>
@@ -20,10 +20,12 @@
               <%= f.file_field :content_image %>
             </div>
             <div id="my-images" class="tab-pane fade">
-              <% if @queue_images %>
-                <% @queue_images.each do |queue_image| %>
+              <% if @my_queue_images %>
+                <% @my_queue_images.each do |my_queue_image| %>
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <%= image_tag queue_image.content.image.thumb200.url %>
+                    <div class="my-image-block" data-my-image-id="<%= my_queue_image.id %>">
+                      <%= image_tag my_queue_image.content.image.thumb200.url %>
+                    </div>
                   </div>
                 <% end %>
               <% end %>
@@ -79,6 +81,7 @@
         </div>
         <%= hidden_field_tag 'queue_image[view_style]', @view_style %>
         <%= hidden_field_tag 'queue_image[style_id]', @active ? @active.id : '', id: 'queue_image_style_id' %>
+        <%= hidden_field_tag 'queue_image[id]' %>
       <% end %>
       <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
     </div>
