@@ -29,12 +29,17 @@ class QueueImagesController < ApplicationController
   def new
     @non_premium_image_count = current_client.non_premium_image_count
     @maximum_reached = current_client.reached_maximum?
+    @queue_images = current_client.queue_images
     @queue_image = QueueImage.new
     @styles = Style.where(status: ConstHelper::GALLERY_STYLE_IMAGE).order('use_counter desc')
     @tags = @styles.tag_counts_on(:tags)
     @active = Style.find(params[:style]) if params[:style]
     @mixing_level = params[:mixing_level]
     @is_premium = params[:is_premium]
+    if @queue_images
+      @my_styles = @queue_images.map { |qi| qi.style }
+      @my_styles.uniq!
+    end
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
       when '1' then @view_style = VIEW_STYLE_FROM_LIST
@@ -156,67 +161,68 @@ class QueueImagesController < ApplicationController
 
   private
 
-    def create_queue
-      queue_params = queue_image_params()
-      save_status = false
-      QueueImage.transaction do
-        ci = Content.new(image: queue_params[:content_image])
-        save_status = ci.save
-        if queue_params[:view_style].blank? || queue_params[:view_style] == VIEW_STYLE_LOAD_FILE.to_s
-          si = Style.new(image: queue_params[:style_image], init: queue_params[:init])
-          si.tag_list = params[:tags].join(", ")
-          save_status &= si.save
-        elsif queue_params[:view_style] == VIEW_STYLE_FROM_LIST.to_s
-          si = Style.find(queue_params[:style_id])
-        end
-        @queue_image = current_client.queue_images.new()
-        @queue_image.content_id = ci.id
-        @queue_image.style_id = si.id
-        @queue_image.status = STATUS_NOT_PROCESSED
-        @queue_image.end_status = STATUS_PROCESSED
-	@queue_image.mixing_level = queue_params[:mixing_level]
-	@queue_image.is_premium = queue_params[:is_premium]
-        if queue_params[:end_status].nil?
-          @queue_image.end_status = STATUS_PROCESSED
-        else
-          @queue_image.end_status = queue_params[:end_status].to_i
-        end
-        save_status &= @queue_image.save
+  def create_queue
+    queue_params = queue_image_params
+    save_status = false
+    QueueImage.transaction do
+      ci = Content.new(image: queue_params[:content_image])
+      save_status = ci.save
+      if queue_params[:view_style].blank? || queue_params[:view_style] == VIEW_STYLE_LOAD_FILE.to_s
+        si = Style.new(image: queue_params[:style_image], init: queue_params[:init])
+        si.tag_list = params[:tags].join(", ")
+        save_status &= si.save
+      elsif queue_params[:view_style] == VIEW_STYLE_FROM_LIST.to_s
+        si = Style.find(queue_params[:style_id])
       end
-      save_status
+      byebug
+      @queue_image = current_client.queue_images.new()
+      @queue_image.content_id = ci.id
+      @queue_image.style_id = si.id
+      @queue_image.status = STATUS_NOT_PROCESSED
+      @queue_image.end_status = STATUS_PROCESSED
+      @queue_image.mixing_level = queue_params[:mixing_level]
+      @queue_image.is_premium = queue_params[:is_premium]
+      if queue_params[:end_status].nil?
+        @queue_image.end_status = STATUS_PROCESSED
+      else
+        @queue_image.end_status = queue_params[:end_status].to_i
+      end
+      save_status &= @queue_image.save
     end
+    save_status
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_queue_image
-      @queue_image = QueueImage.find(params[:id])
-      authorize @queue_image
+  # Use callbacks to share common setup or constraints between actions.
+  def set_queue_image
+    @queue_image = QueueImage.find(params[:id])
+    authorize @queue_image
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def queue_image_params
+    params.require(:queue_image).permit(:content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
+  end
+
+  def valid_queue_image_params
+    par = params[:queue_image][:content_image]
+    if par.nil?
+      flash[:alert] = "Please add an image for rendering"
+      return false
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def queue_image_params
-      params.require(:queue_image).permit(:content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
-    end
-
-    def valid_queue_image_params
-      par = params[:queue_image][:content_image]
-      if par.nil?
-        flash[:alert] = "Please add an image for rendering"
+    par = params[:queue_image][:view_style]
+    if par.nil? || par == VIEW_STYLE_LOAD_FILE.to_s
+      if params[:queue_image][:style_image].nil?
+        flash[:alert] = "Please choose add a style"
         return false
       end
-      par = params[:queue_image][:view_style]
-      if par.nil? || par == VIEW_STYLE_LOAD_FILE.to_s
-        if params[:queue_image][:style_image].nil?
-          flash[:alert] = "Please choose add a style"
-          return false
-        end
-      elsif par == VIEW_STYLE_FROM_LIST.to_s
-        if params[:queue_image][:style_id].nil?
-          flash[:alert] = "Please select a style from the Style Library"
-          return false
-        end
+    elsif par == VIEW_STYLE_FROM_LIST.to_s
+      if params[:queue_image][:style_id].nil?
+        flash[:alert] = "Please select a style from the Style Library"
+        return false
       end
-
-      true
     end
+
+    true
+  end
 
 end

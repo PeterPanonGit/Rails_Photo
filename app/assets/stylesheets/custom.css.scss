@@ -676,7 +676,7 @@ aside {
 
 }
 
-#marked{
+.marked{
   position: absolute;
   top: 0%;
   left: 0%;
@@ -813,4 +813,9 @@ aside {
 
 .field-line a{
   float: right;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }

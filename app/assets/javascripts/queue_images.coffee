@@ -8,22 +8,22 @@
     $(this).toggleClass 'active'
     applyTags()
   $('#unselect-all').click ->
-    $('.wrapper-tags a.active').toggleClass('active')
-    $("#styles").children().show()
+    $('.wrapper-tags .active').toggleClass('active')
+    $("#all-styles .styles").children().show()
   applyTags()
   return
 
 @applyTags = ->
-  $("#styles").children().hide()
+  $("#all-styles .styles").children().hide()
   tags = new Array()
-  $('.wrapper-tags a.active').each (i) ->
+  $('.wrapper-tags .active').each (i) ->
     tags.push $(@).data('tag').split(' ').join('-')
     return
   tags = tags.join(".")
   if tags.length > 0
-    $("#styles").find("." + tags).show()
+    $("#all-styles .styles").find("." + tags).show()
   else
-    $("#styles").children().show()
+    $("#all-styles .styles").children().show()
   return
 
 @loadProcessedImage = ->
@@ -48,8 +48,16 @@
       return
   return
 
+@markStyle = (e) ->
+  id = $(@).data 'style-id'
+  $('[class^="mark_style_"]').html ''
+  $('.mark_style_' + id).html '<div class="marked"><img src="/check.png" class="imagesStyle"</div>'
+  $('input[name="queue_image[style_id]"').val id
+  return
+
 $(document).on 'turbolinks:load', bindTagsFunctionality
 $(document).on 'turbolinks:load', loadProcessedImage
+$(document).on 'click', '.style-block', markStyle
 ###
 $(document).on 'turbolinks:load', ->
   screen = $(window).height()

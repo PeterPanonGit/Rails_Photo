@@ -58,3 +58,18 @@
 #styles{
 	height: 361px;
 }
+
+.tab-pane{
+  overflow: hidden;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 22px;
+}
+
+.tab-pane img{
+	border-radius: 4px;
+}
+
+.style-block{
+	cursor: pointer;
+}
