@@ -7,16 +7,6 @@ class StylesController < ApplicationController
     current_client
   end
 
-  def mark
-    @mark_stale_id = nil
-    if !params[:id].blank?
-      @mark_style_id = params[:id]
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
   # GET /styles
   # GET /styles.json
   def index

@@ -39,6 +39,8 @@ class QueueImagesController < ApplicationController
     if @my_queue_images
       @my_styles = @my_queue_images.map { |qi| qi.style }
       @my_styles.uniq!
+      @my_pictures = @my_queue_images.map { |qi| qi.content }
+      @my_pictures.uniq!
     end
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
@@ -165,8 +167,8 @@ class QueueImagesController < ApplicationController
     queue_params = queue_image_params
     save_status = false
     QueueImage.transaction do
-      if queue_params[:id]
-        ci = QueueImage.find(queue_params[:id]).content
+      if queue_params[:content_id] && queue_params[:content_id].length > 0
+        ci = Content.find(queue_params[:content_id])
         save_status = true if ci
       else
         ci = Content.new(image: queue_params[:content_image])
@@ -179,7 +181,6 @@ class QueueImagesController < ApplicationController
       elsif queue_params[:view_style] == VIEW_STYLE_FROM_LIST.to_s
         si = Style.find(queue_params[:style_id])
       end
-      byebug
       @queue_image = current_client.queue_images.new()
       @queue_image.content_id = ci.id
       @queue_image.style_id = si.id
@@ -194,6 +195,7 @@ class QueueImagesController < ApplicationController
       end
       save_status &= @queue_image.save
     end
+    byebug
     save_status
   end
 
@@ -205,13 +207,12 @@ class QueueImagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def queue_image_params
-    params.require(:queue_image).permit(:id, :content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
+    params.require(:queue_image).permit(:content_id, :content_image, :mixing_level, :is_premium, :view_style , :style_image, :style_id, :init_str, :status, :result, :init, :end_status)
   end
 
   def valid_queue_image_params
-    par = params[:queue_image][:content_image]
-    if par.nil?
-      flash[:alert] = "Please add an image for rendering"
+    if params[:queue_image][:content_image].nil? && params[:queue_image][:content_id].nil?
+      flash[:alert] = "Please add or select an image for rendering"
       return false
     end
     par = params[:queue_image][:view_style]

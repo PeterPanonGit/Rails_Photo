@@ -59,7 +59,7 @@
   id = $(@).data 'my-image-id'
   $('.my-image-block').removeClass 'active'
   $(@).addClass 'active'
-  $('input[name="queue_image[id]"').val id
+  $('input[name="queue_image[content_id]"').val id
   return
 
 $(document).on 'turbolinks:load', bindTagsFunctionality
