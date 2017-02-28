@@ -55,15 +55,15 @@
 .tag-size-2 { padding: 6px; }
 .tag-size-1 { padding: 4px; }
 
-#styles{
-	height: 347px;
+.styles{
+	max-height: 347px;
 }
 
 .tab-pane{
   overflow: hidden;
-  padding: 12px 0;
+  padding: 6px 0 0;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 22px;
+  margin-bottom: 4px;
 }
 
 .style-block{
@@ -74,8 +74,18 @@
 	border-radius: 4px;
 	overflow: hidden;
 	cursor: pointer;
+	border: 2px solid white;
 }
 
 .my-image-block.active{
-	box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+	border: 2px solid #90EE90;
+}
+
+.my-image-block{
+	margin-bottom: 6px;
+}
+
+#my-images{
+	max-height: 129px;
 }

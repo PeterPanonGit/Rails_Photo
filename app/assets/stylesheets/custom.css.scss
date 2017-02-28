@@ -783,7 +783,7 @@ aside {
 }
 
 .overflow-y-scroll {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 .avatar img{
@@ -810,7 +810,7 @@ aside {
 }
 
 .field-line{
-  margin-bottom: 22px;
+  margin-bottom: 2px;
 }
 
 .field-line a{
