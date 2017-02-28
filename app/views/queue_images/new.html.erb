@@ -19,7 +19,7 @@
               <%= f.label "Your image:" %>
               <%= f.file_field :content_image %>
             </div>
-            <div id="my-images" class="tab-pane fade">
+            <div id="my-images" class="tab-pane fade overflow-y-scroll">
               <% if @my_pictures %>
                 <% @my_pictures.each do |my_picture| %>
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
