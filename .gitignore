@@ -5,6 +5,7 @@ tmp/*
 old_cap/*
 styles.csv
 resque.pid
+.byebug_history
 
 # Ignore application configuration
 /config/application.yml

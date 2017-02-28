@@ -56,5 +56,26 @@
 .tag-size-1 { padding: 4px; }
 
 #styles{
-	height: 361px;
+	height: 347px;
+}
+
+.tab-pane{
+  overflow: hidden;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 22px;
+}
+
+.style-block{
+	cursor: pointer;
+}
+
+.my-image-block{
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.my-image-block.active{
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }

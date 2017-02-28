@@ -7,42 +7,81 @@
         </div>
       <% end %>
       <%= form_for(@queue_image) do |f| %>
-        <div>
-          <div>
-            <%= f.label "Your image:" %>
-            <%= f.file_field :content_image %>
+        <div class="field">
+          <% if @my_queue_images %>
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#upload-image">Upload image</a></li>
+              <li><a data-toggle="tab" href="#my-images">My images</a></li>
+            </ul>
+          <% end %>
+          <div class="tab-content">
+            <div id="upload-image" class="tab-pane fade in active">
+              <%= f.label "Your image:" %>
+              <%= f.file_field :content_image %>
+            </div>
+            <div id="my-images" class="tab-pane fade">
+              <% if @my_pictures %>
+                <% @my_pictures.each do |my_picture| %>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="my-image-block" data-my-image-id="<%= my_picture.id %>">
+                      <%= image_tag my_picture.image.thumb200.url %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <div>
+          <div class="field-line">
             <b>Mixing level</b> <%= link_to "(what's this?)", mixing_level_path %><br>
             High<%= f.radio_button :mixing_level, 'high', checked: (@mixing_level == nil || @mixing_level == 'high') ? true : false, style: "width: 10%"%>
             Medium<%= f.radio_button :mixing_level, 'medium', checked: @mixing_level == 'medium' ? true : false, style: "width: 10%"%>
             Low<%= f.radio_button :mixing_level, 'low', checked: @mixing_level == 'low' ? true : false,style: "width: 10%"%>
           </div>
-          <div>
+          <div class="field-line">
             <b>Use Premium Service?</b> <%= link_to "(what's this?)", premium_path %><br>
             No<%= f.radio_button :is_premium, false, checked: (@is_premium == 'false' || @is_premium == nil) ? true : false, style: "width: 10%"%>
             Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
           </div>
         </div>
-	  <b>Choose style from below</b>
-	      <% if @tags %>
-		<div>
-		  <div class="wrapper-tags">
-		      <% tag_cloud(@tags, %w(tag-size-1 tag-size-2 tag-size-3 tag-size-4)) do |tag, css_class| %>
-			<% if @active && @active.tag_list.include?(tag.name) %>
-			  <%= link_to tag.name, "#", class: [css_class, 'active'], data: { tag: tag.name.downcase } %>
-			<% else %>
-			<%= link_to tag.name, "#", class: css_class, data: { tag: tag.name.downcase } %>
-			<% end %>
-		      <% end %>
-		      <div id="unselect-all">Unselect all</div>
-		  </div>
-		</div>
-	      <% end %>
+        <b>Choose style from below</b>
         <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
         </div>
-        <%= render :partial => "view_style", :locals => {view_style: @view_style, :queue_image => @queue_image} %>
+        <% if @my_styles %>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#choose-style">Choose style</a></li>
+            <li><a data-toggle="tab" href="#my-styles">My styles</a></li>
+          </ul>
+        <% end %>
+        <div class="tab-content">
+          <div id="choose-style" class="tab-pane fade in active">
+            <% if @tags %>
+              <div>
+                <div class="wrapper-tags">
+                  <% tag_cloud(@tags, %w(tag-size-1 tag-size-2 tag-size-3 tag-size-4)) do |tag, css_class| %>
+                    <% if @active && @active.tag_list.include?(tag.name) %>
+                      <%= link_to tag.name, "#", class: [css_class, 'active'], data: { tag: tag.name.downcase } %>
+                    <% else %>
+                      <%= link_to tag.name, "#", class: css_class, data: { tag: tag.name.downcase } %>
+                    <% end %>
+                  <% end %>
+                  <div id="unselect-all">Unselect all</div>
+                </div>
+              </div>
+            <% end %>
+            <div id="all-styles">
+              <%= render partial: "show_styles", locals: {styles: @styles} %>
+            </div>
+          </div>
+          <div id="my-styles" class="tab-pane fade">
+            <% if @my_styles %>
+              <%= render partial: "show_styles", locals: {styles: @my_styles} %>
+            <% end %>
+          </div>
+        </div>
+        <%= hidden_field_tag 'queue_image[view_style]', @view_style %>
+        <%= hidden_field_tag 'queue_image[style_id]', @active ? @active.id : '', id: 'queue_image_style_id' %>
+        <%= hidden_field_tag 'queue_image[content_id]' %>
       <% end %>
       <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
     </div>

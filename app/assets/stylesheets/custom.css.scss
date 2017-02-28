@@ -415,6 +415,8 @@ aside {
   border-radius: 60%;
   margin-right: 12px;
   display: inline-block;
+  width: 40px;
+  height: 40px;
 }
 
 .user-info{
@@ -676,7 +678,7 @@ aside {
 
 }
 
-#marked{
+.marked{
   position: absolute;
   top: 0%;
   left: 0%;
@@ -809,4 +811,13 @@ aside {
 
 .field-line{
   margin-bottom: 22px;
+}
+
+.field-line a{
+  float: right;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
