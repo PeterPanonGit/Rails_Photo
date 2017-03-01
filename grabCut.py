@@ -114,7 +114,7 @@ if __name__ == '__main__':
     img = cv2.imread(filename)
     input_shape = img.shape
     print("input_shape: ", input_shape)
-    os.system("convert -resize '1000x1000' " + filename + " grabcut_input_scaled.jpg")
+    os.system("convert -resize '700x700' " + filename + " grabcut_input_scaled.jpg")
     img = cv2.imread("grabcut_input_scaled.jpg")
     img2 = img.copy()                               # a copy of original image
     mask = np.zeros(img.shape[:2],dtype = np.uint8) # mask initialized to PR_BG
