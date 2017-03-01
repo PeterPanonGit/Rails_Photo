@@ -39,8 +39,10 @@ class QueueImagesController < ApplicationController
     if @my_queue_images
       @my_styles = @my_queue_images.map { |qi| qi.style }
       @my_styles.uniq!
+      @my_styles.compact!
       @my_pictures = @my_queue_images.map { |qi| qi.content }
       @my_pictures.uniq!
+      @my_pictures.compact!
     end
     case params[:view_style]
       when '0' then @view_style = VIEW_STYLE_LOAD_FILE
