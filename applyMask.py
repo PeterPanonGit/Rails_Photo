@@ -3,10 +3,10 @@ import numpy as np
 
 if __name__ == "__main__":
     if len(sys.argv) == 4:
-        filename = sys.argv[1]
-        maskname = sys.argv[2]
-	stylized = sys.argv[3]
-	print "filename: ", filename, "maskname: ", maskname, "stylized: ", stylized
+	stylized = sys.argv[1]
+        filename = sys.argv[2]
+        maskname = sys.argv[3]
+	print "foreground: ", filename, "maskname: ", maskname, "background: ", stylized
     else:
         print("Correct Usage: python applyMask.py <filename> <maskname> <stylized>\n")
 
