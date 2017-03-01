@@ -195,8 +195,8 @@ class QueueImagesController < ApplicationController
       end
       save_status &= @queue_image.save
     end
-    byebug
-    save_status
+    #byebug
+    #save_status
   end
 
   # Use callbacks to share common setup or constraints between actions.
