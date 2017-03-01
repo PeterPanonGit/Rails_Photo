@@ -89,7 +89,7 @@ class ImageJob
     log "style_model_name: #{@style_model_name}"
     #Run process
     name = "output#{item.id}.jpg"
-    log "rendering on #{@login_cmd}, #{@user_host} with output: #{@remote_neural_path}/output/output.jpg, using #{@style_model_name}"
+    log "rendering on #{@login_cmd}, #{@user_host} with output: #{@remote_neural_path}/#{name}, using #{@style_model_name}"
     cp_cmd = ""
     content_image_path = ""
     if Rails.env.production?
@@ -117,6 +117,7 @@ class ImageJob
       `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && #{cp_cmd} && convert content/#{@content_image_name} -resize '#{size_limit}x#{size_limit}>' content/#{@content_image_name} && python evaluate.py --checkpoint=models/#{@style_model_name}/#{style_level}/fns.ckpt --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
     else
       `#{cp_cmd}`
+      log "copy finished, starting processing image"
       `ssh #{@login_cmd} #{@user_host} "source ~/tensorflow/bin/activate && cd ~/#{@remote_neural_path} && if [ -f '#{name}' ]; then rm #{name}; fi && convert content/#{@content_image_name} -resize '#{size_limit}x#{size_limit}>' content/#{@content_image_name} && python evaluate.py --checkpoint=models/#{@style_model_name}/#{style_level}/fns.ckpt --in-path=content/#{@content_image_name} --out-path=#{name} > out.log"`
     end
     log "send_start_process_comm:"
