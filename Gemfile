@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+# embed youtube videos
+gem 'youtube_addy'
+
 #gem 'devise', '~> 3.5.2'
 
 #gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
