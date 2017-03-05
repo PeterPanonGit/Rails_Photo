@@ -32,6 +32,9 @@
   </div>
 
   <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
+    <% if current_client.provider == 'facebook' %>
+      <%= link_to 'Post to Facebook', post_facebook_queue_images_path(item), remote: true %>
+    <% end %>
   	<span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
 	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>
     <span class="textAboutStyle"><%# (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>

@@ -1,7 +1,7 @@
 class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
-  before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image]
+  before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
   after_action :verify_authorized, except: [:tag, :loaded]
 
   def pundit_user
@@ -15,7 +15,8 @@ class QueueImagesController < ApplicationController
     #@items= policy_scope(current_client.queue_images).order('created_at DESC').paginate(:page => params[:page], :per_page => 6)
     authorize QueueImage
     @items = policy_scope(current_client.queue_images).order('created_at DESC').paginate(:page => params[:page], :per_page => 6)
-
+    omni = current_client.omniauth_auth
+    @tok = omni['credentials']['token']
     #@items= QueueImage.where("status > 9").order('ftime DESC').paginate(:page => params[:page], :per_page => 6)
   end
 
@@ -161,6 +162,10 @@ class QueueImagesController < ApplicationController
         format.js { render 'loaded', status: 501 }
       end
     end
+  end
+
+  def post_facebook
+
   end
 
   private
