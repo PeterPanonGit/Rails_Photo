@@ -27,6 +27,7 @@ class Client < ActiveRecord::Base
     if @client
       @client.name = auth.info.name
       @client.remote_avatar = get_avatar auth.info.image
+      @client.token = auth['credentials']['token']
       @client.save(validate: false)
     else
       @client = Client.new(
@@ -36,6 +37,7 @@ class Client < ActiveRecord::Base
           encrypted_password: Devise.friendly_token[0,20],
           name: auth.info.name,
           remote_avatar: get_avatar(auth.info.image),
+          token: auth['credentials']['token']
         )
       @client.save(validate: false)
     end
