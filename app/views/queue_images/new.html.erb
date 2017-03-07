@@ -38,9 +38,9 @@
             Low<%= f.radio_button :mixing_level, 'low', checked: @mixing_level == 'low' ? true : false,style: "width: 10%"%>
           </div>
           <div class="field-line">
-            <b>Use Premium Service?</b> <%= link_to "(what's this?)", premium_path %><br>
-            No<%= f.radio_button :is_premium, false, checked: (@is_premium == 'false' || @is_premium == nil) ? true : false, style: "width: 10%"%>
-            Yes<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
+            <b>Image resolution</b> <%= link_to "(what's this?)", premium_path %><br>
+            Low (~20 seconds)<%= f.radio_button :is_premium, false, checked: (@is_premium == 'false' || @is_premium == nil) ? true : false, style: "width: 10%"%>
+            High (1-4 minutes)<%= f.radio_button :is_premium, true, checked: @is_premium == 'true' ? true : false, style: "width: 10%"%>
           </div>
         </div>
         <b>Choose style from below</b>
