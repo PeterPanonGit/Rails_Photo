@@ -39,6 +39,8 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.1.2)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.4)
@@ -255,6 +257,9 @@ GEM
     json (1.8.6)
     jwt (1.5.6)
     kgio (2.11.0)
+    koala (2.5.0)
+      addressable
+      faraday
     lightbox2-rails (2.8.2.1)
       railties (>= 3.1)
     loofah (2.0.3)
@@ -304,6 +309,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    public_suffix (2.0.5)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (1.6.5)
@@ -438,6 +444,7 @@ DEPENDENCIES
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
+  koala (~> 2.4)
   lightbox2-rails
   mini_magick
   mysql2 (~> 0.3.18)

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   match '/queue_images/:id/like', to: 'queue_images#like_image', via: 'put'
   match '/queue_images/:id/unlike', to: 'queue_images#unlike_image', via: 'put'
   get '/queue_images/:id/loaded', to: 'queue_images#loaded'
+  post '/queue_images/:id/post_facebook' => 'queue_images#post_facebook', as: :post_facebook_queue_images
   get 'static_pages/lenta', as: 'user_root'
 
   match '/about', to: 'static_pages#about', via: 'get'

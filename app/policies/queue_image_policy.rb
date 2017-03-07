@@ -63,4 +63,8 @@ class QueueImagePolicy < ApplicationPolicy
     !user.nil? && user.admin?
   end
 
+  def post_facebook?
+    !user.nil?
+  end
+
 end

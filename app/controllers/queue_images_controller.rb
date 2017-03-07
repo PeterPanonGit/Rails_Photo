@@ -1,7 +1,7 @@
 class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
-  before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image]
+  before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
   after_action :verify_authorized, except: [:tag, :loaded]
 
   def pundit_user
@@ -15,7 +15,6 @@ class QueueImagesController < ApplicationController
     #@items= policy_scope(current_client.queue_images).order('created_at DESC').paginate(:page => params[:page], :per_page => 6)
     authorize QueueImage
     @items = policy_scope(current_client.queue_images).order('created_at DESC').paginate(:page => params[:page], :per_page => 6)
-
     #@items= QueueImage.where("status > 9").order('ftime DESC').paginate(:page => params[:page], :per_page => 6)
   end
 
@@ -160,6 +159,18 @@ class QueueImagesController < ApplicationController
       else
         format.js { render 'loaded', status: 501 }
       end
+    end
+  end
+
+  def post_facebook
+    @graph = Koala::Facebook::API.new(current_client.token)
+    photo = @queue_image.result_image.imageurl.thumb400.url
+    if photo
+      @graph.put_picture("#{request.protocol}#{request.host_with_port}#{photo}")
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

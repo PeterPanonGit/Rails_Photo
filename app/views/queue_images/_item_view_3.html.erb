@@ -1,7 +1,7 @@
 <% debug = false %>
 
-<%item = item_view_3 %>
-<%res_img = item.result_image %>
+<% item = item_view_3 %>
+<% res_img = item.result_image %>
 
 <div class="row styleRow2-lg queue-image-item" data-item-id="<%= item.id %>" <%= 'data-loading' unless item.result_image %>>
   <div class="visible-lg  col-lg-2 col-lg-offset-2 userAvatarStyle-lg" >
@@ -32,6 +32,9 @@
   </div>
 
   <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
+    <% if res_img && current_client.provider == 'facebook' %>
+      <%= link_to 'Post to Facebook', post_facebook_queue_images_path(item), remote: true, method: :post, class: 'post_facebook' %>
+    <% end %>
   	<span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
 	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>
     <span class="textAboutStyle"><%# (item.created_at+10800).strftime("%d.%m.%Y %H:%M:%S")%></span><br>
