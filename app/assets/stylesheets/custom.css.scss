@@ -72,6 +72,10 @@ p {
   line-height: 1.7em;
 }
 
+a{
+  cursor: pointer;
+}
+
 /* header */
 #logo-lg {
   float: left;
@@ -820,4 +824,28 @@ aside {
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+#credits{
+  float: right;
+  color: white;
+  font-size: 11px;
+}
+
+.tip{
+  position: absolute;
+  text-align: center;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #337ab7;
+  color: black;
+  padding: 10px 10px 0;
+  display: none;
+}
+.tip .btn{
+  display: block;
+}
+
+#credits-tip{
+  float: none;
 }

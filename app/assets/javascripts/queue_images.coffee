@@ -2,6 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@showTip = ->
+  $(".tip[data-tip=1]").slideDown()
+  return
+
+@toggleTip = (e) ->
+  num = parseInt($(@).parent().data('tip')) + 1
+  $(@).parent().slideUp()
+  $(".tip[data-tip=" + num + "]").slideDown()
+  return
+
 @bindTagsFunctionality = ->
   $('[class^=\'tag\'').click (e) ->
     e.preventDefault()
@@ -66,3 +76,6 @@ $(document).on 'turbolinks:load', bindTagsFunctionality
 $(document).on 'turbolinks:load', loadProcessedImage
 $(document).on 'click', '.style-block', markStyle
 $(document).on 'click', '.my-image-block', markQueueImage
+
+$(document).on 'click', '#credits-tip', showTip
+$(document).on 'click', '.tip .btn', toggleTip

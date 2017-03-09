@@ -33,7 +33,9 @@
 
   <div class=" col-lg-2 col-md-2 col-sm-3 col-xs-3 ">
     <% if res_img && current_client.provider == 'facebook' %>
-      <%= link_to 'Post to Facebook', post_facebook_queue_images_path(item), remote: true, method: :post, class: 'post_facebook' %>
+      <%= link_to post_facebook_queue_images_path(item), remote: true, method: :post, class: 'post_facebook' do %>
+        <%= image_tag '/fb.jpg' %>Share on Facebook
+      <% end %>
     <% end %>
   	<span class="textAboutStyle">mixing_level: <%= item.mixing_level %></span><br>
 	  <span class="textAboutStyle">is_premium: <%= item.is_premium %></span><br>

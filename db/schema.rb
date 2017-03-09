@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305172624) do
+ActiveRecord::Schema.define(version: 20170308121017) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170305172624) do
     t.string   "uid",                    limit: 255
     t.string   "remote_avatar",          limit: 255
     t.string   "token",                  limit: 255
+    t.integer  "credits",                limit: 4,   default: 5
   end
 
   add_index "clients", ["confirmation_token"], name: "index_clients_on_confirmation_token", unique: true, using: :btree
