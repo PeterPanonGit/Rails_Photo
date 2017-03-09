@@ -13,6 +13,8 @@ class Client < ActiveRecord::Base
   #validates :name, uniqueness: true, if: -> { self.name.present? }
   validates :avatar, presence: true
   #before_save {|r| r.lastprocess = Time.now}
+  @@credits_for_image = 1
+
 
   def user?
     role_id.nil? || role_id == CLIENT_TYPE_USER
@@ -53,18 +55,28 @@ class Client < ActiveRecord::Base
   end
 
   def reached_maximum?
-    QueueImage.maximum_per_client <= non_premium_image_count
-  end
-
-  def non_premium_image_count
-    return queue_images.where('is_premium = ? AND status = ?', false, 11).count
+    QueueImage.maximum_per_client <= queue_images.count
   end
 
   def delete_older_image
-    qi = queue_images.where(is_premium: false).order(created_at: :desc).last
+    qi = queue_images.order(created_at: :desc).last
     content = qi.content
     content.remove_image!
     content.destroy if content.save
+  end
+
+  def has_credits
+    return credits >= @@credits_for_image
+  end
+
+  def self.credits_for_image
+    @@credits_for_image
+  end
+
+  def daily_reward
+    if last_sign_in_at.yday != Time.zone.now.yday
+      increment! :credits, 1
+    end
   end
 
   private

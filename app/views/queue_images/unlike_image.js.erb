@@ -1,1 +1,2 @@
-$('.like_panel_<%= @queue_image.id %>').replaceWith('<%= escape_javascript(render  partial: 'like', :locals => {item: @queue_image}) %>')
+$('.like_panel_<%= @queue_image.id %>').replaceWith('<%= escape_javascript(render  partial: 'like', :locals => {item: @queue_image}) %>');
+$("#credits").html("<%= current_client.credits %>");
