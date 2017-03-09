@@ -10,7 +10,8 @@
         <p></p>
         <p>We render this picture with the style image in the upper left corner with 2500px high resolution, we get the following image:</p>
         <%=image_tag("/colin-maynard-stylized.jpg", class: "imagesStyle")%>
-        <p></p>
+        <p>This technology can also be easily applied to videos. Here is an example of New York city view rendered with Van Gogh's Night Market style:</p>
+	<iframe width="500" height="300" src="http://www.youtube.com/embed/xgibhMoD8UU"       frameborder="0"></iframe>
         <p>Because we use fast neural style transfer technology similar to <a href="https://github.com/jcjohnson/fast-neural-style">this</a>, rendering the artistic image is almost instant. The default low resolution setting which is 768px takes only about 10 seconds in total. The exact time can vary with the size of the picture, but the total amount of time should vary from a few seconds to a few tens of seconds <p>
 
         <p>However, we have improved the fast neural style transfer technology by reducing the model training time to about 1 hour. That's why we provide a large number of styles and we allow users to submit their own style photos. If you want to create a new style, please email your style image to: <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a>. Although training a new style takes only about 1 hour, the administrators maintains the website only in their spare time and thus it can take a day for the administrator to upload the new style model to the website</p>

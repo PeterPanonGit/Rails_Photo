@@ -76,7 +76,7 @@ class QueueImagesController < ApplicationController
 
     respond_to do |format|
       if save_status
-        start_workers()
+        #start_workers()
         current_client.decrement! :credits, Client.credits_for_image if params[:queue_image][:is_premium] == "true"
         format.html { redirect_to queue_images_path, notice: 'Image was successfully added to the queue for processing. Low-resolution images takes about 10 seconds to process, and high-resolution images takes 20 seconds to 4 minutes depending on the image size' }
         format.json { render :show, status: :created, location: @queue_image }
