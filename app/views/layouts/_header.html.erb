@@ -13,15 +13,30 @@
 
           <li><%= link_to "Create Images", new_queue_image_path, class: "btn btn-primary" %></li>
 
-          <li><%= link_to "My Collections",    queue_images_path %></li>
+          <li>
+            <%= link_to "My Collections",    queue_images_path %>
+            <div data-tip="2" class="tip">
+              Earn credits by clicking on ads, sharing your images on Facebook, liking other images (3 per day) or just visiting the website (1 per day)
+              <a class="btn">OK</a>
+            </div>
+          </li>
         <% end %>
         <li><%= link_to "Latest Arts",    lenta_path %></li>
         <li><%= link_to "About",    about_path %></li>
         <% if client_signed_in? %>
-          <li><%= link_to "Log Out",  destroy_client_session_path, :method => :delete %></li>
-          <li class="avatar">
-              <%= image_tag current_client.remote_avatar || current_client.avatar %>
+          <li>
+            <%= link_to "Log Out",  destroy_client_session_path, :method => :delete %>
           </li>
+          <li class="avatar">
+            <%= image_tag current_client.remote_avatar || current_client.avatar %>
+          </li>
+          <div id="credits">
+            <%= current_client.credits %>
+            <div data-tip="1" class="tip">
+              Your credits amount
+              <a class="btn">OK</a>
+            </div>
+          </div>
         <% else %>
           <li><%= link_to 'Sign In', new_client_session_path %></li>
         <% end %>
