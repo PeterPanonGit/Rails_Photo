@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-offset-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-      Credit rules: you have 5 credits to start with. Create high resolution image: -1; like other art work: +1; Your art work is liked: +1; visit site: +1. You can see your existing credit at upper right corner above your profile image
       <% if @maximum_reached %>
         <div class="alert alert-danger">
           You have added <%= @image_count %> images, which exceeds the maximum amount of <%= QueueImage.maximum_per_client %>. The older image will be deleted automatically. Please delete the images that you do not like
