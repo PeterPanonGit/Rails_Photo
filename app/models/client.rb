@@ -74,7 +74,7 @@ class Client < ActiveRecord::Base
   end
 
   def daily_reward
-    if last_sign_in_at.yday != Time.zone.now.yday
+    if last_active_at.present? && last_active_at.yday != Time.zone.now.yday
       increment! :credits, 1
     end
   end
