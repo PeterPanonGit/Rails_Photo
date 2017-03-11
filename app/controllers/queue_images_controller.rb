@@ -104,7 +104,15 @@ class QueueImagesController < ApplicationController
   # DELETE /queue_images/1
   # DELETE /queue_images/1.json
   def destroy
-    @queue_image.update(status: STATUS_DELETED)
+    content = @queue_image.content
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    puts content.queue_images.count
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if content.queue_images.count > 1
+      @queue_image.destroy
+    else
+      content.destroy
+    end
     respond_to do |format|
       format.html { redirect_to queue_images_url, notice: 'Images removed.' }
       format.json { head :no_content }
