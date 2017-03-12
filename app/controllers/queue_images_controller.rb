@@ -3,8 +3,8 @@ class QueueImagesController < ApplicationController
   include ConstHelper
   before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
   after_action :verify_authorized, except: [:tag, :loaded]
-  before_action :decrement_credit, only: [:unlike_image]
   before_action :increment_credit, only: [:post_facebook]
+  before_action :not_image_owner, only: [:like_image, :unlike_image]
 
   def pundit_user
     current_client
@@ -104,7 +104,15 @@ class QueueImagesController < ApplicationController
   # DELETE /queue_images/1
   # DELETE /queue_images/1.json
   def destroy
-    @queue_image.update(status: STATUS_DELETED)
+    content = @queue_image.content
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    puts content.queue_images.count
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if content.queue_images.count > 1
+      @queue_image.destroy
+    else
+      content.destroy
+    end
     respond_to do |format|
       format.html { redirect_to queue_images_url, notice: 'Images removed.' }
       format.json { head :no_content }
@@ -129,11 +137,11 @@ class QueueImagesController < ApplicationController
 
   def like_image
     Like.transaction do
+      today_likes = current_client.likes.where created_at: (Time.now - 24.hours)..Time.now
+      current_client.increment!(:credits, 1) if today_likes.count < 3
       Like.create(queue_id: @queue_image.id, client_id: current_client.id)
       @queue_image.increment! :likes_count, 1
       @queue_image.client.increment! :credits, 1
-      @likes = Like.where updated_at: (Time.now - 24.hours)..Time.now
-      current_client.increment!(:credits, 1) if @likes.count < 3
     end
     respond_to do |format|
       format.html { redirect_to queue_images_url}
@@ -143,8 +151,11 @@ class QueueImagesController < ApplicationController
 
   def unlike_image
     Like.transaction do
+      today_likes = current_client.likes.where created_at: (Time.now - 24.hours)..Time.now
+      current_client.decrement!(:credits, 1) if today_likes.count > 0 && today_likes.count < 4
       Like.where("client_id = #{current_client.id} and queue_id = #{@queue_image.id}").destroy_all
       @queue_image.decrement! :likes_count, 1
+      @queue_image.client.decrement! :credits, 1
     end
     respond_to do |format|
       format.html { redirect_to queue_images_url}
@@ -204,4 +215,9 @@ class QueueImagesController < ApplicationController
     current_client.increment! :credits, 1
   end
 
+  def not_image_owner
+    if @queue_image.client == current_client
+      redirect_to queue_images_url
+    end
+  end
 end
