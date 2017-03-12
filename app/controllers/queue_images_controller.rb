@@ -105,9 +105,7 @@ class QueueImagesController < ApplicationController
   # DELETE /queue_images/1.json
   def destroy
     content = @queue_image.content
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     puts content.queue_images.count
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     if content.queue_images.count > 1
       @queue_image.destroy
     else
