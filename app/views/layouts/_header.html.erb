@@ -21,8 +21,9 @@
             </div>
           </li>
         <% end %>
-        <li><%= link_to "Latest Arts",    lenta_path %></li>
-        <li><%= link_to "About",    about_path %></li>
+        <li><%= link_to "Latest Arts", lenta_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Dev's Blog", blog_posts_path %></li>
         <% if client_signed_in? %>
           <li>
             <%= link_to "Log Out",  destroy_client_session_path, :method => :delete %>
