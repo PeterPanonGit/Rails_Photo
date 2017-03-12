@@ -1,0 +1,33 @@
+// Place all the styles related to the BlogPosts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#blog{
+  margin-top: 20px;
+}
+
+#new-blog-post{
+  font-size: 20px;
+}
+
+.blog-post-links a{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.delete-post{
+  color: red;
+
+  &:hover{
+    color: red;
+  }
+}
+
+.blog-post{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 16px;
+}
+.blog-post:last-child{
+  border-bottom: none;
+}

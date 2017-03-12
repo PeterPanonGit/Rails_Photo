@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   match '/premium', to: 'static_pages#premium', via: 'get'
   #match '/admin', to: 'admin_pages#error', via: 'get'
 
+  resources :blog_posts
 
   root "static_pages#home"
   authenticate :admin do
