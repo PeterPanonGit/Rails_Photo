@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312133233) do
+ActiveRecord::Schema.define(version: 20170313095811) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.datetime "created_at",               null: false
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20170312133233) do
   add_index "clients", ["email"], name: "index_clients_on_email", unique: true, using: :btree
   add_index "clients", ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true, using: :btree
   add_index "clients", ["unlock_token"], name: "index_clients_on_unlock_token", unique: true, using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",             limit: 65535
+    t.integer  "client_id",        limit: 4
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
   create_table "contents", force: :cascade do |t|
     t.string   "image",      limit: 255

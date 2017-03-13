@@ -6,7 +6,7 @@
     <%= form_for(@queue_image) do |f| %>
       <% if @queue_image.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@queue_image.errors.count, "error") %> Неверно заполненные данные:</h2>
+          <h2><%= pluralize(@queue_image.errors.count, "error") %> Wrong data:</h2>
 
           <ul>
           <% @queue_image.errors.full_messages.each do |message| %>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Добавить в обработку", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Add to processing", class: "btn btn-large btn-primary" %>
       </div>
     <% end %>
 
