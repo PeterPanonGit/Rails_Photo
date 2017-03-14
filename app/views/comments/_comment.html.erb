@@ -1,0 +1,9 @@
+<% unless comment.new_record? %>
+  <div class="comment">
+    <div class="credentials">
+      <%= image_tag comment.client.remote_avatar || comment.client.avatar %>
+      <%= comment.client.name %>
+    </div>
+    <p><%= comment.body %></p>
+  </div>
+<% end %>

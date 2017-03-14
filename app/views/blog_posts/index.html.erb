@@ -6,7 +6,7 @@
     <div class="blog-post">
       <h3><%= link_to blog_post.title.html_safe, blog_post %></h3>
       <div class="blog-post-body">
-        <%= blog_post.body.html_safe %>
+        <%= blog_post.short_text %>...
       </div>
       <% if current_client.present? && current_client.admin? %>
         <div class="blog-post-links">

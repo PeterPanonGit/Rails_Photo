@@ -31,3 +31,24 @@
 .blog-post:last-child{
   border-bottom: none;
 }
+
+.comment{
+  border-top: 1px solid #eaeaea;
+  padding: 15px;
+}
+.comment .credentials{
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.comment .credentials img{
+  max-height: 30px;
+  margin-right: 6px;
+}
+.blog-post-body{
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+.blog-post-links{
+  margin-bottom: 20px;
+}

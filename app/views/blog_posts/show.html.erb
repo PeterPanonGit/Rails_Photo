@@ -10,5 +10,16 @@
         <%= link_to "Delete", @blog_post, method: :delete, class: 'delete-post' %>
       </div>
     <% end %>
+    <% if current_client %>
+      <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    <% else %>
+      <%= link_to "Sign In", new_client_session_path %>
+      or
+      <%= link_to "Register", new_client_registration_path %>
+      to leave a comment
+    <% end %>
+    <div id="comments" class="margin-top">
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
   </div>
 </div>
