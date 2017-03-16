@@ -84,7 +84,7 @@
           </div>
         </div>
         <%= hidden_field_tag 'queue_image[style_id]', @active ? @active.id : '', id: 'queue_image_style_id' %>
-        <%= hidden_field_tag 'queue_image[content_id]' %>
+        <%= hidden_field_tag 'queue_image[content_id]', nil, id: 'queue_image_content_id' %>
       <% end %>
       <p>Want a new style? Please email style image to <a href="photopaint.us@gmail.com">photopaint.us@gmail.com</a></p>
     </div>
