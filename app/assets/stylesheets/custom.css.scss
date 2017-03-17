@@ -881,46 +881,48 @@ img {
 .modal-content{
   padding: 15px;
 }
-.modal .image-info{
-  padding-bottom: 6px;
-  border-bottom: 1px solid #999;
-}
-.modal img{
-  max-width: 100%;
-  max-height: 100%;
+.modal-queue-image-view{
+  .image-info{
+    padding-bottom: 6px;
+    border-bottom: 1px solid #999;
+  }
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .comment{
+    padding: 6px 10px;
+    margin-right: 10px;
+  }
+  #comments{
+    overflow-y: scroll;
+    max-height: 300px;
+    min-height: 182px;
+  }
+  .comment p{
+    margin-bottom: 0;
+  }
+  .comment:first-child{
+    border-top: none;
+  }
+  .comment .credentials{
+    margin-bottom: 0;
+  }
+  textarea{
+    margin-bottom: 0;
+    border-radius: 4px 4px 0 0;
+  }
+  input[type="submit"]{
+    border-radius: 0 0 4px 4px;
+  }
+  .likeTextStyle{
+    padding-top: 13px;
+  }
 }
 
-.modal .comment{
-  padding: 6px 10px;
-  margin-right: 10px;
-}
-.modal #comments{
-  overflow-y: scroll;
-  max-height: 300px;
-  min-height: 182px;
-}
-.modal .comment p{
-  margin-bottom: 0;
-}
-.modal .comment:first-child{
-  border-top: none;
-}
-.modal .comment .credentials{
-  margin-bottom: 0;
-}
-.modal textarea{
-  margin-bottom: 0;
-  border-radius: 4px 4px 0 0;
-}
-.modal input[type="submit"]{
-  border-radius: 0 0 4px 4px;
-}
 .queue-image-link{
   display: block;
   text-align: center;
-}
-.modal .likeTextStyle{
-  padding-top: 13px;
 }
 
 .modal {

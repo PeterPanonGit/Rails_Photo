@@ -24,6 +24,8 @@ class QueueImagesController < ApplicationController
   # GET /queue_images/1.json
   def show
     authorize @queue_image
+    @comments = @queue_image.comments
+    @comment = @queue_image.comments.new
   end
 
   # GET /queue_images/new
