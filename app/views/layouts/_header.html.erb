@@ -31,7 +31,7 @@
           <li class="avatar">
             <%= image_tag current_client.remote_avatar || current_client.avatar %>
           </li>
-          <div id="credits">
+          <div class="credits visible-lg">
             <%= current_client.credits %>
             <div data-tip="1" class="tip">
               Your credits amount
@@ -58,6 +58,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if client_signed_in? %>
+        <div class="credits hidden-lg">
+          <%= current_client.credits %>
+          <div data-tip="1" class="tip">
+            Your credits amount
+            <a class="btn">OK</a>
+          </div>
+        </div>
+      <% end %>
 
       <div id="logo-xs">
         <%= link_to(image_tag('/logo1.png', class: "imagesStyle"), root_path) %>
@@ -88,7 +97,4 @@
     <!-- /.nav-collapse -->
   </div>
   <!-- /.container -->
-</div>
-
-<div class="hidden-lg" style="padding-bottom: 9%">
 </div>

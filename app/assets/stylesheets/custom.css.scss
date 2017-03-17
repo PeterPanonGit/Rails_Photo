@@ -86,11 +86,9 @@ a{
 
 #logo-xs {
   float: left;
-  //margin-left: 10px;
-  //margin-right: 10px;
-  padding-top: 3%;
-  width: 70%;
-  //height: 15%;
+  padding-top: 9px;
+  width: 150px;
+  margin-left: 15px;
 }
 
 #logo {
@@ -337,8 +335,8 @@ aside {
   height: 190px;
   //background-color: rgba(0, 0, 0, 0.31);
   //border: 1px solid #000000;
-  padding-left: 0!important;
-  padding-right: 0!important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .imageBlock400-lg{
@@ -347,8 +345,8 @@ aside {
   //padding-bottom:66%;
   //background-color: rgba(0, 0, 0, 0.31);
   //border: 1px solid #000000;
-  padding-left: 0!important;
-  padding-right: 0!important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .imagesStyle{
@@ -558,13 +556,6 @@ aside {
   height: 80%;
 }
 
-@media (max-width: 1199px) {
-  .likeTextStyle{
-    padding-top: 30%;
-    font-size: 5vw;
-  }
-}
-
 
 /* microposts */
 
@@ -616,7 +607,7 @@ aside {
 }
 
 .navButtonStyle{
-  padding-bottom: 5%; padding-top: 5%; padding-left: 5%; padding-right: 5%;
+  padding: 5px;
   border: 4px solid #f5f5f5;
 }
 //span{
@@ -824,10 +815,13 @@ img {
   max-height: 100%;
 }
 
-#credits{
+.credits{
   float: right;
   color: white;
   font-size: 11px;
+}
+.credits.hidden-lg{
+  margin: 16px 10px 0 0;
 }
 
 .tip{
@@ -854,23 +848,38 @@ img {
 
 .queue-image-data{
   overflow: hidden;
-}
-.queue-image-data .user-info{
-  float: left;
-}
-.queue-image-data .modal-like{
-  float: right;
+
+  .user-info{
+    float: left;
+  }
+
+  .modal-like{
+    float: right;
+
+    a, div{
+      display: block;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      padding-top: 10px;
+      background: url(/unlike.png) center center no-repeat;
+      background-size: 100% 100%;
+      color: black;
+
+      &:hover{
+        text-decoration: none;
+      }
+
+      &.liked{
+        color: white;
+        background: url(/like.png) center center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
 }
 .modal-content{
   padding: 15px;
-}
-.modal-like .likeStyle{
-  padding-top: 0;
-  left: auto;
-  right: 0;
-}
-.modal-like .likeTextStyle{
-  margin-right: 15px;
 }
 .modal .image-info{
   padding-bottom: 6px;
@@ -911,7 +920,7 @@ img {
   text-align: center;
 }
 .modal .likeTextStyle{
-  padding-top: 11px;
+  padding-top: 13px;
 }
 
 .modal {
@@ -956,11 +965,11 @@ img {
     line-height: 38px;
     color: black;
     text-align: center;
-    background: image-url("unlike.png");
+    background: url("/unlike.png");
     background-size: 100% 100%;
 
     &.active{
-      background: image-url("like.png");
+      background: url("/like.png");
       background-size: 100% 100%;
       color: white;
     }
@@ -1001,4 +1010,23 @@ img {
 
 .margin-bottom{
   margin-bottom: 20px;
+}
+
+.overflow{
+  overflow: hidden;
+}
+.modal-close{
+  float: right;
+}
+
+@media(max-width:767px){
+  .imageBlock400-lg{
+    margin: 0;
+    padding: 0 15px;
+    width: 100%;
+    height: 100%;
+  }
+  .modal-pics{
+    margin-bottom: 20px;
+  }
 }
