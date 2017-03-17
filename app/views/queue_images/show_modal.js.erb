@@ -1,0 +1,3 @@
+$("#queue-image-modal .modal-content").html('<%= escape_javascript(render partial: "modal", locals: { queue_image: @queue_image }) %>');
+$("#queue-image-modal").modal("show");
+$('[data-toggle="tooltip"]').tooltip();

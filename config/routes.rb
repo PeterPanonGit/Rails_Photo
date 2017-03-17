@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/queue_images/:id/loaded', to: 'queue_images#loaded'
   post '/queue_images/:id/post_facebook' => 'queue_images#post_facebook', as: :post_facebook_queue_images
   get 'static_pages/lenta', as: 'user_root'
+  get '/queue_images/:id/modal' => 'queue_images#show_modal', as: :queue_image_show_modal
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'

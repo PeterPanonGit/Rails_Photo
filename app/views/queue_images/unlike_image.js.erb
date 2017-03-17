@@ -1,2 +1,4 @@
 $('.like_panel_<%= @queue_image.id %>').replaceWith('<%= escape_javascript(render  partial: 'like', :locals => {item: @queue_image}) %>');
+$('.like-block[data-item-id="<%= @queue_image.id %>"').html('<%= @queue_image.likes_count %>').removeClass('active');
+$('.like-link[data-item-id="<%= @queue_image.id %>"').attr('href', '/queue_images/<%= @queue_image.id %>/like').html('Like');
 $("#credits").html("<%= current_client.credits %>");

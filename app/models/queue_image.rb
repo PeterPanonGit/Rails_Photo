@@ -4,6 +4,7 @@ class QueueImage < ActiveRecord::Base
   belongs_to :content
   belongs_to :style
   has_many :likes, foreign_key: "queue_id", dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   #mount_uploader :content_image, AvatarUploader
   #mount_uploader :style_image, AvatarUploader
   scope :last_n_days, lambda {|d|  where('ftime > ?' , Time.now - d.days)}
@@ -62,5 +63,10 @@ class QueueImage < ActiveRecord::Base
     if is_premium
       errors.add(:credits, 'You have not enough credits') unless client.has_credits
     end
+  end
+
+  def likers
+    likers_array = likes.map { |like| like.client.name }
+    likers_array.to_sentence
   end
 end

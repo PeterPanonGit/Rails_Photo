@@ -1,4 +1,4 @@
-<div class="like_panel_<%= item.id %> <%= 'liked' unless policy(item).like_image? %>">
+<div class="like_panel_<%= item.id %> <%= 'liked' unless policy(item).like_image? || !client_signed_in? %>">
   <div class="likeTextStyle textAboutStyle"><%= item.likes_count %></div>
   <div class="likeStyle">
   <% if client_signed_in? %>

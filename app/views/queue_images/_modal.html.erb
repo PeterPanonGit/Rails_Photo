@@ -1,0 +1,57 @@
+<% debug = false %>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="row">
+      <div class="col-lg-4 styleContentImage1-lg ">
+        <div class="row">
+          <div class="col-lg-12" >
+            <%= image_tag(queue_image.content.image.thumb200.url, class: "imagesStyle roundImageStyle") %>
+          </div>
+          <div class="col-lg-12">
+            <%= link_to(image_tag(queue_image.style.image.thumb200.url, alt:queue_image.style.image, class: "imagesStyle roundImageStyle"), new_queue_image_path(style: queue_image.style.id, is_premium: queue_image.is_premium, mixing_level: queue_image.mixing_level), class: "imagesStyle", data:{ lightbox: "content"}) %>
+          </div>
+        </div>
+      </div>
+
+      <div class=" col-lg-7 imageBlock400-lg">
+        <%= link_to(image_tag(queue_image.result_image.imageurl.thumb400.url, alt: queue_image.result_image.imageurl, class: "imagesStyle roundImageStyle"), queue_image.result_image.imageurl.url, class: "imagesStyle", data:{ lightbox: "content"})  if queue_image.result_image %>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+    <div class="queue-image-data">
+      <div class="user-info">
+        <%= image_tag(queue_image.client.remote_avatar || queue_image.client.avatar, class: "userAvatarImage-lg") if queue_image.client.present? %>
+        <span class="textUserStyle-lg">
+          <%= truncate(queue_image.client.name, length: 25)  if queue_image.client.present? %>
+        </span>
+      </div>
+      <% if debug %>
+        <span class="user">
+            <%= link_to "remove", queue_image, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+        </span>
+      <% end %>
+      <div class="modal-like" data-toggle="tooltip" data-placement="bottom" title="<%= queue_image.likers %>" >
+        <%= render(partial: 'queue_images/like', :locals => {item: queue_image}) %>
+      </div>
+    </div>
+    <div class="image-info">
+      Mixing level: <%= queue_image.mixing_level %>, Image Resolution: <%= queue_image.is_premium ? 'High' : 'Low' %>
+    </div>
+    
+    <div id="comments">
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
+    <% if current_client %>
+      <%= render partial: 'comments/form', locals: { comment: @comment, remote: true } %>
+    <% else %>
+      <%= link_to "Sign In", new_client_session_path %>
+      or
+      <%= link_to "Register", new_client_registration_path %>
+      to leave a comment
+    <% end %>
+  </div>
+</div>
