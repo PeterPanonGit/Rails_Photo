@@ -13,7 +13,7 @@
   return
 
 @bindTagsFunctionality = ->
-  $('[class^=\'tag\'').click (e) ->
+  $('[class^="tag"]').click (e) ->
     e.preventDefault()
     $(this).toggleClass 'active'
     applyTags()
@@ -62,20 +62,24 @@
   id = $(@).data 'style-id'
   $('[class^="mark_style_"]').html ''
   $('.mark_style_' + id).html '<div class="marked"><img src="/check.png" class="imagesStyle"</div>'
-  $('input[name="queue_image[style_id]"').val id
+  $('#queue_image_style_id').val id
   return
 
 @markQueueImage = (e) ->
   id = $(@).data 'my-image-id'
   $('.my-image-block').removeClass 'active'
   $(@).addClass 'active'
-  $('input[name="queue_image[content_id]"').val id
+  $('#queue_image_content_id').val id
+  return
+
+@bindMarkFunctionality = (e) ->
+  $(document).on 'click', '.style-block', markStyle
+  $(document).on 'click', '.my-image-block', markQueueImage
   return
 
 $(document).on 'turbolinks:load', bindTagsFunctionality
 $(document).on 'turbolinks:load', loadProcessedImage
-$(document).on 'click', '.style-block', markStyle
-$(document).on 'click', '.my-image-block', markQueueImage
+$(document).on 'turbolinks:load', bindMarkFunctionality
 
 $(document).on 'click', '#credits-tip', showTip
 $(document).on 'click', '.tip .btn', toggleTip
