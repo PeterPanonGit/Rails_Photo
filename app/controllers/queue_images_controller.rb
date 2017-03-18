@@ -2,7 +2,7 @@ class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
   before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
-  after_action :verify_authorized, except: [:tag, :loaded]
+  after_action :verify_authorized, except: [:tag, :loaded, :show_modal]
   before_action :increment_credit, only: [:post_facebook]
   before_action :not_image_owner, only: [:like_image, :unlike_image]
 
@@ -24,6 +24,8 @@ class QueueImagesController < ApplicationController
   # GET /queue_images/1.json
   def show
     authorize @queue_image
+    @comments = @queue_image.comments
+    @comment = @queue_image.comments.new
   end
 
   # GET /queue_images/new
@@ -176,8 +178,19 @@ class QueueImagesController < ApplicationController
     @graph = Koala::Facebook::API.new(current_client.token)
     photo = @queue_image.result_image.imageurl.thumb400.url
     if photo
+      puts "#{request.protocol}#{request.host_with_port}#{photo}"
       @graph.put_picture("#{request.protocol}#{request.host_with_port}#{photo}")
     end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_modal
+    @queue_image = QueueImage.find(params[:id])
+    @comments = @queue_image.comments
+    @comment = @queue_image.comments.new
 
     respond_to do |format|
       format.js

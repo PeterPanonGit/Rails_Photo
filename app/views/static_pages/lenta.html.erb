@@ -1,12 +1,13 @@
-<div class="content"><div class="row">
-  <br>
-  <div class = "col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12 feed-buttons">
-    <%= link_to "High resolution images", url_for(controller: 'static_pages', action: 'lenta', last_days: -1) %>
-    <%= link_to "Pick of the Week", url_for(controller: 'static_pages', action: 'lenta', last_days: 7) %>
-    <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30) %>
-    <%= link_to "All", url_for(controller: 'static_pages', action: 'lenta') %>
+<div class="content">
+  <div class="row">
+    <div class = "col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12 feed-buttons margin-top margin-bottom">
+      <%= link_to "High resolution images", url_for(controller: 'static_pages', action: 'lenta', last_days: -1) %>
+      <%= link_to "Pick of the Week", url_for(controller: 'static_pages', action: 'lenta', last_days: 7) %>
+      <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30) %>
+      <%= link_to "All", url_for(controller: 'static_pages', action: 'lenta') %>
+    </div>
   </div>
-</div></div>
+</div>
 
 <div id="ad">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -20,8 +21,45 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 		 </script>
 </div>
-<div id="posts">
-  <%= render partial: 'queue_images/item_view_1', collection:  @items %>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="queue-image">
+        <%= image_tag item.result_image.imageurl.thumb400.url if item.result_image %>
+        <%= link_to queue_image_show_modal_path(item), remote: true, class: 'queue-image-link' do %>
+          <div class="like-block <%= 'active' unless policy(item).like_image? || !client_signed_in? %>" data-item-id="<%= item.id %>">
+            <%= item.likes_count %>
+          </div>
+        <% end %> 
+        <div class="queue-image-ifc">
+        <% if current_client %>
+          <%= link_to 'Use Style', new_queue_image_path(style: item.style.id), class: "use-style" %>
+          <% if item.client != current_client %>
+            <% if policy(item).like_image? %>
+              <%= link_to 'Like', "/queue_images/#{item.id}/like", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
+            <% else %>
+              <%= link_to 'Unlike', "/queue_images/#{item.id}/unlike", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Use Style', new_client_session_path %>
+          <%= link_to 'Like', new_client_session_path %>
+        <% end %>
+        <%= link_to 'Comments', queue_image_show_modal_path(item), remote: true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="queue-image-modal" class="modal fade">
+  <div class="modal-dialog modal-lg" role="dialog">
+    <div class="modal-content">
+      
+    </div>
+  </div>
+</div>
+<div id="queue_image_window">
+  
 </div>
 
 <%= will_paginate @items %>

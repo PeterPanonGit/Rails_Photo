@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @relative }
-      format.js
+      format.js { render @relative.class.name.underscore }
     end
   end
 

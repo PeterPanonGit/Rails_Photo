@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   #validates :name, presence: true, if: :devise_controller?
-  before_filter :record_user_activity
+  after_filter :record_user_activity
 
   def after_sign_in_path_for(resource)
     lenta_path
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_user_activity
-    if current_client
+    if current_client.present?
       current_client.daily_reward
       current_client.touch :last_active_at
     end
