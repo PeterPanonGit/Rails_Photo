@@ -2,6 +2,7 @@ class QueueImagesController < ApplicationController
   include WorkerHelper
   include ConstHelper
   before_action :set_queue_image, only: [:show, :edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
+  before_action :authorize_queue_image, only: [:edit, :update, :destroy, :visible, :hidden, :like_image, :unlike_image, :post_facebook]
   after_action :verify_authorized, except: [:show, :tag, :loaded, :show_modal]
   before_action :increment_credit, only: [:post_facebook]
   before_action :not_image_owner, only: [:like_image, :unlike_image]
@@ -201,6 +202,9 @@ class QueueImagesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_queue_image
     @queue_image = QueueImage.find(params[:id])
+  end
+
+  def authorize_queue_image
     authorize @queue_image
   end
 
