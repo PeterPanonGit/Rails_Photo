@@ -25,6 +25,7 @@
   <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="queue-image">
+        <%= image_tag 'http://nerdist.com/wp-content/uploads/2016/09/Adventure-Time.jpg' %>
         <%= image_tag item.result_image.imageurl.thumb400.url if item.result_image %>
         <%= link_to queue_image_show_modal_path(item), remote: true, class: 'queue-image-link' do %>
           <div class="like-block <%= 'active' unless policy(item).like_image? || !client_signed_in? %>" data-item-id="<%= item.id %>">

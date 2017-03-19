@@ -9,12 +9,6 @@ class QueueImagePolicy < ApplicationPolicy
     !user.nil?
   end
 
-  # GET /queue_images/1
-  # GET /queue_images/1.json
-  def show?
-    user.present? && user.admin?
-  end
-
   # GET /queue_images/new
   def new?
     create?
