@@ -880,6 +880,10 @@ img {
 }
 .modal-content{
   padding: 15px;
+
+  .overflow{
+    margin-bottom: 8px;
+  }
 }
 .modal-queue-image-view{
   .image-info{
@@ -1019,6 +1023,22 @@ img {
 }
 .modal-close{
   float: right;
+}
+
+.ta-center{
+  text-align: center;
+}
+
+#ad{
+  margin-bottom: 20px;
+}
+
+.modal-page{
+  margin-top: 30px;
+
+  .overflow{
+    display: none;
+  }
 }
 
 @media(max-width:767px){
