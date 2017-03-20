@@ -176,10 +176,10 @@ class QueueImagesController < ApplicationController
 
   def post_facebook
     @graph = Koala::Facebook::API.new(current_client.token)
-    photo = @queue_image.result_image.imageurl.thumb400.url
+    photo = @queue_image.result_image.imageurl
     if photo
-      puts "#{request.protocol}#{request.host_with_port}#{photo}"
-      @graph.put_picture("#{request.protocol}#{request.host_with_port}#{photo}")
+      puts photo
+      @graph.put_picture photo
     end
 
     respond_to do |format|
