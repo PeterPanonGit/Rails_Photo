@@ -77,9 +77,21 @@
   $(document).on 'click', '.my-image-block', markQueueImage
   return
 
+@assignFacebookModal = (e) ->
+  id = $(@).data 'id'
+  $("#facebook-post-modal form").attr('action', '/queue_images/' + id + '/post_facebook')
+  return
+
+@initiateLoading = (e) ->
+  $(@).find("button").prop 'disabled', true
+  $(@).find("button").html "Loading..."
+  return
+
 $(document).on 'turbolinks:load', bindTagsFunctionality
 $(document).on 'turbolinks:load', loadProcessedImage
 $(document).on 'turbolinks:load', bindMarkFunctionality
 
 $(document).on 'click', '#credits-tip', showTip
 $(document).on 'click', '.tip .btn', toggleTip
+$(document).on 'click', '.post_facebook', assignFacebookModal
+$(document).on 'submit', '#facebook-post-modal form', initiateLoading
