@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div id="ad">
+<div id="ad" data-ad="true">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- photopaintus -->
 	<ins class="adsbygoogle"
@@ -21,6 +21,7 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 		 </script>
 </div>
+<%= link_to "", :add_credits, method: :post, remote: true, id: 'add-credits' %>
 <div class="row">
   <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
