@@ -22,35 +22,8 @@
 		 </script>
 </div>
 <%= link_to "", :add_credits, method: :post, remote: true, id: 'add-credits' %>
-<div class="row">
-  <% @items.each do |item| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="queue-image">
-        <%= image_tag item.result_image.imageurl.thumb400.url if item.result_image %>
-        <%= link_to queue_image_show_modal_path(item), remote: true, class: 'queue-image-link' do %>
-          <div class="like-block <%= 'active' unless policy(item).like_image? || !client_signed_in? %>" data-item-id="<%= item.id %>">
-            <%= item.likes_count %>
-          </div>
-        <% end %> 
-        <div class="queue-image-ifc">
-        <% if current_client %>
-          <%= link_to 'Use Style', new_queue_image_path(style: item.style.id), class: "use-style" %>
-          <% if item.client != current_client %>
-            <% if policy(item).like_image? %>
-              <%= link_to 'Like', "/queue_images/#{item.id}/like", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
-            <% else %>
-              <%= link_to 'Unlike', "/queue_images/#{item.id}/unlike", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
-            <% end %>
-          <% end %>
-        <% else %>
-          <%= link_to 'Use Style', new_client_session_path %>
-          <%= link_to 'Like', new_client_session_path %>
-        <% end %>
-        <%= link_to 'Comments', queue_image_show_modal_path(item), remote: true %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+<div class="row" id="posts">
+  <%= render partial: 'queue_images/item_view_1', collection: @items %>
 </div>
 <div id="queue-image-modal" class="modal fade">
   <div class="modal-dialog modal-lg" role="dialog">
