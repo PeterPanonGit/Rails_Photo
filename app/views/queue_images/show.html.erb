@@ -1,8 +1,10 @@
 <% item = @queue_image %>
 <% res_img = item.result_image %>
 <% if current_client.present? && current_client.admin? %>
-  <%= link_to 'Back', queue_images_path %>
-  <a href="#admin-bar" class="" data-toggle="collapse">Toggle Bar</a>
+  <div class="margin-top">
+    <%= link_to 'Back', queue_images_path %>
+    <a href="#admin-bar" class="" data-toggle="collapse">Toggle Bar</a>
+  </div>
   <div class="container collapse" id="admin-bar">
     <div class="row styleRow2-lg">
 
