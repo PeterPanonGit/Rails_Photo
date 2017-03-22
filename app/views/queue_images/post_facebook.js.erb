@@ -1,2 +1,5 @@
+$("#facebook-post-modal").modal("hide");
+$('#facebook-post-modal button').html("Post");
+$('#facebook-post-modal button').prop('disabled', false);
 $("[data-item-id=<%= @queue_image.id %>]").find(".post_facebook").replaceWith("Posted<br>");
 $(".credits").html("<%= current_client.credits %>");

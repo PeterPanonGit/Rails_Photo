@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create]
 
+  post '/credits' => 'credits#add', as: :add_credits
+
   root "static_pages#home"
   authenticate :admin do
     mount Resque::Server, :at => "/resque"

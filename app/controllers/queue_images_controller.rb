@@ -178,7 +178,7 @@ class QueueImagesController < ApplicationController
     @graph = Koala::Facebook::API.new(current_client.token)
     photo = @queue_image.result_image.imageurl.url
     if photo
-      @graph.put_picture "#{ENV['IMAGE_SERVER']}#{photo}"
+      @graph.put_picture "#{photo}", nil, { caption: params[:message] }
     end
 
     respond_to do |format|

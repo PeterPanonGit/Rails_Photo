@@ -6,4 +6,20 @@
   <% end %>
 </div>
 
+<div id="facebook-post-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="overflow visible-xs">
+          <%= button_tag "Close", class: 'btn btn-link modal-close', data: { dismiss: 'modal' } %>
+        </div>
+        <%= form_tag '/queue_images/:id/post_facebook', method: :post, remote: true, authenticity_token: true do %>
+          <%= text_area_tag :message, nil, placeholder: "Optional message", class: 'form-control' %>
+          <%= button_tag "Post", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= will_paginate @items %>
