@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
   <div class="queue-image">
     <%= image_tag item.result_image.imageurl.thumb400.url if item.result_image %>
-    <%= link_to queue_image_path(item), class: 'queue-image-link' do %>
+    <%= link_to queue_image_url(item), class: 'queue-image-link' do %>
       <div class="like-block <%= 'active' unless policy(item).like_image? || !client_signed_in? %>" data-item-id="<%= item.id %>">
         <%= item.likes_count %>
       </div>
