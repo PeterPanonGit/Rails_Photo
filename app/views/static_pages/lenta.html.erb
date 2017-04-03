@@ -1,10 +1,10 @@
 <div class="content">
   <div class="row">
     <div class = "col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12 feed-buttons margin-top margin-bottom">
-      <%= link_to "High resolution images", url_for(controller: 'static_pages', action: 'lenta', last_days: -1) %>
-      <%= link_to "Pick of the Week", url_for(controller: 'static_pages', action: 'lenta', last_days: 7) %>
-      <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30) %>
-      <%= link_to "All", url_for(controller: 'static_pages', action: 'lenta') %>
+      <%= link_to "High resolution images", url_for(controller: 'static_pages', action: 'lenta', last_days: -1), class: @par == '-1' ? 'active' : nil %>
+      <%= link_to "Pick of the Week", url_for(controller: 'static_pages', action: 'lenta', last_days: 7), class: @par == '7' ? 'active' : nil %>
+      <%= link_to "Pick of the Month", url_for(controller: 'static_pages', action: 'lenta', last_days: 30), class: @par == '30' ? 'active' : nil %>
+      <%= link_to "All", url_for(controller: 'static_pages', action: 'lenta'), class: @par.nil? ? 'active' : nil %>
     </div>
   </div>
 </div>

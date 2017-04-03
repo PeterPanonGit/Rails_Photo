@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   post '/credits' => 'credits#add', as: :add_credits
 
-  root "static_pages#home"
+  root "static_pages#lenta"
   authenticate :admin do
     mount Resque::Server, :at => "/resque"
   end
