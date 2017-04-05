@@ -16,14 +16,14 @@
           <li>
             <%= link_to "My Collections",    queue_images_path %>
             <div data-tip="2" class="tip">
-              Earn credits by clicking on ads, sharing your images on Facebook, liking other images (3 per day) or just visiting the website (1 per day)
+              -1 credit for each high resolution image. Earn credits by liking other images (3 per day) or just visiting the website (1 per day)
               <a class="btn">OK</a>
             </div>
           </li>
         <% end %>
         <li><%= link_to "Latest Arts", lenta_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Dev's Blog", blog_posts_path %></li>
+        <li><%= link_to "Blog", blog_posts_path %></li>
         <% if client_signed_in? %>
           <li>
             <%= link_to "Log Out",  destroy_client_session_path, :method => :delete %>
@@ -84,6 +84,7 @@
         <% end %>
         <li ><%= link_to "Latest Arts",  lenta_path %></li>
         <li><%= link_to "About",    about_path %></li>
+        <li><%= link_to "Blog", blog_posts_path %></li>
         <% if client_signed_in? %>
             <li><%= link_to "Log Out",  destroy_client_session_path, :method => :delete %></li>
         <% else %>
