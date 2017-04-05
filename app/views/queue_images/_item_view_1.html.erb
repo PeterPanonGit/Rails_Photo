@@ -1,27 +1,24 @@
 <% item = item_view_1 %>
 <div class="col-xs-12 col-sm-6 col-md-4">
-  <div class="queue-image">
-    <%= image_tag item.result_image.imageurl.thumb400.url if item.result_image %>
-    <%= link_to queue_image_path(item), class: 'queue-image-link' do %>
-      <div class="like-block <%= 'active' unless policy(item).like_image? || !client_signed_in? %>" data-item-id="<%= item.id %>">
-        <%= item.likes_count %>
-      </div>
-    <% end %> 
+  <div class="queue-image" data-queue-image-id="<%= item.id %>">
+    <div class="images-wrapper">
+      <%= link_to queue_image_path(item), class: 'queue-image-link' do %>
+        <% if defined? item.result_image.imageurl.thumb400 %>
+          <%= image_tag(item.content.image.thumb400.url, class: 'original') %>
+        <% else %>
+          <%= image_tag(item.content.image.thumb200.url, class: 'original') %>
+        <% end %>
+        <%= image_tag(item.result_image.imageurl.thumb400.url, class: 'styled') if item.result_image %>
+      <% end %>
+    </div>
     <div class="queue-image-ifc">
     <% if current_client %>
       <%= link_to 'Use Style', new_queue_image_path(style: item.style.id), class: "use-style" %>
-      <% if item.client != current_client %>
-        <% if policy(item).like_image? %>
-          <%= link_to 'Like', "/queue_images/#{item.id}/like", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
-        <% else %>
-          <%= link_to 'Unlike', "/queue_images/#{item.id}/unlike", method: :put, remote: true, class: 'like-link', data: { item_id: item.id } %>
-        <% end %>
-      <% end %>
     <% else %>
       <%= link_to 'Use Style', new_client_session_path %>
-      <%= link_to 'Like', new_client_session_path %>
     <% end %>
     <%= link_to 'Comments', queue_image_path(item) %>
+    <%= render partial: 'queue_images/like_link', collection: [item] %>
     </div>
   </div>
 </div>

@@ -52,6 +52,19 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
+  version :thumb400 do
+    process :resize_to_fit => [600, 600]
+    process :resize_to_fill => [400, 400]
+    process convert: 'jpg'
+    def full_filename (for_file) # = model.logo.file)
+      if (for_file.size == 29) && (for_file.index('img') == 0)
+        "thumb400_img.jpg"
+      else
+        [version_name, for_file].compact.join('_')
+      end
+    end
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
