@@ -1,0 +1,26 @@
+<% item = like_link %>
+<div class="like-link" data-item-id="<%= item.id %>">
+  <% if current_client %>
+    <% if item.client != current_client %>
+      <% if policy(item).like_image? %>
+        <%= link_to "/queue_images/#{item.id}/like", method: :put, remote: true, data: { item_id: item.id } do %>
+            <span><%= item.likes_count %></span>
+            <i class="like-icon unlike"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "/queue_images/#{item.id}/unlike", method: :put, remote: true, data: { item_id: item.id } do %>
+            <span><%= item.likes_count %></span>
+            <i class="like-icon like"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span><%= item.likes_count %></span>
+      <i class="like-icon unlike"></i>
+    <% end %>
+  <% else %>
+    <%= link_to new_client_session_path do %>
+      <span><%= item.likes_count %></span>
+      <i class="like-icon unlike"></i>
+    <% end %>
+  <% end %>
+</div>
