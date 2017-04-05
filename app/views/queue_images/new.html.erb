@@ -3,7 +3,7 @@
     <div class="col-lg-offset-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
       <% if @maximum_reached %>
         <div class="alert alert-danger">
-          You have added <%= @image_count %> images, which is the maximum amount. The older image will be deleted automatically
+          You have added <%= @image_count %> images, which exceeds the maximum amount of <%= QueueImage.maximum_per_client %>. The older image will be deleted automatically. Please delete the images that you do not like
         </div>
       <% end %>
       <%= form_for(@queue_image) do |f| %>
@@ -47,7 +47,7 @@
             <% end %>
           </div>
         </div>
-        <b>Choose style from below</b>
+        <b>Choose style from below</b><br>Need insprations on how to choose? Check our <%= link_to "Blog", blog_posts_path %>
         <div class="actions">
           <%= f.submit "Render an image", class: "btn btn-large btn-primary" %>
         </div>
