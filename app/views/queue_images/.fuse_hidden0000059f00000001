@@ -3,7 +3,7 @@
   <div class="queue-image" data-queue-image-id="<%= item.id %>">
     <div class="images-wrapper">
       <%= link_to queue_image_path(item), class: 'queue-image-link' do %>
-        <% if item.result_image && item.result_image.imageurl.thumb400 %>
+        <% if defined? item.result_image.imageurl.thumb400 %>
           <%= image_tag(item.content.image.thumb400.url, class: 'original') %>
         <% else %>
           <%= image_tag(item.content.image.thumb200.url, class: 'original') %>
