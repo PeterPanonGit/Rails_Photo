@@ -53,3 +53,8 @@ rails s
 in config/deploy.rb, change repo_url to the correct repo
 in config/deploy.rb, in set :default_env, setup s3 credentials
 in config/deploy/production.rb, change the server name to the correct one
+
+# recover if spot instance is down
+* launch spot instance with AMI
+* assgin elastic ip to the spot instance
+* re-generate rsa key due to server signature change
