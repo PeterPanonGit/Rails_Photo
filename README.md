@@ -64,6 +64,18 @@ in config/deploy.rb, in set :default_env, setup s3 credentials
 
 in config/deploy/production.rb, change the server name to the correct one (Or export SERVER_URL to env before deployment)
 
+then
+
+```
+cap production deploy
+```
+
+to just restart production server:
+
+```
+cap production unicorn:restart
+```
+
 # recover if spot instance is down
 * launch spot instance with AMI
 * assgin elastic ip to the spot instance
