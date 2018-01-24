@@ -27,32 +27,42 @@ sudo apt-get install -y nodejs
 gem install rails -v 4.2.4
 
 # install mysql
-sudo apt-get install mysql-server mysql-client libmysqlclient-dev
-# mysql -u root -p
-# create database photopaint_dev;
-# use photopaint_dev;
-# grant all privileges on photopaint_dev.* to 'sbadmin'@'localhost' identified by 'sbadmin';
-# UPDATE `photopaint_dev`.`clients` SET `role_id`='300' WHERE `id`='1';
+```
+	sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+	mysql -u root -p
+	> create database photopaint_dev;
+	> use photopaint_dev;
+	> grant all privileges on photopaint_dev.* to 'sbadmin'@'localhost' identified by 'sbadmin';
+	> UPDATE `photopaint_dev`.`clients` SET `role_id`='300' WHERE `id`='1';
+```
 
 # install redis
 ## if test locally in dev mode, installing redis is not necessary and can set false in app/helpers/worker_helper.rb
-sudo apt-get install build-essential tcl
-wget http://download.redis.io/redis-stable.tar.gz
-tar xvzf redis-stable.tar.gz
-cd redis-stable
-make
-make test
-make install
+
+```
+	sudo apt-get install build-essential tcl
+	wget http://download.redis.io/redis-stable.tar.gz
+	tar xvzf redis-stable.tar.gz
+	cd redis-stable
+	make
+	make test
+	make install
+```
 
 # run
-bundle install
-rake db:migrate
-rails s
+
+```
+	bundle install
+	rake db:migrate
+	rails s
+```
 
 # deploy
 in config/deploy.rb, change repo_url to the correct repo
+
 in config/deploy.rb, in set :default_env, setup s3 credentials
-in config/deploy/production.rb, change the server name to the correct one
+
+in config/deploy/production.rb, change the server name to the correct one (Or export SERVER_URL to env before deployment)
 
 # recover if spot instance is down
 * launch spot instance with AMI
